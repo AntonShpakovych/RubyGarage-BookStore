@@ -1,75 +1,57 @@
 version: 2.1
-executors:
-  default:
-    working_directory: ~/repo
-    description: The official CircleCI Ruby Docker image
-    docker:
-      - image: circleci/ruby:2.7.3 
-caches:
-  - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}
-  - &bundle_cache v2-repo-
 
-commands:
-  defaults:
+orbs:
+  ruby: circleci/ruby@1.0 
+  node: circleci/node@2
+
+jobs:      
+  test:
+    docker:
+      - image: cimg/ruby:2.7.3-node
+      - image: circleci/postgres:14.3
+        environment:
+          POSTGRES_USER: BookStore
+          POSTGRES_DB: BookStore_test
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      PGUSER: BookStore
+      RAILS_ENV: test
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - *bundle_cache_full
-            - *bundle_cache
-      - run: gem install bundler:1.15.0
-      - run: bundle install
+      - checkout 
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
       - run:
-            name: Database Setup
-            command: |
-              bundle exec rake db:create db:schema:load --trace
-              bundle exec rake db:migrate
-      - save_cache:
-          key: *bundle_cache_full
-          paths:
-            - vendor/bundle
-  run_rubocop:
-    description: start rubocop
-    steps:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
-          name: rubocop
-          command: bundle exec rubocop
-  run_specs:
-    steps:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
       - run:
-          name: start specs
+          name: Run Specs
           command: |
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-            bundle exec rspec --format progress \
-                              --out /tmp/test-results/rspec.xml \
-                              $TEST_FILES
-  run_fasterer:
-    steps:
-      - run:
-          name: start fasterer
-          command: bundle exec fasterer
-jobs:
+            bundle exec rspec
+      - store_artifacts:
+          path: coverage
   lintering:
-    executor: default
+    docker:
+      - image: cimg/ruby:2.7.3-node
     steps:
-      - defaults
-      - run_rubocop
-  run_specs:
-    executor: default
-    steps:
-      - defaults
-      - run_specs
-  run_fasterer:
-    executor: default
-    steps:
-      - defaults
-      - run_fasterer
+      - checkout
+      - run: 
+          name: rubocop
+          command: bundle exec rubocop
+      
 
 workflows:
   version: 2
-  build:
+  build_and_test:     
     jobs:
       - lintering
-      - run_specs
-      - run_fasterer
+      - test:         
+          requires:
+            - lintering
