@@ -26,5 +26,8 @@ Style/HashSyntax:
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
 
+RSpec/MultipleExpectations:
+  Enabled: false
+
 Rails:
   Enabled: true

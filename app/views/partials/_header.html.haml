@@ -1,0 +1,51 @@
+%header.navbar.navbar-default
+  .container
+    .navbar-header
+      %button.navbar-toggle.pull-left{type: "button", 'data-toggle': "collapse", 'data-target': "#navbar"}
+        %span.sr-only
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand= t('global.name_app')
+      %a.shop-link.pull-right.visible-xs{href: "#"}
+        %span.shop-icon
+          %span.shop-quantity 3
+    %a.shop-link.pull-right.hidden-xs{href: "#"}
+      %span.shop-icon
+        %span.shop-quantity 3
+    #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
+      .visible-xs
+        %button.close{type: "button", 'aria-label': "Close"}
+          %span{'aria-hidden': "true"} &times;
+        %ul.nav.navbar-nav
+          %li
+            %a{href: "#"}= t('global.navigation_home')
+          %li
+            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}= t('global.navigation_shop')
+            %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
+              %li
+                %a.collapse-link{href: "#"}= t('global.sub_navigation_mobile_development')
+              %li
+                %a.collapse-link{href: "#"}= t('global.sub_navigation_photo')
+              %li
+                %a.collapse-link{href: "#"}= t('global.sub_navigation_web_design')
+          %li
+            %a{href: "#"}= t('global.navigation_account')
+      .hidden-xs
+        %ul.nav.navbar-nav
+          %li
+            %a{href: "#"}= t('global.navigation_home')
+          %li.dropdown
+            %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
+            %ul.dropdown-menu
+              %li
+                %a{href: "#"}= t('global.sub_navigation_mobile_development')
+              %li
+                %a{href: "#"}= t('global.sub_navigation_photo')
+              %li
+                %a{href: "#"}= t('global.sub_navigation_web_design')
+              %li.divider{role: "separator"}
+              %li
+                %a{href: "#"}= t('global.sub_navigation_log_out')
+          %li
+            %a{href: "#"}= t('global.navigation_account')

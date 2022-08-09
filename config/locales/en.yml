@@ -1,33 +1,18 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  global:
+        name_app: BookStore
+        navigation_home: Home
+        navigation_shop: Shop
+        navigation_account: My account
+        sub_navigation_mobile_development: Mobile development
+        sub_navigation_photo: Photo
+        sub_navigation_web_design: Web design
+        sub_navigation_log_out: Log out
+        mobile_number: (555)-555-5555
+        email_addres: support@bookstore.com
+  home:
+      welcome_title: Welcome to our amazing Bookstore!
+      welcome_description: We pore through hundreds of new books each month and select the five best we can find to share with our members.
+      title_best_sellers: Best Sellers
+      button_get_started: Get Started
+      button_buy_now: Buy Now
