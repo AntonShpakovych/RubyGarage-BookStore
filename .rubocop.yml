@@ -1,0 +1,30 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.7.3
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'vendor/bundle/**/*'
+    - 'tmp/**/*'
+    - 'config/**/*'
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
+
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']
+
+Rails:
+  Enabled: true
