@@ -9,7 +9,7 @@ jobs:
   test:
     docker:
       - image: cimg/ruby:2.7.3-node
-      - image: circleci/postgres:14.3
+      - image: cimg/postgres:14.3
         environment:
           POSTGRES_USER: BookStore
           POSTGRES_DB: BookStore_test
