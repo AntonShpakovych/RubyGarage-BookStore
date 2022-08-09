@@ -19,7 +19,6 @@ commands:
             - *bundle_cache
       - run: gem install bundler:1.15.0
       - run: bundle install
-      - run: yarn install
       - run:
             name: Database Setup
             command: |
