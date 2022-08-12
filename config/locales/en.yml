@@ -16,3 +16,9 @@ en:
       title_best_sellers: Best Sellers
       button_get_started: Get Started
       button_buy_now: Buy Now
+  books:
+       filter_newest_first: Newest first
+       filter_popular_first: Popular first
+       filter_price_low_to_hight: "Price: Low to hight"
+       filter_price_hight_to_low: "Price: Hight to low"
+       button_view_more: View More

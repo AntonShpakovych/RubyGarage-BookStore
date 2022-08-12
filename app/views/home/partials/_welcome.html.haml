@@ -2,4 +2,4 @@
   %h2.h1= t('home.welcome_title')
   .mb-res-50
     %p= t('home.welcome_description')
-  %button.btn.btn-default= t('home.button_get_started')
+  = link_to t('home.button_get_started'), books_path, class: 'button btn btn-default'
