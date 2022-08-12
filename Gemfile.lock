@@ -63,11 +63,9 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
-    bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     builder (3.2.4)
-    byebug (11.1.3)
     capybara (3.37.1)
       addressable
       matrix
@@ -262,11 +260,6 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.2.0)
-    web-console (4.2.0)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
     webdrivers (5.0.0)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
@@ -289,9 +282,8 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
-  byebug
   capybara (>= 3.26)
-  fasterer
+  fasterer (~> 0.10.0)
   haml-rails (~> 2.0)
   jbuilder (~> 2.7)
   listen (~> 3.3)
@@ -308,11 +300,10 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   simplecov (~> 0.21.2)
-  spring
+  spring (~> 4.0.0)
   turbolinks (~> 5)
   tzinfo-data
-  web-console (>= 4.1.0)
-  webdrivers
+  webdrivers (~> 5.0.0)
   webpacker (~> 5.0)
 
 RUBY VERSION

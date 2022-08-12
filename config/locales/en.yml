@@ -1,24 +1,37 @@
 en:
-  global:
-        name_app: BookStore
-        navigation_home: Home
-        navigation_shop: Shop
-        navigation_account: My account
-        sub_navigation_mobile_development: Mobile development
-        sub_navigation_photo: Photo
-        sub_navigation_web_design: Web design
-        sub_navigation_log_out: Log out
-        mobile_number: (555)-555-5555
-        email_addres: support@bookstore.com
+  partials:
+    header:
+      name_app: BookStore
+      navigation_home: Home
+      navigation_shop: Shop
+      navigation_account: My account
+      sub_navigation_mobile_development: Mobile development
+      sub_navigation_photo: Photo
+      sub_navigation_web_design: Web design
+      sub_navigation_log_out: Log out
+    footer:
+      mobile_number: (555)-555-5555
+      email_addres: support@bookstore.com
+      navigation_home: Home
+      navigation_shop: Shop
+      navigation_account: My account
   home:
-      welcome_title: Welcome to our amazing Bookstore!
-      welcome_description: We pore through hundreds of new books each month and select the five best we can find to share with our members.
-      title_best_sellers: Best Sellers
-      button_get_started: Get Started
-      button_buy_now: Buy Now
-  books:
-       filter_newest_first: Newest first
-       filter_popular_first: Popular first
-       filter_price_low_to_hight: "Price: Low to hight"
-       filter_price_hight_to_low: "Price: Hight to low"
-       button_view_more: View More
+    partials:
+      welcome:
+        welcome_title: Welcome to our amazing Bookstore!
+        welcome_description: We pore through hundreds of new books each month and select the five best we can find to share with our members.
+        button_get_started: Get Started
+      best_sellers:
+        title_best_sellers: Best Sellers
+      carousel:
+        button_buy_now: Buy Now
+   books:
+    index:
+      button_view_more: View More
+    partials:
+      filter:
+        filter_newest_first: Newest first
+        filter_popular_first: Popular first
+        filter_price_low_to_hight: "Price: Low to hight"
+        filter_price_hight_to_low: "Price: Hight to low"
+

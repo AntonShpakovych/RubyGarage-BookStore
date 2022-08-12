@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand= t('global.name_app')
+      %a.navbar-brand= t('.name_app')
       %a.shop-link.pull-right.visible-xs{href: "#"}
         %span.shop-icon
           %span.shop-quantity 3
@@ -19,33 +19,33 @@
           %span{'aria-hidden': "true"} &times;
         %ul.nav.navbar-nav
           %li
-            %a{href: "#"}= t('global.navigation_home')
+            %a{href: "#"}= t('.navigation_home')
           %li
-            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}= t('global.navigation_shop')
+            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}= t('.navigation_shop')
             %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
               %li
-                %a.collapse-link{href: "#"}= t('global.sub_navigation_mobile_development')
+                %a.collapse-link{href: "#"}= t('.sub_navigation_mobile_development')
               %li
-                %a.collapse-link{href: "#"}= t('global.sub_navigation_photo')
+                %a.collapse-link{href: "#"}= t('.sub_navigation_photo')
               %li
-                %a.collapse-link{href: "#"}= t('global.sub_navigation_web_design')
+                %a.collapse-link{href: "#"}= t('.sub_navigation_web_design')
           %li
-            %a{href: "#"}= t('global.navigation_account')
+            %a{href: "#"}= t('.navigation_account')
       .hidden-xs
         %ul.nav.navbar-nav
           %li
-            %a{href: "#"}= t('global.navigation_home')
+            %a{href: "#"}= t('.navigation_home')
           %li.dropdown
-            %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
+            %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('.navigation_shop')
             %ul.dropdown-menu
               %li
-                %a{href: "#"}= t('global.sub_navigation_mobile_development')
+                %a{href: "#"}= t('.sub_navigation_mobile_development')
               %li
-                %a{href: "#"}= t('global.sub_navigation_photo')
+                %a{href: "#"}= t('.sub_navigation_photo')
               %li
-                %a{href: "#"}= t('global.sub_navigation_web_design')
+                %a{href: "#"}= t('.sub_navigation_web_design')
               %li.divider{role: "separator"}
               %li
-                %a{href: "#"}= t('global.sub_navigation_log_out')
+                %a{href: "#"}= t('.sub_navigation_log_out')
           %li
-            %a{href: "#"}= t('global.navigation_account')
+            %a{href: "#"}= t('.navigation_account')
