@@ -15,7 +15,7 @@ SimpleCov.start do
   minimum_coverage 100
 end
 
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
