@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe HomeController, type: :request do
+RSpec.describe HomeController, type: :controller do
   describe 'GET root_path' do
-    before { get root_path }
+    before { get :index }
 
     it 'renders index template' do
       expect(response).to render_template(:index)
