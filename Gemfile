@@ -6,19 +6,19 @@ ruby(File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip)
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '~> 4.8.1'
+gem 'draper', '~> 4.0.0'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'figaro'
 gem 'haml-rails', '~> 2.0'
+gem 'html2haml'
 gem 'jbuilder', '~> 2.7'
+gem 'pagy', '~> 5.10'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'html2haml'
-gem 'figaro'
-gem 'pagy', '~> 5.10'
-gem 'draper', '~> 4.0.0'
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 group :development, :test do
   gem 'rails-controller-testing', '~> 0.0.3'
