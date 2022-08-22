@@ -1,0 +1,89 @@
+en:
+  partials:
+    mobile:
+      navigation:
+        navigation_home: Home
+        navigation_shop: Shop
+        navigation_account: My account
+        sub_navigation_mobile_development: Mobile development
+        sub_navigation_photo: Photo
+        sub_navigation_web_design: Web design
+        sub_navigation_log_out: Log out
+    desktop:
+      navigation:
+        navigation_home: Home
+        navigation_shop: Shop
+        navigation_account: My account
+        sub_navigation_mobile_development: Mobile development
+        sub_navigation_photo: Photo
+        sub_navigation_web_design: Web design
+        sub_navigation_log_out: Log out
+    header:
+      name_app: BookStore
+      navigation_home: Home
+      navigation_shop: Shop
+      navigation_account: My account
+      sub_navigation_mobile_development: Mobile development
+      sub_navigation_photo: Photo
+      sub_navigation_web_design: Web design
+      sub_navigation_log_out: Log out
+    footer:
+      mobile_number: (555)-555-5555
+      email_addres: support@bookstore.com
+      navigation_home: Home
+      navigation_shop: Shop
+      navigation_account: My account
+  home:
+    partials:
+      welcome:
+        welcome_title: Welcome to our amazing Bookstore!
+        welcome_description: We pore through hundreds of new books each month and select the five best we can find to share with our members.
+        button_get_started: Get Started
+      best_sellers:
+        title_best_sellers: Best Sellers
+      carousel:
+        button_buy_now: Buy Now
+  books:
+    partials:
+      desktop:
+        category:
+          category_all: All
+        filter:
+          newest_first: Newest first
+          popular_first: Popular first
+          price_low_to_hight: "Price: Low to hight"
+          price_hight_to_low: "Price: Hight to low"
+          name_asc: "Title: A - Z"
+          name_desc: "Title: Z - A"
+      mobile:
+        category_mobile:
+          sort_by_category: Sort by category
+          filter_by: Filter by
+        filter_mobile:
+          newest_first: Newest first
+          popular_first: Popular first
+          price_low_to_hight: "Price: Low to hight"
+          price_hight_to_low: "Price: Hight to low"
+          name_asc: "Title: A - Z"
+          name_desc: "Title: Z - A"
+      view_more:
+        button_view_more: View More
+      books:
+        book_price: €%{price}
+    index:
+      title: Catalog
+    show:
+      back_to_result: Back to results
+      book_price: €%{price}
+      dimensions: "H: %{height} x W: %{width} x D: %{length}"
+      dimensions_title: Dimensions
+      year_of_publication_title: Year of publication
+      materials_title: Materials
+      description_title: Description
+      read_more: Read More
+      add_to_card: Add to Cart
+      write_a_review_title: Write a Review
+      review_score: Score
+      review_form_title: Title
+      review_form_review: Review
+      review_post: Post

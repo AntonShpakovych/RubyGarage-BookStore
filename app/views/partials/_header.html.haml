@@ -1,0 +1,20 @@
+%header.navbar.navbar-default
+  .container
+    .navbar-header
+      %button.navbar-toggle.pull-left{type: "button", 'data-toggle': "collapse", 'data-target': "#navbar"}
+        %span.sr-only
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand= t('.name_app')
+      %a.shop-link.pull-right.visible-xs{href: "#"}
+        %span.shop-icon
+          %span.shop-quantity 3
+    %a.shop-link.pull-right.hidden-xs{href: "#"}
+      %span.shop-icon
+        %span.shop-quantity 3
+    #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
+      .visible-xs
+        = render 'partials/mobile/navigation'
+      .hidden-xs
+        = render 'partials/desktop/navigation'
