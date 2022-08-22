@@ -12,7 +12,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    @categories = Category.all
     @book = Book.find(params[:id]).decorate
   end
 
