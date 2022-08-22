@@ -31,3 +31,12 @@ RSpec/MultipleExpectations:
 
 Rails:
   Enabled: true
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

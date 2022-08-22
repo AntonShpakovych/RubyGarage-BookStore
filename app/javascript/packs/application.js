@@ -8,4 +8,5 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require('jquery')
 require('bootstrap-sass')
+require('../view_more_description')
 import '../stylesheet/application.scss'

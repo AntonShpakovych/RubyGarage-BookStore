@@ -1,0 +1,14 @@
+%ul.nav.navbar-nav
+  %li
+    = link_to t('.navigation_home'), root_path
+  %li.dropdown
+    %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('.navigation_shop')
+    %ul.dropdown-menu
+      -@categories.each do |category|
+        %li
+          = link_to category.name, books_path(category: category)
+      %li.divider{role: "separator"}
+      %li
+        %a{href: "#"}= t('.sub_navigation_log_out')
+  %li
+    %a{href: "#"}= t('.navigation_account')

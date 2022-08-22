@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 5eb00cfb65b7fb823f0f99c6996b61dafd18e2d9
+  branch: master
+  specs:
+    faker (2.22.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,6 +52,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (6.1.6.1)
       activesupport (= 6.1.6.1)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (6.1.6.1)
       activemodel (= 6.1.6.1)
       activesupport (= 6.1.6.1)
@@ -79,10 +91,26 @@ GEM
     colorize (0.8.1)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    draper (4.0.2)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
+      ruby2_keywords
     erubi (1.11.0)
     erubis (2.7.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     fasterer (0.10.0)
       colorize (~> 0.7)
       ruby_parser (>= 3.19.1)
@@ -128,6 +156,8 @@ GEM
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    pagy (5.10.1)
+      activesupport
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
@@ -177,6 +207,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.5.0)
+    request_store (1.5.1)
+      rack (>= 1.4)
     rexml (3.2.5)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
@@ -217,6 +249,7 @@ GEM
     rubocop-rspec (2.12.1)
       rubocop (~> 1.31)
     ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.5)
     ruby_parser (3.19.1)
       sexp_processor (~> 4.16)
     rubyzip (2.3.2)
@@ -237,6 +270,8 @@ GEM
       websocket (~> 1.0)
     semantic_range (3.0.0)
     sexp_processor (4.16.1)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -283,10 +318,15 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   capybara (>= 3.26)
+  database_cleaner-active_record
+  draper (~> 4.0.0)
+  factory_bot_rails (~> 6.2.0)
+  faker!
   fasterer (~> 0.10.0)
   haml-rails (~> 2.0)
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  pagy (~> 5.10)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
@@ -299,6 +339,7 @@ DEPENDENCIES
   rubocop-rspec (~> 2.12.1)
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
+  shoulda-matchers (~> 5.0)
   simplecov (~> 0.21.2)
   spring (~> 4.0.0)
   turbolinks (~> 5)
