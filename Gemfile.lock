@@ -122,6 +122,8 @@ GEM
       colorize (~> 0.7)
       ruby_parser (>= 3.19.1)
     ffi (1.15.5)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     haml (5.2.2)
@@ -337,7 +339,9 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2.0)
   faker!
   fasterer (~> 0.10.0)
+  figaro
   haml-rails (~> 2.0)
+  html2haml
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pagy (~> 5.10)

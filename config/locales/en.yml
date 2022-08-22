@@ -8,25 +8,16 @@ en:
         sub_navigation_mobile_development: Mobile development
         sub_navigation_photo: Photo
         sub_navigation_web_design: Web design
-        sub_navigation_log_out: Log out
     desktop:
       navigation:
         navigation_home: Home
         navigation_shop: Shop
         navigation_account: My account
-        sub_navigation_mobile_development: Mobile development
-        sub_navigation_photo: Photo
-        sub_navigation_web_design: Web design
-        sub_navigation_log_out: Log out
     header:
       name_app: BookStore
       navigation_home: Home
       navigation_shop: Shop
       navigation_account: My account
-      sub_navigation_mobile_development: Mobile development
-      sub_navigation_photo: Photo
-      sub_navigation_web_design: Web design
-      sub_navigation_log_out: Log out
     footer:
       mobile_number: (555)-555-5555
       email_addres: support@bookstore.com
