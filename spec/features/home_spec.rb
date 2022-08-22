@@ -40,5 +40,6 @@ RSpec.describe 'Home page', type: :feature do
         end
       end
     end
+    expect(page.has_button?(t('home.partials.welcome.button_get_started'))).to be(true)
   end
 end

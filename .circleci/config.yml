@@ -13,6 +13,7 @@ jobs:
         environment:
           POSTGRES_USER: BookStore
           POSTGRES_DB: BookStore_test
+    parallelism: 2
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
