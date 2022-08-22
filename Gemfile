@@ -18,9 +18,9 @@ gem 'html2haml'
 gem 'figaro'
 gem 'pagy', '~> 5.10'
 gem 'draper', '~> 4.0.0'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 group :development, :test do
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec-rails', '~> 5.1.2'
   gem 'rubocop', '~> 1.34.0', require: false
