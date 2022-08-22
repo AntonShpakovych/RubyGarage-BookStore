@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{charset: "UTF-8"}
+    %meta{name: "viewport", content: "width=device-width"}
+    %title BookStore
+    %link{href: "https://fonts.googleapis.com/css?family=Open+Sans", rel: "stylesheet"}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = render 'partials/header'
+    = yield
+    = render 'partials/footer'
+    %script{src: "https://use.fontawesome.com/67602d7308.js"}
