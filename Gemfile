@@ -17,9 +17,9 @@ gem 'webpacker', '~> 5.0'
 gem 'html2haml'
 gem 'figaro'
 gem 'pagy', '~> 5.10'
+gem 'draper', '~> 4.0.0'
 
 group :development, :test do
-  gem 'draper', '~> 4.0.0'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec-rails', '~> 5.1.2'
