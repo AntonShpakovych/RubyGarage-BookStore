@@ -16,11 +16,11 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 gem 'html2haml'
 gem 'figaro'
+gem 'pagy', '~> 5.10'
 
 group :development, :test do
   gem 'draper', '~> 4.0.0'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
-  gem 'pagy', '~> 5.10'
   gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec-rails', '~> 5.1.2'
   gem 'rubocop', '~> 1.34.0', require: false
