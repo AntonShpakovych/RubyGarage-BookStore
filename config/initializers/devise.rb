@@ -33,5 +33,9 @@ Devise.setup do |config|
 
   config.sign_out_via = :delete
 
-  config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'], callback_url: "https://fast-temple-25283.herokuapp.com/users/auth/facebook/callback"
+  local_callback = 'http://localhost:3000/users/auth/facebook/callback'
+  production_callback = 'https://fast-temple-25283.herokuapp.com/users/auth/facebook/callback'
+  current_callback = Rails.env.production? ? production_callback : local_callback
+
+  config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'], callback_url: current_callback
 end
