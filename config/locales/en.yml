@@ -14,6 +14,8 @@ en:
       email_addres: support@bookstore.com
       navigation_home: Home
       navigation_shop: Shop
+      navigation_orders:  Orders
+      navigation_settings: Settings
       navigation_account: My account
   home:
     partials:
