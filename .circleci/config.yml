@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  ruby: circleci/ruby@1.0 
   node: circleci/node@2
   browser-tools: circleci/browser-tools@1.0.1
 
@@ -21,6 +22,7 @@ jobs:
       RAILS_ENV: test
     steps:
       - checkout 
+      - ruby/install-deps
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run:
@@ -48,6 +50,7 @@ jobs:
       - image: cimg/ruby:2.7.3-node
     steps:
       - checkout
+      - ruby/install-deps
       - run: 
           name: rubocop
           command: bundle exec rubocop
