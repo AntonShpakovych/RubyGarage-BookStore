@@ -48,7 +48,6 @@ jobs:
       - image: cimg/ruby:2.7.3-node
     steps:
       - checkout
-      - ruby/install-deps
       - run: 
           name: rubocop
           command: bundle exec rubocop
