@@ -13,6 +13,7 @@ jobs:
         environment:
           POSTGRES_USER: BookStore
           POSTGRES_DB: BookStore_test
+    parallelism: 2
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
@@ -34,8 +35,11 @@ jobs:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
+          name: Database create
+          command: bundle exec rails db:create
+      - run:
+          name: Database migrate
+          command: bundle exec rails db:migrate
       - run:
           name: Run Specs
           command: |
