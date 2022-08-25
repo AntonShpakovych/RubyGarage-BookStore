@@ -12,35 +12,35 @@ RSpec.describe Book, type: :model do
       let(:empty_value) { nil }
 
       it 'is not valid without a name' do
-        expect(build(:book, name: empty_value)).not_to be_valid
+        expect(build(:book)).not_to allow_value(empty_value).for(:name)
       end
 
       it 'is not valid without a description' do
-        expect(build(:book, description: empty_value)).not_to be_valid
+        expect(build(:book)).not_to allow_value(empty_value).for(:description)
       end
 
       it 'is not valid without a quantity' do
-        expect(build(:book, quantity: empty_value)).not_to be_valid
+        expect(build(:book)).not_to allow_value(empty_value).for(:quantity)
       end
 
       it 'is not valid without a width' do
-        expect(build(:book, width: empty_value)).not_to be_valid
+        expect(build(:book)).not_to allow_value(empty_value).for(:width)
       end
 
       it 'is not valid without a height' do
-        expect(build(:book, height: empty_value)).not_to be_valid
+        expect(build(:book)).not_to allow_value(empty_value).for(:height)
       end
 
       it 'is not valid without a length' do
-        expect(build(:book, length: empty_value)).not_to be_valid
+        expect(build(:book)).not_to allow_value(empty_value).for(:length)
       end
 
       it 'is not valid without a year_of_publication' do
-        expect(build(:book, year_of_publication: empty_value)).not_to be_valid
+        expect(build(:book)).not_to allow_value(empty_value).for(:year_of_publication)
       end
 
       it 'is not valid without a materials' do
-        expect(build(:book, materials: empty_value)).not_to be_valid
+        expect(build(:book)).not_to allow_value(empty_value).for(:materials)
       end
     end
   end

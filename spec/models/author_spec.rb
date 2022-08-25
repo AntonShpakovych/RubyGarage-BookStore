@@ -14,7 +14,7 @@ RSpec.describe Author, type: :model do
       let(:empty_value) { nil }
 
       it 'is not valid without a name' do
-        expect(build(:author, name: empty_value)).not_to be_valid
+        expect(build(:author)).not_to allow_value(empty_value).for(:name)
       end
     end
   end
