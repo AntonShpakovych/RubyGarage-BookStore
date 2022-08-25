@@ -14,6 +14,10 @@
     %ul#account.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
       -if user_signed_in?
         %li
+          = link_to t('.navigation_orders'), '#', class: 'collapse-link'
+        %li
+          = link_to t('.navigation_settings'), '#', class: 'collapse-link'
+        %li
           = link_to t('devise.defolt.log_out'), destroy_user_session_path, method: :delete, class: 'collapse-link'
       -else
         %li

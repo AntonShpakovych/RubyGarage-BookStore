@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
-# FactoryBot.define do
-#   factory :user do
-#   end
-# end
+FactoryBot.define do
+  factory :user do
+    email { FFaker::Internet.email }
+    provider { 'google' }
+    uid { rand(10**10) }
+    password { FFaker::Internet.password(9, 16) }
+  end
+end

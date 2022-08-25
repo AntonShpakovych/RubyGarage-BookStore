@@ -1,9 +1,9 @@
 .general-main-wrap
   .text-center
-    %h3.general-login-title Sign up
+    %h3.general-login-title= t('devise.defolt.sign_up')
     = link_to user_google_oauth2_omniauth_authorize_path, class: 'general-login-icon', method: :post do
       %i.fa.fa-google
-    %p.general-login-text or
+    %p.general-login-text= t('devise.defolt.or_for_auth')
     .general-form
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
@@ -18,8 +18,8 @@
           = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Confirm password', class: 'form-control'
           
         .text-center
-          = f.submit 'Sign up', class: 'btn btn-default mb-20'
+          = f.submit t('devise.defolt.sign_up'), class: 'btn btn-default mb-20'
 
   %p.general-sign-text.text-center
-    Already have account?
+    =t('devise.defolt.already_have_account')
     = link_to "Log in", new_user_session_path, class: 'in-gold-500'

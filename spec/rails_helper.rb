@@ -3,12 +3,13 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
-
+require 'devise'
 require_relative 'support/factory_bot'
 require_relative '../config/environment'
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'simplecov'
 require 'rspec/rails'
+require_relative 'support/devise'
 require 'capybara/rails'
 require 'ffaker'
 
@@ -26,6 +27,7 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true

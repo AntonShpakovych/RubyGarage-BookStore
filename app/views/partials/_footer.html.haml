@@ -7,10 +7,11 @@
             %a.nav-link{href: "#"}= t('.navigation_home')
           %li
             %a.nav-link{href: "#"}= t('.navigation_shop')
-          %li
-            %a.nav-link{href: "#"}= t('.navigation_orders')
-          %li
-            %a.nav-link{href: "#"}= t('.navigation_settings')
+          -if user_signed_in?
+            %li
+              %a.nav-link{href: "#"}= t('.navigation_orders')
+            %li
+              %a.nav-link{href: "#"}= t('.navigation_settings')
       .col-sm-3
         %p.general-nav-mail= t('.email_addres')
         %p.general-nav-number= t('.mobile_number')

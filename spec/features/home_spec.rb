@@ -41,4 +41,41 @@ RSpec.describe 'Home page', type: :feature do
       end
     end
   end
+
+  context 'when user is not sign in' do
+    it 'in navigation user see Sign up' do
+      expect(page).to have_link(t('devise.defolt.sign_up'))
+    end
+
+    it 'in navigation user see Log in' do
+      expect(page).to have_link(t('devise.defolt.log_in'))
+    end
+  end
+
+  context 'when user is sign in' do
+    let(:test_email) { 'test@email.email' }
+    let(:password) { 'somepassword123' }
+    let(:confirmation_password) { password }
+
+    before do
+      visit new_user_registration_path
+      click_link t('devise.defolt.sign_up'), match: :first
+      fill_in 'Email', with: test_email
+      fill_in 'Password', with: password
+      fill_in 'Password confirmation', with: confirmation_password
+      click_button t('devise.defolt.sign_up')
+    end
+
+    it 'in navigation user see Log out' do
+      expect(page).to have_link(t('devise.defolt.log_out'))
+    end
+
+    it 'in navigation user see Settings' do
+      expect(page).to have_link(t('partials.desktop.navigation.navigation_settings'))
+    end
+
+    it 'in navigation user see Orders' do
+      expect(page).to have_link(t('partials.desktop.navigation.navigation_orders'))
+    end
+  end
 end

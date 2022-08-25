@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 4ffc714029c1fe22eb0cf091295afa26cb5fa70c
+  branch: master
+  specs:
+    faker (2.22.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -158,12 +166,14 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.0)
     minitest (5.16.3)
     msgpack (1.5.6)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     nio4r (2.5.8)
-    nokogiri (1.13.8-x86_64-linux)
+    nokogiri (1.13.8)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     oauth2 (1.4.10)
       faraday (>= 0.17.3, < 3.0)
@@ -363,6 +373,7 @@ DEPENDENCIES
   devise (~> 4.8.1)
   draper (~> 4.0.0)
   factory_bot_rails (~> 6.2.0)
+  faker!
   fasterer (~> 0.10.0)
   ffaker (~> 2.21.0)
   figaro

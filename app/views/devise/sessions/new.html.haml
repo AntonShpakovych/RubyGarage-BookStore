@@ -1,9 +1,9 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title Log In
+    %h3.general-login-title= t('devise.defolt.log_in')
     = link_to user_google_oauth2_omniauth_authorize_path, class: 'general-login-icon', method: :post do
       %i.fa.fa-google
-    %p.general-login-text or
+    %p.general-login-text= t('devise.defolt.or_for_auth')
     .general-form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .form-group.mb-30
@@ -12,7 +12,7 @@
         .form-group.mb-30
           = f.label :password, class: 'control-label input-label'
           = f.password_field :password, autocomplete: "current-password", type: 'password', placeholder: 'Password', class: 'form-control'
-          = link_to 'Forgot password?', new_password_path(resource_name), class: 'help-block in-gold-500'
+          = link_to t('devise.defolt.devise_forgot_password_title'), new_password_path(resource_name), class: 'help-block in-gold-500'
         
         - if devise_mapping.rememberable?
           .form-group.checkbox.text-center.mb-30
@@ -20,9 +20,9 @@
               %input.checkbox-input{type: "checkbox", hidden: "true"}
               %span.checkbox-icon
                 %i.fa.fa-check
-              %span.checkbox-text Remember me
+              %span.checkbox-text=t ('devise.defolt.remember_me')
         .text-center
-          = f.submit 'Login', class: 'btn btn-default mb-20'
+          = f.submit t('devise.defolt.log_in'), class: 'btn btn-default mb-20'
   %p.general-sign-text.text-center
-    Don't have an Account?
-    = link_to 'Sign up', new_user_registration_path, class: 'in-gold-500'
+    =t('devise.defolt.dont_have_account')
+    = link_to t('devise.defolt.sign_up'), new_user_registration_path, class: 'in-gold-500'

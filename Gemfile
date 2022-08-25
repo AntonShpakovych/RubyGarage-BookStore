@@ -7,6 +7,7 @@ ruby(File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip)
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '~> 4.8.1'
 gem 'draper', '~> 4.0.0'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'ffaker', '~> 2.21.0'
 gem 'figaro'
 gem 'haml-rails', '~> 2.0'

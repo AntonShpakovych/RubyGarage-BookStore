@@ -5,14 +5,15 @@ en:
         navigation_home: Home
         navigation_shop: Shop
         navigation_account: My account
-        sub_navigation_mobile_development: Mobile development
-        sub_navigation_photo: Photo
-        sub_navigation_web_design: Web design
+        navigation_orders:  Orders
+        navigation_settings: Settings
     desktop:
       navigation:
         navigation_home: Home
         navigation_shop: Shop
         navigation_account: My account
+        navigation_orders:  Orders
+        navigation_settings: Settings
     header:
       name_app: BookStore
       navigation_home: Home
