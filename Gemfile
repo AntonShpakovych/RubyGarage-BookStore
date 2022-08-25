@@ -12,6 +12,7 @@ gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
+gem 'ffaker', '~> 2.21.0'
 
 group :development, :test do
   gem 'rails-controller-testing', '~> 0.0.3'
