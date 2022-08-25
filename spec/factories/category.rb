@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :category do
-    name { Faker::Book.genre }
+    name { FFaker::Book.genre }
 
     factory :category_with_books do
       books { [association(:book)] }
