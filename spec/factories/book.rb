@@ -2,15 +2,15 @@
 
 FactoryBot.define do
   factory :book do
-    name { Faker::Book.title }
-    price { Faker::Commerce.price(range: 0..100.0) }
-    description { Faker::Lorem.paragraph_by_chars(number: 500) }
-    height { Faker::Number.decimal(l_digits: 2, r_digits: 2) }
-    width { Faker::Number.decimal(l_digits: 2, r_digits: 2) }
-    length { Faker::Number.decimal(l_digits: 2, r_digits: 2) }
-    quantity { Faker::Number.between(from: 1, to: 100) }
-    year_of_publication { Faker::Date.backward(days: 10_000).year }
-    materials { Faker::Construction.material }
+    name { FFaker::Book.title }
+    price { rand(0..100.0).round(2) }
+    description { FFaker::CheesyLingo.paragraph }
+    height { rand(0..100.0).round(2) }
+    width { rand(0..100.0).round(2) }
+    length { rand(0..100.0).round(2) }
+    quantity { rand(0..100) }
+    year_of_publication { FFaker::Vehicle.year }
+    materials { FFaker::BaconIpsum.word }
     category
   end
 end

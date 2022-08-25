@@ -1,0 +1,5 @@
+SENDMAIL_PASSWORD: srrjfdgvoflqhmid
+SENDMAIL_USERNAME: bookstoremailer@gmail.com
+MAIL_HOST: "fast-temple-25283.herokuapp.com"
+GOOGLE_OAUTH_CLIENT_ID: 1066310435239-jom5fa8l2c1ve7ri8dq63tjg5jn3cj4v.apps.googleusercontent.com
+GOOGLE_OAUTH_CLIENT_SECRET: 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
