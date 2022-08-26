@@ -1,25 +1,25 @@
 .general-main-wrap
   .text-center
-    %h3.general-login-title= t('devise.defolt.sign_up')
+    %h3.general-login-title= t('devise.default.sign_up')
     = link_to user_google_oauth2_omniauth_authorize_path, class: 'general-login-icon', method: :post do
       %i.fa.fa-google
-    %p.general-login-text= t('devise.defolt.or_for_auth')
+    %p.general-login-text= t('devise.default.or_for_auth')
     .general-form
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
         .form-group.mb-30
           = f.label :email, class: 'control-label input-label'
-          = f.email_field :email, autofocus: true, type: 'email', autocomplete: "email", placeholder:'Email', class: 'form-control'
+          = f.email_field :email, autofocus: true, type: 'email', autocomplete: "email", placeholder: t('devise.placeholder.email'), class: 'form-control'
         .form-group.mb-30
           = f.label :password, class: 'control-label input-label'
-          = f.password_field :password, autocomplete: "new-password", type: 'password', placeholder: 'Password', class: 'form-control'
+          = f.password_field :password, autocomplete: "new-password", type: 'password', placeholder: t('devise.placeholder.password'), class: 'form-control'
         .form-group.mb-30
           = f.label :password_confirmation, class: 'control-label input-label'
-          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Confirm password', class: 'form-control'
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: t('devise.placeholder.confirm_password'), class: 'form-control'
           
         .text-center
-          = f.submit t('devise.defolt.sign_up'), class: 'btn btn-default mb-20'
+          = f.submit t('devise.default.sign_up'), class: 'btn btn-default mb-20'
 
   %p.general-sign-text.text-center
-    =t('devise.defolt.already_have_account')
+    =t('devise.default.already_have_account')
     = link_to "Log in", new_user_session_path, class: 'in-gold-500'

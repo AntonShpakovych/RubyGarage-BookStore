@@ -1,18 +1,18 @@
 .general-main-wrap
   .text-center
-    %h3.general-login-title= t('devise.defolt.change_password')
+    %h3.general-login-title= t('devise.default.change_password')
     .general-form
       = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
         = render "devise/shared/error_messages", resource: resource
         = f.hidden_field :reset_password_token
         .form-group.mb-30
-          = f.label :password, t('devise.defolt.new_password_label'), class: 'control-label input-label'
-          = f.password_field :password, autofocus: true, type: 'password', placeholder: 'Password', autocomplete: "new-password", class: 'form-control'
+          = f.label :password, t('devise.default.new_password_label'), class: 'control-label input-label'
+          = f.password_field :password, autofocus: true, type: 'password', placeholder: t('devise.placeholder.password'), autocomplete: "new-password", class: 'form-control'
         .form-group.mb-30
-          = f.label :password_confirmation, t('devise.defolt.confirm_new_password_label'), class: 'control-label input-label'
-          = f.password_field :password_confirmation, autocomplete: "new-password", type: 'password', placeholder: 'Confirm password', class: 'form-control'
+          = f.label :password_confirmation, t('devise.default.confirm_new_password_label'), class: 'control-label input-label'
+          = f.password_field :password_confirmation, autocomplete: "new-password", type: 'password', placeholder: t('devise.placeholder.confirm_password'), class: 'form-control'
         .text-center
-          = f.submit t('devise.defolt.change_my_password_submit'), class: 'btn btn-default mb-20'
+          = f.submit t('devise.default.change_your_password_submit'), class: 'btn btn-default mb-20'
   %p.general-sign-text.text-center
     = link_to root_path, class: 'in-gold-500' do
-      =t('.defolt.cansel')
+      =t('.default.cansel')

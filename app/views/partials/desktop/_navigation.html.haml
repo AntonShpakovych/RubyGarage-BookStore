@@ -17,9 +17,9 @@
           = link_to t('.navigation_settings'), '#'
         %li.divider{role: "separator"}
         %li
-          = link_to t('devise.defolt.log_out'), destroy_user_session_path, method: :delete
+          = link_to t('devise.default.log_out'), destroy_user_session_path, method: :delete
   -else
     %li
-      = link_to t('devise.defolt.log_in'), new_user_session_path
+      = link_to t('devise.default.log_in'), new_user_session_path
     %li
-      = link_to t('devise.defolt.sign_up'), new_user_registration_path
+      = link_to t('devise.default.sign_up'), new_user_registration_path

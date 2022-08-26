@@ -44,11 +44,11 @@ RSpec.describe 'Home page', type: :feature do
 
   context 'when user is not sign in' do
     it 'in navigation user see Sign up' do
-      expect(page).to have_link(t('devise.defolt.sign_up'))
+      expect(page).to have_link(t('devise.default.sign_up'))
     end
 
     it 'in navigation user see Log in' do
-      expect(page).to have_link(t('devise.defolt.log_in'))
+      expect(page).to have_link(t('devise.default.log_in'))
     end
   end
 
@@ -59,15 +59,15 @@ RSpec.describe 'Home page', type: :feature do
 
     before do
       visit new_user_registration_path
-      click_link t('devise.defolt.sign_up'), match: :first
+      click_link t('devise.default.sign_up'), match: :first
       fill_in 'Email', with: test_email
       fill_in 'Password', with: password
       fill_in 'Password confirmation', with: confirmation_password
-      click_button t('devise.defolt.sign_up')
+      click_button t('devise.default.sign_up')
     end
 
     it 'in navigation user see Log out' do
-      expect(page).to have_link(t('devise.defolt.log_out'))
+      expect(page).to have_link(t('devise.default.log_out'))
     end
 
     it 'in navigation user see Settings' do
