@@ -81,3 +81,6 @@ en:
       review_form_title: Title
       review_form_review: Review
       review_post: Post
+  users:
+    update_good: You have successfully updated your account information
+    update_failure: Something went wrong, we didn't receive the data to update, or the data you submitted is incorrect
