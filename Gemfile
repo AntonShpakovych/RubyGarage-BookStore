@@ -22,9 +22,9 @@ gem 'pry'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 gem 'sass-rails', '>= 6'
+gem 'simple_form', '~> 5.1.0'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'simple_form', '~> 5.1.0'
 
 group :development, :test do
   gem 'rails-controller-testing', '~> 0.0.3'
