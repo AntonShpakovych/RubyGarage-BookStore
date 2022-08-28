@@ -5,21 +5,16 @@
       %i.fa.fa-google
     %p.general-login-text= t('devise.default.or_for_auth')
     .general-form
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
         = render "devise/shared/error_messages", resource: resource
         .form-group.mb-30
-          = f.label :email, class: 'control-label input-label'
-          = f.email_field :email, autofocus: true, type: 'email', autocomplete: "email", placeholder: t('devise.placeholder.email'), class: 'form-control'
+          = f.input :email, label_html: { class: 'control-label input-label'}, autofocus: true, type: 'email', autocomplete: "email", placeholder: t('devise.placeholder.email'), input_html: { class: 'form-control' }
         .form-group.mb-30
-          = f.label :password, class: 'control-label input-label'
-          = f.password_field :password, autocomplete: "new-password", type: 'password', placeholder: t('devise.placeholder.password'), class: 'form-control'
+          = f.input :password, label_html: { class: 'control-label input-label' }, autocomplete: "new-password", type: 'password', placeholder: t('devise.placeholder.password'), input_html: { class: 'form-control' }
         .form-group.mb-30
-          = f.label :password_confirmation, class: 'control-label input-label'
-          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: t('devise.placeholder.confirm_password'), class: 'form-control'
-          
+          = f.input :password_confirmation, label_html: { class: 'control-label input-label' }, autofocus: true, type: 'email', autocomplete: "email", placeholder: t('devise.placeholder.confirm_password'), input_html: { class: 'form-control' }
         .text-center
-          = f.submit t('devise.default.sign_up'), class: 'btn btn-default mb-20'
-
-  %p.general-sign-text.text-center
-    =t('devise.default.already_have_account')
-    = link_to "Log in", new_user_session_path, class: 'in-gold-500'
+          = f.button :submit, t('devise.default.sign_up'), class: 'btn btn-default mb-20'
+    %p.general-sign-text.text-center
+      =t('devise.default.already_have_account')
+      = link_to t('devise.default.log_in'), new_user_session_path, class: 'in-gold-500'

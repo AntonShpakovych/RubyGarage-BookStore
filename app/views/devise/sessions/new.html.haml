@@ -5,15 +5,12 @@
       %i.fa.fa-google
     %p.general-login-text= t('devise.default.or_for_auth')
     .general-form
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
         .form-group.mb-30
-          = f.label :email, class: 'control-label input-label'
-          = f.email_field :email, autofocus: true, type: 'email', placeholder: t('devise.placeholder.email'), autocomplete: "email", class: 'form-control'
+          = f.input :email, label_html: { class: 'control-label input-label' },  autofocus: true, type: 'email', placeholder: t('devise.placeholder.email'), autocomplete: "email", input_html: { class: 'form-control' }
         .form-group.mb-30
-          = f.label :password, class: 'control-label input-label'
-          = f.password_field :password, autocomplete: "current-password", type: 'password', placeholder: t('devise.placeholder.password'), class: 'form-control'
+          = f.input :password, label_html: { class: 'control-label input-label' }, autocomplete: "current-password", type: 'password', placeholder: t('devise.placeholder.password'), input_html: { class: 'form-control' }
           = link_to t('devise.default.devise_forgot_password_title'), new_password_path(resource_name), class: 'help-block in-gold-500'
-        
         - if devise_mapping.rememberable?
           .form-group.checkbox.text-center.mb-30
             %label.checkbox-label
@@ -22,7 +19,7 @@
                 %i.fa.fa-check
               %span.checkbox-text=t ('devise.default.remember_me')
         .text-center
-          = f.submit t('devise.default.log_in'), class: 'btn btn-default mb-20'
-  %p.general-sign-text.text-center
-    =t('devise.default.dont_have_account')
-    = link_to t('devise.default.sign_up'), new_user_registration_path, class: 'in-gold-500'
+          = f.button :submit, t('devise.default.log_in'), class: 'btn btn-default mb-20'
+      %p.general-sign-text.text-center
+        =t('devise.default.dont_have_account')
+        = link_to t('devise.default.sign_up'), new_user_registration_path, class: 'in-gold-500'
