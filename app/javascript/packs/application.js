@@ -9,4 +9,5 @@ require("@rails/activestorage").start()
 require('jquery')
 require('bootstrap-sass')
 require('../view_more_description')
+require('../delete_account')
 import '../stylesheet/application.scss'

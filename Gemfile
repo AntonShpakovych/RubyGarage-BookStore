@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby(File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip)
 
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'country_select', '~> 8.0.0'
 gem 'devise', '~> 4.8.1'
 gem 'draper', '~> 4.0.0'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
@@ -25,7 +26,6 @@ gem 'sass-rails', '>= 6'
 gem 'simple_form', '~> 5.1.0'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'simple_form', '~> 5.1.0'
 
 group :development, :test do
   gem 'rails-controller-testing', '~> 0.0.3'

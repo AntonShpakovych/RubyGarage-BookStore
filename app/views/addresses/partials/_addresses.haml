@@ -1,0 +1,9 @@
+.hidden-xs.hidden-sm
+  .row
+    .col-md-5
+      %h3.general-subtitle.mt-0= t('address.billing_address')
+    .col-md-5.col-md-offset-1
+      %h3.general-subtitle.mt-0= t('address.shipping_address')
+.row
+  = render partial: 'addresses/partials/form_address', locals: { address: current_user.billing_address ? current_user.billing_address : BillingAddress.new }
+  = render partial: 'addresses/partials/form_address', locals: { address: current_user.shipping_address ? current_user.shipping_address : ShippingAddress.new }

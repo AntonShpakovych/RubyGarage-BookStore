@@ -2,6 +2,24 @@
 
 en:
   devise:
+    privacy:
+      global_names:
+        title_email: Email
+        title_remove_account: Remove Account
+        button_submit: Save
+        title_password: Password
+        button_submit_remove_account: Please Remove My Account
+        span_for_checkbox_for_remove_account: I understand that all data will be lost
+      label:
+        password_confirmation: Confirm Password
+        password: New Password
+        current_password: Old Password
+        email: Enter Email
+      placeholder:
+        password_confirmation: Confirm Password
+        password: New Password
+        email: Enter your email
+        current_password: Old Password
     default:
       log_in: Log in
       log_out: Log out
@@ -84,3 +102,28 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  address:
+    link_to_address: Address
+    link_to_privacy: Privacy
+    settings: Settings
+    billing_address: Billing Address
+    shipping_address: Shipping Address
+    create: Nice! You create your %{address_type}
+    update: Nice! You update your %{address_type}
+    failure: Something went wrong!
+    label:
+      first_name: First Name
+      last_name: Last Name
+      address: Address
+      country: Country
+      city: City
+      zip: Zip
+      phone: Phone
+      button_submit: Save
+    placeholder:
+      first_name: First Name
+      last_name: Last Name
+      address: Address
+      city: City
+      zip: Zip
+      phone: Example +355 66 123 4567 
