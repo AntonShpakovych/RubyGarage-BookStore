@@ -10,7 +10,7 @@ pre-commit:
     rubocop:
       files: git diff --name-only --staged
       glob: "*.rb"
-      run: bundle exec rubocop --force-exclusion {all_files} --parallel
+      run: bundle exec rubocop --force-exclusion {files} --parallel
     fasterer:
       glob: "*.rb"
       run: bundle exec fasterer
