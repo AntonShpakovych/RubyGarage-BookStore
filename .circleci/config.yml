@@ -26,6 +26,9 @@ jobs:
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run:
+          name: LeftHook
+          command: bundle exec lefthook run pre-commit
+      - run:
            name: Install ImageMagick
            command: sudo apt-get install imagemagick
       - node/install-packages:
@@ -40,9 +43,6 @@ jobs:
       - run:
           name: Database migrate
           command: bundle exec rails db:migrate
-      - run:
-          name: LeftHook
-          command: bundle exec lefthook run pre-commit
       - run:
           name: Run Specs
           command: |
