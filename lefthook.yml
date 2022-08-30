@@ -9,7 +9,7 @@ pre-commit:
       run: bundle exec database_consistency
     rubocop:
       glob: "*.rb"
-      run: bundle exec rubocop --force-exclusion {files}
+      run: bundle exec rubocop
     fasterer:
       glob: "*.rb"
       run: bundle exec fasterer
