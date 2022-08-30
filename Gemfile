@@ -13,6 +13,7 @@ gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
+gem 'factory_bot_rails', '~>6.2.0'
 
 group :development, :test do
   gem 'rails-controller-testing', '~> 0.0.3'
@@ -21,6 +22,7 @@ group :development, :test do
   gem 'rubocop-performance', '~> 1.14.3', require: false
   gem 'rubocop-rails', '~> 2.15.2', require: false
   gem 'rubocop-rspec', '~> 2.12.1', require: false
+  gem 'lefthook', '~> 1.1.1'
 end
 
 group :development do
@@ -28,6 +30,9 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring', '~> 4.0.0'
+  gem 'brakeman', '~> 5.3.1'
+  gem 'database_consistency', '~> 1.1.15', require: false
+  gem 'bundler-audit', '~> 0.9.1'
 end
 
 group :test do

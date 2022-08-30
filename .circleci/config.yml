@@ -28,6 +28,9 @@ jobs:
       - run:
            name: Install ImageMagick
            command: sudo apt-get install imagemagick
+      - run:
+          name: LeftHook
+          command: bundle exec lefthook run pre-commit
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
