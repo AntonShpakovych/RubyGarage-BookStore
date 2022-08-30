@@ -16,6 +16,7 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
+  gem 'database_consistency', '~> 1.1.15', require: false
   gem 'lefthook', '~> 1.1.1'
   gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec-rails', '~> 5.1.2'
@@ -28,7 +29,6 @@ end
 group :development do
   gem 'brakeman', '~> 5.3.1'
   gem 'bundler-audit', '~> 0.9.1'
-  gem 'database_consistency', '~> 1.1.15', require: false
   gem 'fasterer', '~> 0.10.0'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'

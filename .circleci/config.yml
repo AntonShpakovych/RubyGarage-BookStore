@@ -28,9 +28,6 @@ jobs:
       - run:
            name: Install ImageMagick
            command: sudo apt-get install imagemagick
-      - run:
-          name: LeftHook
-          command: bundle exec lefthook run pre-commit
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
@@ -43,6 +40,9 @@ jobs:
       - run:
           name: Database migrate
           command: bundle exec rails db:migrate
+      - run:
+          name: LeftHook
+          command: bundle exec lefthook run pre-commit
       - run:
           name: Run Specs
           command: |
