@@ -8,7 +8,6 @@ pre-commit:
     database_consistency:
       run: bundle exec database_consistency
     rubocop:
-      files: git diff --name-only --staged
       glob: "*.rb"
       run: rubocop --force-exclusion {files}
     fasterer:
