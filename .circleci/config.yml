@@ -26,6 +26,9 @@ jobs:
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run:
+          name: LeftHook
+          command: bundle exec lefthook run pre-commit
+      - run:
            name: Install ImageMagick
            command: sudo apt-get install imagemagick
       - node/install-packages:

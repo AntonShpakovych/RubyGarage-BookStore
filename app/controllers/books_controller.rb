@@ -2,9 +2,8 @@
 
 class BooksController < ApplicationController
   def index
-    @categories = Category.all
     @filters = BookQueries::FILTER_KEYS
-    @book_count = Book.all.count
+    @book_count = Book.count
     @pagy, books = pagy(books_prepared)
     @books = books.decorate
     @current_category = current_category
@@ -12,7 +11,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    @categories = Category.all
     @book = Book.find(params[:id]).decorate
   end
 
@@ -31,6 +29,6 @@ class BooksController < ApplicationController
   end
 
   def initialize_book_queries
-    BookQueries.new(Book.all, Category.all, params)
+    BookQueries.new(@books_all ||= Book.all, categories, params)
   end
 end

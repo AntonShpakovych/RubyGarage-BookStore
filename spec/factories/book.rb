@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :book do
     name { FFaker::Book.title }
     price { rand(0..100.0).round(2) }
-    description { FFaker::CheesyLingo.paragraph }
+    description { FFaker::CheesyLingo.paragraph + FFaker::CheesyLingo.paragraph }
     height { rand(0..100.0).round(2) }
     width { rand(0..100.0).round(2) }
     length { rand(0..100.0).round(2) }

@@ -35,11 +35,11 @@
         - if @book.description.length > 250
           %div#book_description_short
             = @book.short_description
-            %button#button_for_view_more.in-gold-500.ml-10= t('.read_more')
         -else
           = @book.description
         %div#book_description_all.hide_description
           = @book.description
+        %a.b-n.in-gold-500.ml-10#button_for_view_more= t('.read_more')
       .general-info-wrap.divider-lg
         .clearfix
           %p.pull-left= t('.year_of_publication')
