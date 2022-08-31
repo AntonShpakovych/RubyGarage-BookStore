@@ -9,7 +9,8 @@ class AddressForm
 
   validates :first_name, :last_name, :phone, :city, :country, :zip, :type, :address, presence: true
 
-  validates :first_name, :last_name, format: { with: FIRST_LAST_NAME_FORMAT, message: 'First name and last name must contain 3-50 letters'}
+  validates :first_name, :last_name,
+            format: { with: FIRST_LAST_NAME_FORMAT }
 
   def initialize(params = {})
     super(params)
