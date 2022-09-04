@@ -59,6 +59,7 @@ en:
           name_desc: "Title: Z - A"
       mobile:
         category_mobile:
+          category_all: All
           sort_by_category: Sort by category
           filter_by: Filter by
         filter_mobile:
@@ -71,7 +72,7 @@ en:
       view_more:
         button_view_more: View More
       books:
-        book_price: €%{price}
+        unit_for_number_currency: €
     index:
       title: Catalog
     show:

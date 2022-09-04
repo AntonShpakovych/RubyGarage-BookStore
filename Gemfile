@@ -7,10 +7,12 @@ ruby(File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip)
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'draper', '~> 4.0.0'
 gem 'factory_bot_rails', '~>6.2.0'
+gem 'faker', '~> 2.22.0'
 gem 'ffaker', '~> 2.21.0'
 gem 'haml-rails', '~> 2.0'
 gem 'pagy', '~> 5.10'
 gem 'pg', '~> 1.1'
+gem 'pry'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 gem 'sass-rails', '>= 6'

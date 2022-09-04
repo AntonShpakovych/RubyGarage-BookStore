@@ -6,7 +6,7 @@ class BookDecorator < Draper::Decorator
   delegate_all
 
   def all_authors
-    authors.pluck(:name).join(',')
+    authors.pluck(:name).join(', ')
   end
 
   def short_description

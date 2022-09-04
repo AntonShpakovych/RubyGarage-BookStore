@@ -1,13 +1,13 @@
 %main.container
   %h1.general-title-margin= t('.title')
   .hidden-xs.clearfix
-    = render 'books/partials/desktop/category'
-    = render 'books/partials/desktop/filter'
+    = render partial: 'books/partials/desktop/category', locals: { book_count: @book_count }
+    = render partial: 'books/partials/desktop/filter', locals: { current_filter: @current_filter, current_category: @current_category, filters: BookQuery::FILTER_KEYS }
   .dropdowns.mb-25.visible-xs
-    = render 'books/partials/mobile/category_mobile'
-    = render 'books/partials/mobile/filter_mobile'
+    = render partial: 'books/partials/mobile/category_mobile', locals: { current_category: @current_category }
+    = render partial: 'books/partials/mobile/filter_mobile', locals: { current_filter: @current_filter, current_category: @current_category, filters: BookQuery::FILTER_KEYS }
   .mb-120
     .row
-      = render 'books/partials/books'
+      = render partial: 'books/partials/books', locals: { books: @books }
     .text-center
-      = render 'books/partials/view_more'
+      = render partial: 'books/partials/view_more', locals:{ pagy: @pagy }

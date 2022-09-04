@@ -5,8 +5,8 @@ pre-commit:
       run: brakeman --no-pager
     audit:
       run: bundle-audit check
-    # database_consistency:
-    #   run: bundle exec database_consistency
+    database_consistency:
+      run: bundle exec database_consistency
     rubocop:
       glob: "*.rb"
       run: bundle exec rubocop

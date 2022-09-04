@@ -6,7 +6,7 @@
     %ul.dropdown-menu
       -categories.all.each do |category|
         %li
-          = link_to category.name, books_path(category: category)
+          = link_to category.name, books_path(category_id: category)
       %li.divider{role: "separator"}
       %li
         %a{href: "#"}= t('.sub_navigation_log_out')
