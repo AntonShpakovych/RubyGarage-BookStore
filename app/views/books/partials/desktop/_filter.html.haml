@@ -1,10 +1,10 @@
 .dropdowns.pull-right
   .dropdown.width-240
     %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-      = t(".#{@current_filter}")
+      = t(".#{current_filter}")
       %i.fa.fa-angle-down.dropdown-icon.pull-right
     %ul.dropdown-menu
-      -@filters.each_key do |filter|
+      -filters.each_key do |filter|
         %li
-          = link_to books_path(filter: filter, category: @current_category) do
+          = link_to books_path(filter: filter, category_id: current_category) do
             = t(".#{filter}")

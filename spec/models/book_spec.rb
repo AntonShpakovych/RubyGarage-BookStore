@@ -1,46 +1,28 @@
 # frozen_string_literal: true
 
 RSpec.describe Book, type: :model do
-  describe 'Validates' do
-    context 'when validate pass' do
-      it 'is valid with valid attributes' do
-        expect(build(:book)).to be_valid
-      end
-    end
+  describe 'Table columns' do
+    it { is_expected.to have_db_column(:name).of_type(:string) }
+    it { is_expected.to have_db_column(:price).of_type(:decimal) }
+    it { is_expected.to have_db_column(:width).of_type(:decimal) }
+    it { is_expected.to have_db_column(:height).of_type(:decimal) }
+    it { is_expected.to have_db_column(:length).of_type(:decimal) }
+    it { is_expected.to have_db_column(:description).of_type(:text) }
+    it { is_expected.to have_db_column(:quantity).of_type(:integer) }
+    it { is_expected.to have_db_column(:year_of_publication).of_type(:integer) }
+    it { is_expected.to have_db_column(:materials).of_type(:string) }
+    it { is_expected.to have_db_column(:category_id).of_type(:integer) }
+  end
 
+  describe 'Validates' do
     context 'when validate not pass' do
       let(:empty_value) { nil }
+      let(:book) { build(:book) }
 
-      it 'is not valid without a name' do
-        expect(build(:book)).not_to allow_value(empty_value).for(:name)
-      end
-
-      it 'is not valid without a description' do
-        expect(build(:book)).not_to allow_value(empty_value).for(:description)
-      end
-
-      it 'is not valid without a quantity' do
-        expect(build(:book)).not_to allow_value(empty_value).for(:quantity)
-      end
-
-      it 'is not valid without a width' do
-        expect(build(:book)).not_to allow_value(empty_value).for(:width)
-      end
-
-      it 'is not valid without a height' do
-        expect(build(:book)).not_to allow_value(empty_value).for(:height)
-      end
-
-      it 'is not valid without a length' do
-        expect(build(:book)).not_to allow_value(empty_value).for(:length)
-      end
-
-      it 'is not valid without a year_of_publication' do
-        expect(build(:book)).not_to allow_value(empty_value).for(:year_of_publication)
-      end
-
-      it 'is not valid without a materials' do
-        expect(build(:book)).not_to allow_value(empty_value).for(:materials)
+      described_class.column_names do |colum_name|
+        it "is not valid without a #{colum_name}" do
+          expect(book).not_to allow_value(empty_value).for(colum_name)
+        end
       end
     end
   end

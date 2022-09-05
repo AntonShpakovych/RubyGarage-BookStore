@@ -7,7 +7,8 @@ ruby(File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip)
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '~> 4.8.1'
 gem 'draper', '~> 4.0.0'
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'factory_bot_rails', '~>6.2.0'
+gem 'faker', '~> 2.22.0'
 gem 'ffaker', '~> 2.21.0'
 gem 'figaro'
 gem 'haml-rails', '~> 2.0'
@@ -36,8 +37,11 @@ group :development, :test do
 end
 
 group :development do
-  gem 'factory_bot_rails', '~>6.2.0'
+  gem 'brakeman', '~> 5.3.1'
+  gem 'bundler-audit', '~> 0.9.1'
+  gem 'database_consistency', '~> 1.1.15', require: false
   gem 'fasterer', '~> 0.10.0'
+  gem 'lefthook', '~> 1.1.1'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring', '~> 4.0.0'

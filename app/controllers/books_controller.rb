@@ -2,13 +2,11 @@
 
 class BooksController < ApplicationController
   def index
-    @categories = Category.all
-    @filters = BookQueries::FILTER_KEYS
-    @book_count = Book.all.count
+    @book_count = Book.count
     @pagy, books = pagy(books_prepared)
     @books = books.decorate
-    @current_category = current_category
-    @current_filter = current_filter
+    @current_category = book_query_category
+    @current_filter = book_query_filter
   end
 
   def show
@@ -18,18 +16,18 @@ class BooksController < ApplicationController
   private
 
   def books_prepared
-    initialize_book_queries.call
+    @books_prepared ||= book_query.call
   end
 
-  def current_filter
-    initialize_book_queries.filter
+  def book_query_filter
+    @book_query_filter ||= book_query.filter
   end
 
-  def current_category
-    initialize_book_queries.category
+  def book_query_category
+    @book_query_category ||= book_query.category
   end
 
-  def initialize_book_queries
-    BookQueries.new(Book.all, Category.all, params)
+  def book_query
+    @book_query ||= BookQuery.new(params)
   end
 end

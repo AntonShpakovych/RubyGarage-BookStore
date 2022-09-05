@@ -2,26 +2,21 @@
 
 RSpec.describe Category, type: :model do
   describe 'Validates' do
-    context 'when validate pass' do
-      it 'is valid with valid attributes' do
-        expect(build(:category)).to be_valid
-      end
-    end
-
     context 'when validate not pass' do
       let(:empty_value) { nil }
+      let(:category) { build(:category) }
 
       it 'is not valid without a name' do
-        expect(build(:category)).not_to allow_value(empty_value).for(:name)
+        expect(category).not_to allow_value(empty_value).for(:name)
       end
     end
   end
 
+  describe 'Table column' do
+    it { is_expected.to have_db_column(:name).of_type(:string) }
+  end
+
   describe 'Associations' do
     it { is_expected.to have_many(:books) }
-
-    it 'give number of books in this category' do
-      expect(build(:category_with_books).books.length).to be_a(Integer)
-    end
   end
 end
