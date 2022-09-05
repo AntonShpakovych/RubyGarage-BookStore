@@ -8,7 +8,7 @@ FactoryBot.define do
     height { rand(0..100.0).round(2) }
     width { rand(0..100.0).round(2) }
     length { rand(0..100.0).round(2) }
-    quantity { rand(0..100) }
+    quantity { rand(1..100) }
     year_of_publication { FFaker::Vehicle.year }
     materials { FFaker::BaconIpsum.word }
     category
