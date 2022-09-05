@@ -6,9 +6,9 @@
   %li
     %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}= t('.navigation_shop')
     %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-      -Category.all.each do |category|
+      -categories.all.each do |category|
         %li
-          = link_to category.name, books_path(category: category), class: 'collapse-link'
+          = link_to category.name, books_path(category_id: category), class: 'collapse-link'
   %li
     %a{type: "button", 'data-toggle': "collapse", href: "#account", 'aria-expanded': "false", 'aria-controls': "account"}= t('.navigation_account')
     %ul#account.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}

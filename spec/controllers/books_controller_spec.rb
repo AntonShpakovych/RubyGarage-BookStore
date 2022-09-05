@@ -3,12 +3,14 @@
 RSpec.describe BooksController, type: :controller do
   describe 'GET #index' do
     context "when params doesn't have index and category" do
+      before { get :index, params: {} }
+
       it 'renders index template' do
         expect(response).to render_template(:index)
       end
     end
 
-    BookQueries::FILTER_KEYS.each do |key, _value|
+    BookQuery::FILTER_KEYS.each do |key, _value|
       before { get :index, params: { filter: key } }
 
       context "when params have #{key}" do

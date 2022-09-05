@@ -3,6 +3,9 @@
 RSpec.describe 'Forgot password', type: :feature do
   let(:user) { create(:user) }
 
+  let(:result) { page }
+  let(:expected_result) { t('devise.passwords.send_instructions') }
+
   before do
     user
     visit new_user_password_path
@@ -11,11 +14,14 @@ RSpec.describe 'Forgot password', type: :feature do
   end
 
   it 'says that you need to check your email' do
-    expect(page).to have_text(t('devise.passwords.send_instructions'))
+    expect(result).to have_text(expected_result)
   end
 
   describe 'change password' do
     let(:new_password) { FFaker::Internet.password }
+
+    let(:result) { page }
+    let(:expected_result) { t('devise.passwords.updated') }
 
     before do
       visit edit_user_password_path(reset_password_token: user.send_reset_password_instructions)
@@ -25,7 +31,7 @@ RSpec.describe 'Forgot password', type: :feature do
     end
 
     it 'change your password' do
-      expect(page).to have_text(t('devise.passwords.updated'))
+      expect(result).to have_text(expected_result)
     end
   end
 end

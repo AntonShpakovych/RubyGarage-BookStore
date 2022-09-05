@@ -8,6 +8,5 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require('jquery')
 require('bootstrap-sass')
-require('../view_more_description')
-require('../delete_account')
+require('../custom_scripts/connection')
 import '../stylesheet/application.scss'

@@ -2,12 +2,6 @@
 
 RSpec.describe Author, type: :model do
   describe 'Validates' do
-    context 'when validate pass' do
-      it 'is valid with valid attributes' do
-        expect(build(:author)).to be_valid
-      end
-    end
-
     context 'when validate not pass' do
       let(:empty_value) { nil }
 
@@ -17,7 +11,12 @@ RSpec.describe Author, type: :model do
     end
   end
 
+  describe 'Table columns' do
+    it { is_expected.to have_db_column(:name).of_type(:string) }
+  end
+
   describe 'Associations' do
-    it { is_expected.to have_many(:books) }
+    it { is_expected.to have_many(:books).through(:author_books) }
+    it { is_expected.to have_many(:author_books).dependent(:destroy) }
   end
 end

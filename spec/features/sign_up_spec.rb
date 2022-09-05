@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Sign up', type: :feature do
+  let(:result) { page }
+
   context 'when email unique and confirm password like a password' do
     let(:test_email) { FFaker::Internet.email }
     let(:test_password) { FFaker::Internet.password }
     let(:confirmation_password) { test_password }
+
+    let(:expected_result) { root_path }
 
     before do
       visit new_user_registration_path
@@ -17,7 +21,7 @@ RSpec.describe 'Sign up', type: :feature do
     it 'registration new user and redirect to root path' do
       expect(User.all.length).to eq(1)
       expect(User.all.first.email).to eq(test_email)
-      expect(page).to have_current_path(root_path)
+      expect(result).to have_current_path(expected_result)
     end
   end
 
@@ -26,6 +30,8 @@ RSpec.describe 'Sign up', type: :feature do
     let(:test_email) { user_create.email }
     let(:test_password) { FFaker::Internet.password }
     let(:confirmation_password) { test_password }
+
+    let(:expected_result) { t('devise.default.email_not_uniq') }
 
     before do
       user_create
@@ -37,7 +43,7 @@ RSpec.describe 'Sign up', type: :feature do
     end
 
     it 'give u message about bad email' do
-      expect(page).to have_text(t('devise.default.email_not_uniq'))
+      expect(result).to have_text(expected_result)
     end
   end
 
@@ -45,6 +51,8 @@ RSpec.describe 'Sign up', type: :feature do
     let(:test_email) { FFaker::Internet.email }
     let(:test_password) { FFaker::Internet.password }
     let(:confirmation_password) { FFaker::Internet.password }
+
+    let(:expected_result) { t('devise.default.bad_password_confirmation') }
 
     before do
       visit new_user_registration_path
@@ -55,7 +63,7 @@ RSpec.describe 'Sign up', type: :feature do
     end
 
     it 'give u message about bad confirm password' do
-      expect(page).to have_text(t('devise.default.bad_password_confirmation'))
+      expect(result).to have_text(expected_result)
     end
   end
 end

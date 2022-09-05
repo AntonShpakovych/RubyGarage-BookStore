@@ -5,7 +5,7 @@ FactoryBot.define do
     name { FFaker::Book.genre }
 
     factory :category_with_books do
-      books { [association(:book)] }
+      books { create_list(:book, 2) }
     end
   end
 end

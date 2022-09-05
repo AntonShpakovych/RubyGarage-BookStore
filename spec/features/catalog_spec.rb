@@ -3,39 +3,42 @@
 RSpec.describe 'Catalog page', type: :feature do
   describe 'Filtering and sorting' do
     context 'when user choose category' do
-      let(:category1) { create(:category) }
-      let(:category2) { create(:category) }
-      let(:book1) { create(:book, category: category1) }
-      let(:book2) { create(:book, category: category2) }
+      let!(:category1) { create(:category) }
+      let!(:category2) { create(:category) }
+      let!(:book1) { create(:book, category: category1) }
+      let!(:book2) { create(:book, category: category2) }
+
+      let(:result) { page }
+      let(:expected_result1) { book1.name }
+      let(:expected_result2) { book2.name }
 
       before do
-        book1
-        book2
         visit books_path
         find('.filter-link', text: book1.category.name, match: :first).click
       end
 
       it 'shows books only from choosen category' do
-        expect(page).to have_content(book1.name)
-        expect(page).not_to have_content(book2.name)
+        expect(result).to have_content(expected_result1)
+        expect(result).not_to have_content(expected_result2)
       end
     end
 
     context 'when user choose filter' do
       let(:name_first) { 'AAAA' }
       let(:name_last) { 'BBBB' }
-      let(:book1) { create(:book, name: name_first) }
-      let(:book2) { create(:book, name: name_last) }
+      let!(:book1) { create(:book, name: name_first) }
+      let!(:book2) { create(:book, name: name_last) }
+
+      let(:result) { page.find('.col-xs-6.col-sm-3', match: :first).text }
+      let(:expected_result) { /#{book1.name}/ }
 
       before do
-        book1
-        book2
         visit books_path
         find('.dropdown-toggle.lead.small', text: t('books.partials.desktop.filter.name_asc'), match: :first).click
       end
 
-      it "sorting books by #{BookQueries::FILTER_KEYS.keys.first}" do
-        expect(page.find('.col-xs-6.col-sm-3', match: :first).text).to match(/#{book1.name}/)
+      it "sorting books by #{BookQuery::FILTER_KEYS.keys.first}" do
+        expect(result).to match(expected_result)
       end
     end
   end
@@ -44,61 +47,56 @@ RSpec.describe 'Catalog page', type: :feature do
     describe "books length less #{Pagy::DEFAULT[:items]}" do
       let(:books_count) { 5 }
 
+      let(:result) { page }
+      let(:expected_result) { t('books.partials.view_more.button_view_more') }
+
       before do
-        books_count.times { create(:book) }
+        create_list(:book, books_count)
         visit books_path
       end
 
-      context "when books length less then #{Pagy::DEFAULT[:items]}" do
-        it "view more link doesn't present when all books are shown" do
-          expect(page).not_to have_link(t('books.partials.view_more.button_view_more'))
-        end
+      it "view more link doesn't present when all books are shown" do
+        expect(result).not_to have_link(expected_result)
       end
     end
 
     describe "books length more then #{Pagy::DEFAULT[:items]}" do
       let(:books_count) { 15 }
+      let(:result) { page }
+      let(:expected_result) { t('books.partials.view_more.button_view_more') }
 
       before do
-        books_count.times { create(:book) }
+        create_list(:book, books_count)
         visit books_path
       end
 
-      context "when books length more then #{Pagy::DEFAULT[:items]}" do
-        it 'view more link already on page' do
-          expect(page).to have_link(t('books.partials.view_more.button_view_more'))
-        end
-      end
-
-      context "when books length more then #{Pagy::DEFAULT[:items]} with click" do
-        it 'view more link already on page' do
-          expect(page).to have_link(t('books.partials.view_more.button_view_more'))
-          find_link(t('books.partials.view_more.button_view_more')).click
-          expect(page).not_to have_link(t('books.partials.view_more.button_view_more'))
-        end
+      it 'view more link already on page' do
+        expect(result).to have_link(expected_result)
       end
     end
   end
 
   describe 'when user want open book page' do
-    describe 'page has link for this functionality' do
-      let(:book1) { create(:book) }
-      let(:book_page_path) { "/books/#{book1.id}" }
+    let!(:book1) { create(:book) }
+    let(:book_page_path) { "/books/#{book1.id}" }
+    let(:result) { page }
+    let(:expected_result) { { :href => book_page_path } }
 
-      before do
-        book1
-        visit books_path
-      end
+    before do
+      visit books_path
+    end
 
-      it 'page has link for book_page' do
-        expect(page).to have_link(:href => book_page_path)
-      end
+    it 'page has link for book_page' do
+      expect(result).to have_link(expected_result)
+    end
 
-      context 'when user click on link' do
-        it 'render book_page' do
-          find_link(:href => book_page_path).click
-          expect(page).to have_current_path(book_page_path, ignore_query: true)
-        end
+    context 'when user click on link' do
+      let(:expected_result) { book_page_path }
+
+      before { find_link(:href => book_page_path).click }
+
+      it 'render book_page' do
+        expect(result).to have_current_path(expected_result, ignore_query: true)
       end
     end
   end
