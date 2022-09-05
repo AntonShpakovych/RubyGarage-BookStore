@@ -12,6 +12,7 @@ RSpec.describe AuthorBook, type: :model do
   end
 
   describe 'Table index' do
-    it { is_expected.to have_db_index(%i[author_id book_id]) }
+    it { is_expected.to have_db_index(:book_id) }
+    it { is_expected.to have_db_index(:author_id) }
   end
 end
