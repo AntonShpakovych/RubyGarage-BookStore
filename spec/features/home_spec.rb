@@ -11,11 +11,11 @@ RSpec.describe 'Home page', type: :feature do
   before { visit root_path }
 
   it 'User open site and see home page' do
-    expect(page).to have_text(expected_result1)
-    expect(page).to have_text(expected_result2)
-    expect(page).to have_text(expected_result3)
-    expect(page).to have_button(expected_result4)
-    expect(page).to have_link(expected_result5)
+    expect(result).to have_text(expected_result1)
+    expect(result).to have_text(expected_result2)
+    expect(result).to have_text(expected_result3)
+    expect(result).to have_button(expected_result4)
+    expect(result).to have_link(expected_result5)
   end
 
   context 'when user click on button get started' do
