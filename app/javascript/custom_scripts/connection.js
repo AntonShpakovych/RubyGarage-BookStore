@@ -1,2 +1,2 @@
 require('./view_more_description')
-require('../delete_account')
+require('./delete_account')

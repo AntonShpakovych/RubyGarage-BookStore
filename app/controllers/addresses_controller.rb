@@ -13,7 +13,7 @@ class AddressesController < ApplicationController
   end
 
   def update
-    address = AddressForm.find_by(user_id: current_user, type: addresses_params[:type])
+    address = AddressForm.update(user_id: current_user, type: addresses_params[:type])
 
     if address.update(addresses_params)
       flash[:notice] = t('address.update', address_type: addresses_params[:type])

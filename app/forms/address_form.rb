@@ -18,7 +18,7 @@ class AddressForm
 
   def save
     if valid?
-      Address.create(**all_attributes_for_save)
+      Address.create(**all_attributes)
     else
       false
     end
@@ -26,7 +26,7 @@ class AddressForm
 
   def update
     if valid?
-      Address.update(**all_attributes_for_save)
+      Address.update(**all_attributes)
     else
       false
     end
@@ -34,7 +34,7 @@ class AddressForm
 
   private
 
-  def all_attributes_for_save
+  def all_attributes
     {
       first_name: first_name, last_name: last_name,
       phone: phone, city: city,
