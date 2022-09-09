@@ -1,0 +1,15 @@
+pre-commit:
+  parallel: true
+  commands:
+    brakeman:
+      run: brakeman --no-pager
+    audit:
+      run: bundle-audit check
+    database_consistency:
+      run: bundle exec database_consistency
+    rubocop:
+      glob: "*.rb"
+      run: bundle exec rubocop
+    fasterer:
+      glob: "*.rb"
+      run: bundle exec fasterer
