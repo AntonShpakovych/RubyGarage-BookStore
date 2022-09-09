@@ -1,0 +1,6 @@
+#privacy.tab-pane{role: "tabpanel"}
+  =render 'addresses/partials/navigation'
+  .row.mb-60
+    = render partial: 'users/partials/form_email', locals: { user: @user_form.nil? ? current_user : @user_form, type: t('privacy.type.email') }
+    = render partial: 'users/partials/form_password', locals: { user: @user_form.nil? ? current_user : @user_form, type: t('privacy.type.password') }
+    = render partial: 'users/partials/form_delete_account', locals: { user: current_user }

@@ -2,4 +2,4 @@
   %li.tab-item.active{role: "presentation"}
     = link_to t('address.link_to_address'), edit_address_path(current_user.id), class: 'tab-link'
   %li.tab-item{role: "presentation"}
-    = link_to t('address.link_to_privacy'), edit_user_registration_path, class: 'tab-link'
+    = link_to t('address.link_to_privacy'), edit_user_path(current_user.id), class: 'tab-link'

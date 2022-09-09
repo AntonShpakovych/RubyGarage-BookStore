@@ -2,24 +2,6 @@
 
 en:
   devise:
-    privacy:
-      global_names:
-        title_email: Email
-        title_remove_account: Remove Account
-        button_submit: Save
-        title_password: Password
-        button_submit_remove_account: Please Remove My Account
-        span_for_checkbox_for_remove_account: I understand that all data will be lost
-      label:
-        password_confirmation: Confirm Password
-        password: New Password
-        current_password: Old Password
-        email: Enter Email
-      placeholder:
-        password_confirmation: Confirm Password
-        password: New Password
-        email: Enter your email
-        current_password: Old Password
     default:
       log_in: Log in
       log_out: Log out
@@ -127,3 +109,41 @@ en:
       city: City
       zip: Zip
       phone: Example +355 66 123 4567 
+    validation:
+      first_name: "cannot be not empty, must consist of only a-z and A-Z characters without special symbols, must be less than 50 characters."
+      last_name: "cannot be not empty, must consist of only a-z and A-Z characters without special symbols, must be less than 50 characters."
+      address: "should not be not empty, consist of a-z, A-Z, 0-9 ',' '-' ' ' only, no special symbols, must be less than 50 characters."
+      country: "cannot be not empty, must consist of only a-z and A-Z characters without special symbols, must be less than 50 characters."
+      city: "cannot be not empty, must consist of only a-z and A-Z characters without special symbols, must be less than 50 characters."
+      zip: "should not be empty, consist of 0-9 only,'-' no special symbols. Max Length should be 10 characters."
+      phone: "should not be empty, plus (+) at the beginning, after should contain country code of chosen country in Country drop down list consist of 0-9 only no special symbols. Must be 15 characters or less."
+  privacy:
+      type:
+        email: email
+        password: password
+        delete_account: delete_account
+      good_update: You update, your %{attribute}
+      bad_update: Something was wrong
+      destroy: You destroy your account
+      global_names:
+        title_email: Email
+        title_remove_account: Remove Account
+        button_submit: Save
+        title_password: Password
+        button_submit_remove_account: Please Remove My Account
+        span_for_checkbox_for_remove_account: I understand that all data will be lost
+      label:
+        password_confirmation: Confirm Password
+        password: New Password
+        current_password: Old Password
+        email: Enter Email
+      placeholder:
+        password_confirmation: Confirm Password
+        password: New Password
+        email: Enter your email
+        current_password: Old Password
+      validation:
+        password_old: invalid
+        password_confirmation: not equal new password
+        password: Minimum 8 letters, at least 1 uppercase, at least 1 lowercase, at least 1 number. Mustn't contain spaces inside. Spaces at the beginning and at the end should be cut off.
+        email: Should not be not empty. Has a localpart on the left of an @, the domain on the right. Neither the localpart nor the domain can be empty. The localpart can consist of labels separated by dots but it cannot have two successive dots, nor can it start or end with a dot. Labels consist of a-z, A-Z, 0-9, or one of !#$%&'*+-/=?^_`{|}~. Labels must be less than 63 characters. Labels must not start with a hyphen, end with a hyphen, or contain two successive hyphens. The right-most label must be all alphabetic.

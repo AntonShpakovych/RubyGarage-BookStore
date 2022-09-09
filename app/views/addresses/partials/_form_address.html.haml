@@ -1,2 +1,2 @@
-= simple_form_for address, as: :address, url: address.persisted? ? edit_address_path(current_user.id) : addresses_path , method: address.persisted? ? :put : :post do |f|
+= simple_form_for address, as: :address, url: address.persisted? ? address_path(current_user.id) : addresses_path , method: address.persisted? ? :put : :post do |f|
   =render partial: 'addresses/partials/addresses_field', locals: { f: f, type: type }
