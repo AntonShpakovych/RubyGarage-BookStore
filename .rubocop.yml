@@ -33,4 +33,4 @@ Rails:
   Enabled: true
 
 RSpec/ExampleLength:
-  Enabled: false
+  Max: 20
