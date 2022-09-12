@@ -21,8 +21,6 @@ gem 'webpacker', '~> 5.0'
 group :development, :test do
   gem 'database_consistency', '~> 1.1.15', require: false
   gem 'lefthook', '~> 1.1.1'
-  gem 'rails-controller-testing', '~> 0.0.3'
-  gem 'rspec-rails', '~> 5.1.2'
   gem 'rubocop', '~> 1.34.0', require: false
   gem 'rubocop-performance', '~> 1.14.3', require: false
   gem 'rubocop-rails', '~> 2.15.2', require: false
@@ -40,6 +38,8 @@ end
 
 group :test do
   gem 'capybara', '>= 3.26'
+  gem 'rails-controller-testing', '~> 0.0.3'
+  gem 'rspec-rails', '~> 5.1.2'
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', '~> 0.21.2', require: false
