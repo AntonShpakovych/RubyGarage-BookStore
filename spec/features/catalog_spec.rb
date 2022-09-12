@@ -27,7 +27,6 @@ RSpec.describe 'Catalog page', type: :feature do
       let(:name_first) { 'AAAA' }
       let(:name_last) { 'BBBB' }
       let!(:book1) { create(:book, name: name_first) }
-      let!(:book2) { create(:book, name: name_last) }
 
       let(:result) { page.find('.col-xs-6.col-sm-3', match: :first).text }
       let(:expected_result) { /#{book1.name}/ }
@@ -37,7 +36,7 @@ RSpec.describe 'Catalog page', type: :feature do
         find('.dropdown-toggle.lead.small', text: t('books.partials.desktop.filter.name_asc'), match: :first).click
       end
 
-      it "sorting books by #{BookQuery::FILTER_KEYS.keys.first}" do
+      it "sorting books by #{BookQuery::ORDERS_TYPE.keys.first}" do
         expect(result).to match(expected_result)
       end
     end

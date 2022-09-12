@@ -15,6 +15,6 @@
         %span.shop-quantity 3
     #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
       .visible-xs
-        = render 'partials/mobile/navigation'
+        = render partial: 'partials/mobile/navigation', locals:{ categories: @categories }
       .hidden-xs
-        = render 'partials/desktop/navigation'
+        = render partial: 'partials/desktop/navigation', locals: { categories: @categories }

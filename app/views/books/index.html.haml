@@ -1,11 +1,11 @@
 %main.container
   %h1.general-title-margin= t('.title')
   .hidden-xs.clearfix
-    = render partial: 'books/partials/desktop/category', locals: { book_count: @book_count }
-    = render partial: 'books/partials/desktop/filter', locals: { current_filter: @current_filter, current_category: @current_category, filters: BookQuery::FILTER_KEYS }
+    = render partial: 'books/partials/desktop/category', locals: { book_count: @book_count, categories: @categories }
+    = render partial: 'books/partials/desktop/filter', locals: { current_filter: BookQuery::ORDERS_TYPE.key(@current_filter), current_category: @current_category, filters: BookQuery::ORDERS_TYPE }
   .dropdowns.mb-25.visible-xs
-    = render partial: 'books/partials/mobile/category_mobile', locals: { current_category: @current_category }
-    = render partial: 'books/partials/mobile/filter_mobile', locals: { current_filter: @current_filter, current_category: @current_category, filters: BookQuery::FILTER_KEYS }
+    = render partial: 'books/partials/mobile/category_mobile', locals: { current_category: @current_category, categories: @categories }
+    = render partial: 'books/partials/mobile/filter_mobile', locals: { current_filter: BookQuery::ORDERS_TYPE.key(@current_filter), current_category: @current_category, filters: BookQuery::ORDERS_TYPE }
   .mb-120
     .row
       = render partial: 'books/partials/books', locals: { books: @books }

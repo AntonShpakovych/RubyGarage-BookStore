@@ -30,8 +30,8 @@ RSpec.describe 'Home page', type: :feature do
   end
 
   describe 'Navigation' do
-    let!(:category1) { create(:category) }
-    let!(:category2) { create(:category) }
+    let(:category1) { create(:category) }
+    let(:category2) { create(:category) }
     let(:catalog_path) { books_path }
 
     before do

@@ -9,7 +9,6 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'simplecov'
 require 'rspec/rails'
 require 'capybara/rails'
-require 'ffaker'
 
 SimpleCov.start do
   enable_coverage :branch

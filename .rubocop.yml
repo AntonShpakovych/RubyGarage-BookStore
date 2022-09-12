@@ -33,7 +33,7 @@ Rails:
   Enabled: true
 
 RSpec/ExampleLength:
-  Enabled: false
+  Max: 20
 
 RSpec/NestedGroups:
   Enabled: false
@@ -42,4 +42,4 @@ RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
 RSpec/LetSetup:
-  Enabled: false
+  Max: 20

@@ -22,8 +22,8 @@ RSpec.describe BookQuery do
       let!(:first_category) { create(:category) }
       let!(:second_category) { create(:category) }
 
-      let!(:book_good) { create(:book, category: first_category) }
-      let!(:book_bad) { create(:book, category: second_category) }
+      let(:book_good) { create(:book, category: first_category) }
+      let(:book_bad) { create(:book, category: second_category) }
 
       let(:params) { { category_id: first_category } }
 
