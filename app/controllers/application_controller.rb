@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
 
-  helper_method :categories
+  before_action :categories
 
   def categories
     @categories ||= Category.all
