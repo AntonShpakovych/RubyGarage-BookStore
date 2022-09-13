@@ -93,10 +93,6 @@ GEM
     country_select (8.0.0)
       countries (~> 5.0)
     crass (1.0.6)
-    database_cleaner-active_record (2.0.1)
-      activerecord (>= 5.a)
-      database_cleaner-core (~> 2.0.0)
-    database_cleaner-core (2.0.1)
     database_consistency (1.1.15)
       activerecord (>= 3.2)
     devise (4.8.1)
@@ -158,7 +154,11 @@ GEM
       activesupport (>= 5.0.0)
     json (2.6.2)
     jwt (2.4.1)
+    launchy (2.5.0)
+      addressable (~> 2.7)
     lefthook (1.1.1)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -378,9 +378,7 @@ DEPENDENCIES
   brakeman (~> 5.3.1)
   bundler-audit (~> 0.9.1)
   capybara (>= 3.26)
-  countries
   country_select (~> 8.0.0)
-  database_cleaner-active_record
   database_consistency (~> 1.1.15)
   devise (~> 4.8.1)
   draper (~> 4.0.0)
@@ -393,6 +391,7 @@ DEPENDENCIES
   html2haml
   jbuilder (~> 2.7)
   lefthook (~> 1.1.1)
+  letter_opener (~> 1.8.1)
   listen (~> 3.3)
   omniauth
   omniauth-google-oauth2

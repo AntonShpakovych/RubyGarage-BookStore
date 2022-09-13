@@ -10,7 +10,7 @@ RSpec.describe BooksController, type: :controller do
       end
     end
 
-    BookQuery::FILTER_KEYS.each do |key, _value|
+    BookQuery::ORDERS_TYPE.each do |key, _value|
       before { get :index, params: { filter: key } }
 
       context "when params have #{key}" do

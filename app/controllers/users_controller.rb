@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  def index
+    redirect_to edit_user_path(current_user.id)
+  end
+
   def edit; end
 
   def update
@@ -9,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.delete(current_user)
+    User.destroy(current_user.id)
     flash[:notice] = t('privacy.destroy')
     redirect_to root_path
   end
