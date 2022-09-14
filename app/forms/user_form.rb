@@ -2,7 +2,7 @@
 
 class UserForm
   include ActiveModel::Model
-  attr_accessor :email, :current_password, :password, :password_confirmation, :type
+  attr_accessor :email, :current_password, :password, :password_confirmation
 
   EMAIL_MINIMUM_LENGTH = 3
   EMAIL_MAXIMUM_LENGTH = 63
@@ -15,13 +15,13 @@ class UserForm
 
   validates :email, length: { minimum: EMAIL_MINIMUM_LENGTH, maximum: EMAIL_MAXIMUM_LENGTH },
                     format: { with: EMAIL, message: I18n.t('privacy.validation.email') }, if: :params_email?
-  validates :current_password, :password, :password_confirmation, presence: true, if: :params_password?
+  validates :current_password, :password, :password_confirmation, presence: true, unless: :params_email?
 
   validates :password, length: { minimum: PASSWORD_MINIMUM_LENGTH, maximum: PASSWORD_MAXIMUM_LENGTH },
                        format: { with: PASSWORD, message: I18n.t('privacy.validation.password') },
-                       if: :params_password? && :password_attributes_not_blank
+                       unless: :params_email?, if: :password_attributes_not_blank
 
-  validate :password_validation, if: :params_password? && :password_attributes_not_blank
+  validate :password_validation, unless: :params_email?, if: :password_attributes_not_blank
 
   def initialize(model, params = {})
     self.attributes = params
@@ -32,18 +32,14 @@ class UserForm
   def save
     return unless valid?
 
-    @params[:email].present? ? @model.update(email: @params[:email]) : @model.update(password: @params[:password])
+    params_email? ? @model.update(email: @params[:email]) : @model.update(password: @params[:password])
     @model
   end
 
   private
 
   def params_email?
-    @params[:type] == I18n.t('privacy.type.email')
-  end
-
-  def params_password?
-    @params[:type] == I18n.t('privacy.type.password')
+    @params[:email].present?
   end
 
   def password_validation

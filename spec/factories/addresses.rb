@@ -2,12 +2,12 @@
 
 FactoryBot.define do
   factory :address do
-    first_name { FFaker::Name.first_name }
-    last_name { FFaker::Name.last_name }
-    address { FFaker::AddressUS.street_address }
-    city { 'City' }
-    zip { FFaker::AddressUS.zip_code }
-    country { ISO3166::Country.all.sample.alpha2 }
+    first_name { 'first' }
+    last_name { 'last' }
+    address { 'address' }
+    city { 'Kyiv' }
+    zip { '11111' }
+    country { 'UA' }
     phone { "+#{ISO3166::Country[country].country_code}#{Faker::Number.number(digits: 9)}" }
     user
 

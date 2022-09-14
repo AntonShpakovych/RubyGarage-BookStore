@@ -2,8 +2,8 @@
   =render 'addresses/partials/navigation'
   .row.mb-60
   #email_form
-    = render partial: 'users/partials/form_email', locals: { user: @user_form.nil? ? current_user : @user_form, type: t('privacy.type.email') }
+    = render partial: 'users/partials/form_email', locals: { user: @user_form.nil? ? current_user : @user_form }
   #password_form
-    = render partial: 'users/partials/form_password', locals: { user: @user_form.nil? ? current_user : @user_form, type: t('privacy.type.password') }
+    = render partial: 'users/partials/form_password', locals: { user: @user_form.nil? ? current_user : @user_form }
   #delete_account_form
     = render partial: 'users/partials/form_delete_account', locals: { user: current_user }

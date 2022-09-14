@@ -162,8 +162,8 @@ RSpec.describe 'Address page', type: :feature do
   end
 
   context 'when user want update some address' do
-    let(:user) { address.user }
     let!(:address) { create(:address, :billing_address) }
+    let(:user) { address.user }
     let(:before_update_first_name) { address.first_name }
 
     context 'when all data valid' do

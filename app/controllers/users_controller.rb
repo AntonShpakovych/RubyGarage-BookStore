@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def index
-    redirect_to edit_user_path(current_user.id)
-  end
-
   def edit; end
 
   def update
@@ -21,7 +17,7 @@ class UsersController < ApplicationController
   private
 
   def good_update
-    flash[:notice] = t('privacy.good_update', attribute: users_params[:type])
+    flash[:notice] = t('privacy.good_update', attribute: users_params[:email].present? ? 'email' : 'password')
     redirect_to root_path
   end
 
@@ -31,6 +27,6 @@ class UsersController < ApplicationController
   end
 
   def users_params
-    params.require(:user).permit(:email, :current_password, :password, :password_confirmation, :type)
+    params.require(:user).permit(:email, :current_password, :password, :password_confirmation)
   end
 end
