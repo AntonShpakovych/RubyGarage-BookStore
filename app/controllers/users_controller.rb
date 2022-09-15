@@ -17,7 +17,9 @@ class UsersController < ApplicationController
   private
 
   def good_update
-    flash[:notice] = t('privacy.good_update', attribute: users_params[:email].present? ? 'email' : 'password')
+    flash[:notice] =
+      t('privacy.good_update',
+        attribute: users_params[:email].present? ? t('privacy.type.email') : t('privacy.type.password'))
     redirect_to root_path
   end
 
