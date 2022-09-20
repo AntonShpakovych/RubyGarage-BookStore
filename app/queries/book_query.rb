@@ -4,7 +4,7 @@ class BookQuery
   ORDERS_TYPE = {
     :name_asc => 'name ASC',
     :name_desc => 'name DESC',
-    :newest_first => 'created_at ASC',
+    :newest_first => 'created_at DESC',
     :price_hight_to_low => 'price DESC',
     :price_low_to_hight => 'price ASC'
   }.freeze
