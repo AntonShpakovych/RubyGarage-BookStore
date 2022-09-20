@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby(File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip)
 
+gem 'activeadmin', '~> 2.13.1'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'coderay', '~> 1.1.3'
 gem 'country_select', '~> 8.0.0'
 gem 'devise', '~> 4.8.1'
 gem 'draper', '~> 4.0.0'
@@ -22,6 +24,7 @@ gem 'pg', '~> 1.1'
 gem 'pry'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
+gem 'redcarpet', '~> 3.5.1'
 gem 'sass-rails', '>= 6'
 gem 'simple_form', '~> 5.1.0'
 gem 'turbolinks', '~> 5'

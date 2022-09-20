@@ -24,6 +24,8 @@ Style/HashSyntax:
 
 
 Metrics/BlockLength:
+  Exclude:
+    - 'app/admin/**/*'
   AllowedMethods: ['describe', 'context']
 
 RSpec/MultipleExpectations:

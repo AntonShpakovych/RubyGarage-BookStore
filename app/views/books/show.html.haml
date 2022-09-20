@@ -32,14 +32,15 @@
       .general-info-wrap.divider-lg
         %p= t('.description_title')
         %p.lead.small.line-height-2
-        - if @book.description.length > 250
+        - if @book.description.length > BookDecorator::SHORT_DESCRIPTION_LENGTH
           %div#book_description_short
-            = @book.short_description
+            = h markdown(@book.short_description).html_safe
         -else
-          = @book.description
+          = h markdown(@book.description).html_safe
         %div#book_description_all.hide_description
-          = @book.description
-        %button.b-n.in-gold-500.ml-10#button_for_view_more= t('.read_more')
+          = h markdown(@book.description).html_safe
+        -if @book.description.length > BookDecorator::SHORT_DESCRIPTION_LENGTH
+          %button.b-n.in-gold-500.ml-10#button_for_view_more= t('.read_more')
       .general-info-wrap.divider-lg
         .clearfix
           %p.pull-left= t('.year_of_publication')

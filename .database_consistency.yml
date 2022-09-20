@@ -1,4 +1,8 @@
 # Ignore false positive from Rails' ActionText and ActiveStorage
+AdminUser:
+  password:
+    ColumnPresenceChecker:
+      enabled: false
 ActionText::RichText:
   enabled: false
 ActiveStorage::Attachment:
