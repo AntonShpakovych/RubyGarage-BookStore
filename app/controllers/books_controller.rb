@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   def index
     @book_count = Book.count
     @pagy, books = pagy(books_prepared)
-    @books = books.decorate
+    @books = books.includes(:authors).decorate
     @current_category = book_query_category
     @current_filter = book_query_filter
   end
