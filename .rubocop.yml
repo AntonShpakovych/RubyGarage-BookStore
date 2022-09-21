@@ -43,6 +43,3 @@ RSpec/MultipleMemoizedHelpers:
 
 RSpec/NamedSubject:
   Enabled: false
-
-RSpec/LetSetup:
-  Max: 20
