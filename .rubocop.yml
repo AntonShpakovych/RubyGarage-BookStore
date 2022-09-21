@@ -34,3 +34,9 @@ Rails:
 
 RSpec/ExampleLength:
   Max: 20
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

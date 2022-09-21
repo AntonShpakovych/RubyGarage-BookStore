@@ -1,0 +1,15 @@
+%p.lead.small.mb-10= t('.sort_by_category')
+.dropdown
+  %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+    - if categories.ids.include?(current_category.to_i)
+      = categories.find(current_category).name
+    - else
+      = t('.category_all')
+    %i.fa.fa-angle-down.dropdown-icon.pull-right
+  %ul.dropdown-menu
+    -categories.each do |category|
+      %li
+        = link_to category_books_path(category_id: category), class: 'filter-link' do
+          = category.name
+    %li
+      = link_to t('.category_all'), books_path
