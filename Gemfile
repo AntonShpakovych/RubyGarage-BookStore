@@ -25,7 +25,6 @@ gem 'sass-rails', '>= 6'
 gem 'simple_form', '~> 5.1.0'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'pry'
 
 group :development, :test do
   gem 'bullet', '~> 7.0.3'
