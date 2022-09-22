@@ -41,8 +41,8 @@ RSpec.describe AddressesController, type: :controller do
                                           type: type } }
       end
 
-      it 'redirect_to root_path' do
-        expect(response).to redirect_to(root_path)
+      it 'redirect_to edit_address' do
+        expect(response).to redirect_to(address_path(user.id))
       end
     end
 
@@ -79,8 +79,8 @@ RSpec.describe AddressesController, type: :controller do
                                            type: type } }
       end
 
-      it 'redirect_to root_path' do
-        expect(response).to redirect_to(root_path)
+      it 'redirect_to edit_address' do
+        expect(response).to redirect_to(address_path(user.id))
       end
     end
 

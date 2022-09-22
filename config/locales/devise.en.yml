@@ -121,7 +121,6 @@ en:
       type:
         email: email
         password: password
-        delete_account: delete_account
       good_update: You update, your %{attribute}
       bad_update: Something was wrong
       destroy: You destroy your account

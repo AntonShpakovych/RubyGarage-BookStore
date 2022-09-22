@@ -34,6 +34,8 @@ class AddressForm
 
   attr_accessor :first_name, :last_name, :phone, :city, :country, :zip, :type, :address
 
+  validates :first_name, :last_name, :phone, :city, :country, :zip, :address, presence: true
+
   validates :first_name, length: { minimum: FIRST_NAME_MIN_LENGTH, maximum: FIRST_NAME_MAX_LENGTH },
                          format: { with: FIRST_NAME, message: I18n.t('address.validation.first_name') }
   validates :last_name, length: { minimum: LAST_NAME_MIN_LENGTH, maximum: LAST_NAME_MAX_LENGTH },

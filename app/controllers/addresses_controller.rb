@@ -5,8 +5,7 @@ class AddressesController < ApplicationController
 
   def create
     if address_form_with_choosed_type.save
-      flash[:notice] = t('address.create', address_type: addresses_params[:type])
-      redirect_to root_path
+      determine_redirecting('create')
     else
       flash[:alert] = t('address.failure')
       render :edit
@@ -15,8 +14,7 @@ class AddressesController < ApplicationController
 
   def update
     if address_form_with_choosed_type.save
-      flash[:notice] = t('address.update', address_type: addresses_params[:type])
-      redirect_to root_path
+      determine_redirecting('update')
     else
       flash[:alert] = t('address.failure')
       render :edit
@@ -24,6 +22,11 @@ class AddressesController < ApplicationController
   end
 
   private
+
+  def determine_redirecting(method)
+    notice_type = "address.#{method}"
+    redirect_to edit_address_path, notice: t(notice_type, address_type: addresses_params[:type])
+  end
 
   def address_form_with_choosed_type
     if billing_type?
@@ -38,11 +41,11 @@ class AddressesController < ApplicationController
   end
 
   def address_form
-    AddressForm.new(address, addresses_params)
+    @address_form ||= AddressForm.new(address, addresses_params)
   end
 
   def address
-    Address.find_or_initialize_by(user_id: current_user.id, type: addresses_params[:type])
+    @address ||= Address.find_or_initialize_by(user_id: current_user.id, type: addresses_params[:type])
   end
 
   def addresses_params

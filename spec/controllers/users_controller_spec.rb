@@ -25,7 +25,7 @@ RSpec.describe UsersController, type: :controller do
                               password_confirmation: password_confirmation } }
       end
 
-      it 'redirect_to root_path' do
+      it 'redirect_to user_path' do
         expect(response).to redirect_to(root_path)
       end
     end
