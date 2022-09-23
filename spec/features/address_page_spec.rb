@@ -2,7 +2,6 @@
 
 RSpec.describe 'Address page', type: :feature do
   let!(:user) { create(:user) }
-  let(:address_path) { "/addresses/#{user.id}/edit" }
   let(:result) { page }
   let(:expected_result_bad_flash) { t('address.failure') }
 
@@ -28,7 +27,7 @@ RSpec.describe 'Address page', type: :feature do
         let(:expected_result_create) { t('address.create', address_type: BillingAddress.name) }
 
         before do
-          visit address_path
+          visit edit_address_path
           within('#billing_address') do
             fill_in t('address.label.first_name'), with: valid_first_name
             fill_in t('address.label.last_name'), with: valid_last_name
@@ -55,8 +54,8 @@ RSpec.describe 'Address page', type: :feature do
           expect(user.billing_address.phone).to eq(valid_phone)
         end
 
-        it 'redirect to home page' do
-          expect(result).to have_current_path(root_path)
+        it 'redirect to edit_address_path' do
+          expect(result).to have_current_path(edit_address_path)
         end
       end
 
@@ -64,7 +63,7 @@ RSpec.describe 'Address page', type: :feature do
         let(:expected_result_create) { t('address.create', address_type: ShippingAddress.name) }
 
         before do
-          visit address_path
+          visit edit_address_path
           within('#shipping_address') do
             fill_in t('address.label.first_name'), with: valid_first_name
             fill_in t('address.label.last_name'), with: valid_last_name
@@ -91,8 +90,8 @@ RSpec.describe 'Address page', type: :feature do
           expect(user.shipping_address.phone).to eq(valid_phone)
         end
 
-        it 'redirect to home page' do
-          expect(result).to have_current_path(root_path)
+        it 'redirect to edit_address_path' do
+          expect(result).to have_current_path(edit_address_path)
         end
       end
     end
@@ -115,7 +114,7 @@ RSpec.describe 'Address page', type: :feature do
       let(:expected_result_phone) { t('address.validation.phone') }
 
       before do
-        visit address_path
+        visit edit_address_path
         within('#billing_address') do
           fill_in t('address.label.first_name'), with: invalid_first_name
           fill_in t('address.label.last_name'), with: invalid_last_name
@@ -162,19 +161,18 @@ RSpec.describe 'Address page', type: :feature do
   end
 
   context 'when user want update some address' do
-    let!(:address) { create(:address, :billing_address) }
-    let(:user) { address.user }
+    let!(:address) { create(:address, :billing_address, user: user) }
     let(:before_update_first_name) { address.first_name }
 
     context 'when all data valid' do
       let(:for_update_valid_first_name) { 'First' }
-      let(:address_path) { "/addresses/#{user.id}/edit" }
-      let(:result_for_first_name) { User.find(user.id).billing_address.first_name }
+
       let(:expected_result_update_flash) { t('address.update', address_type: BillingAddress.name) }
 
       context 'when BillingAddress' do
         before do
-          visit address_path
+          visit edit_address_path
+
           within('#billing_address') do
             fill_in t('address.label.first_name'), with: for_update_valid_first_name
             click_button(t('address.label.button_submit'))
@@ -186,19 +184,17 @@ RSpec.describe 'Address page', type: :feature do
         end
 
         it 'update first_name' do
-          expect(result_for_first_name).not_to eq(before_update_first_name)
-          expect(result_for_first_name).to eq(for_update_valid_first_name)
+          expect(before_update_first_name).not_to eq(for_update_valid_first_name)
         end
       end
     end
 
     context 'when user want update address but data not valid' do
       let(:for_update_invalid_first_name) { 'Anton@' }
-      let(:address_path) { "/addresses/#{user.id}/edit" }
       let(:result_for_first_name) { user.billing_address.first_name }
 
       before do
-        visit address_path
+        visit edit_address_path
         within('#billing_address') do
           fill_in t('address.label.first_name'), with: for_update_invalid_first_name
           click_button(t('address.label.button_submit'))

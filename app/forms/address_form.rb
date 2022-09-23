@@ -28,11 +28,13 @@ class AddressForm
   LAST_NAME = /\A[a-zA-z]+\Z/.freeze
   ADDRESS = /\A[a-zA-Z0-9\-,\s]+\Z/.freeze
   COUNTRY = /\A[a-zA-z]+\Z/.freeze
-  CITY = /\A[a-zA-z]+\Z/.freeze
+  CITY = /\A[a-zA-z\s]+\Z/.freeze
   ZIP = /\A[0-9-]+\Z/.freeze
   PHONE = /\A\+[0-9]+\Z/.freeze
 
   attr_accessor :first_name, :last_name, :phone, :city, :country, :zip, :type, :address
+
+  validates :first_name, :last_name, :phone, :city, :country, :zip, :type, :address, presence: true
 
   validates :first_name, length: { minimum: FIRST_NAME_MIN_LENGTH, maximum: FIRST_NAME_MAX_LENGTH },
                          format: { with: FIRST_NAME, message: I18n.t('address.validation.first_name') }

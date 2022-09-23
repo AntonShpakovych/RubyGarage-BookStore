@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Book do
+  includes :category
   decorate_with BookDecorator
 
   permit_params :name, :description, :quantity, :year_of_publication, :price,
@@ -47,7 +48,7 @@ ActiveAdmin.register Book do
       f.input :width
       f.input :length
       f.input :materials
-      f.input :price
+      f.input :price, :min => Book::MIN_PRICE_VALUE
       f.input :quantity
     end
     actions

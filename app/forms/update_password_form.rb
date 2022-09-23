@@ -1,27 +1,21 @@
 # frozen_string_literal: true
 
-class UserForm
+class UpdatePasswordForm
   include ActiveModel::Model
-  attr_accessor :email, :current_password, :password, :password_confirmation
-
-  EMAIL_MINIMUM_LENGTH = 3
-  EMAIL_MAXIMUM_LENGTH = 63
+  attr_accessor :current_password, :password, :password_confirmation
 
   PASSWORD_MINIMUM_LENGTH = 8
   PASSWORD_MAXIMUM_LENGTH = 100
 
-  EMAIL = /\A([\w+].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\Z/.freeze
   PASSWORD = /\A^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])\S+$\Z/.freeze
 
-  validates :email, length: { minimum: EMAIL_MINIMUM_LENGTH, maximum: EMAIL_MAXIMUM_LENGTH },
-                    format: { with: EMAIL, message: I18n.t('privacy.validation.email') }, if: :params_email?
-  validates :current_password, :password, :password_confirmation, presence: true, unless: :params_email?
+  validates :current_password, :password, :password_confirmation, presence: true
 
   validates :password, length: { minimum: PASSWORD_MINIMUM_LENGTH, maximum: PASSWORD_MAXIMUM_LENGTH },
                        format: { with: PASSWORD, message: I18n.t('privacy.validation.password') },
-                       unless: :params_email?, if: :password_attributes_not_blank
+                       if: :password_attributes_not_blank
 
-  validate :password_validation, unless: :params_email?, if: :password_attributes_not_blank
+  validate :password_validation,  if: :password_attributes_not_blank
 
   def initialize(model, params = {})
     self.attributes = params
@@ -32,15 +26,11 @@ class UserForm
   def save
     return unless valid?
 
-    params_email? ? @model.update(email: @params[:email]) : @model.update(password: @params[:password])
+    @model.update(password: @params[:password])
     @model
   end
 
   private
-
-  def params_email?
-    @params[:email].present?
-  end
 
   def password_validation
     password_old_validate

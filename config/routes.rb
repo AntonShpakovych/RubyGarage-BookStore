@@ -5,14 +5,18 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'home#index'
-  resources :users, only: %i[edit update destroy]
-  resources :addresses, only: %i[edit update create]
+  resource :user, only: %i[edit destroy]
+  resource :address, only: %i[edit update create]
   resources :books, only: %i[index show]
-
   resources :categories, only: :index do
     resources :books, only: :index
   end
-  get '/addresses', to: 'addresses#edit'
-  get '/addresses/:id', to: 'addresses#edit'
-  get '/users/:id', to: 'users#edit'
+
+  resource :update_email, only: %i[update]
+  resource :update_password, only: %i[update]
+
+  get 'address', to: redirect('/address/edit')
+  get 'update_email', to: redirect('/user/edit')
+  get 'update_password', to: redirect('/user/edit')
+  get 'user', to: redirect('/user/edit')
 end

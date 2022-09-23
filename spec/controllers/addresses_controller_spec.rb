@@ -12,6 +12,30 @@ RSpec.describe AddressesController, type: :controller do
   let(:zip) { '33027' }
   let(:type) { BillingAddress.name }
 
+  let(:params_good) do
+    { id: user.id,
+      address: { first_name: first_name_valid,
+                 last_name: last_name,
+                 address: address,
+                 city: city,
+                 country: country,
+                 phone: phone,
+                 zip: zip,
+                 type: type } }
+  end
+
+  let(:params_bad) do
+    { id: user.id,
+      address: { first_name: first_name_invalid,
+                 last_name: last_name,
+                 address: address,
+                 city: city,
+                 country: country,
+                 phone: phone,
+                 zip: zip,
+                 type: type } }
+  end
+
   before { controller.stub(:current_user) { user } }
 
   describe 'GET #edit' do
@@ -29,35 +53,15 @@ RSpec.describe AddressesController, type: :controller do
     let(:user) { address_class.user }
 
     context 'when good update' do
-      before do
-        put :update, params: { id: user.id,
-                               address: { first_name: first_name_valid,
-                                          last_name: last_name,
-                                          address: address,
-                                          city: city,
-                                          country: country,
-                                          phone: phone,
-                                          zip: zip,
-                                          type: type } }
-      end
+      before { put :update, params: params_good }
 
-      it 'redirect_to root_path' do
-        expect(response).to redirect_to(root_path)
+      it 'redirect_to edit_address' do
+        expect(response).to redirect_to(edit_address_path)
       end
     end
 
     context 'when bad update' do
-      before do
-        put :update, params: { id: user.id,
-                               address: { first_name: first_name_invalid,
-                                          last_name: last_name,
-                                          address: address,
-                                          city: city,
-                                          country: country,
-                                          phone: phone,
-                                          zip: zip,
-                                          type: type } }
-      end
+      before { put :update, params: params_bad }
 
       it 'render edit' do
         expect(response).to render_template(:edit)
@@ -67,35 +71,15 @@ RSpec.describe AddressesController, type: :controller do
 
   describe 'POST #create' do
     context 'when good create' do
-      before do
-        post :create, params: { id: user.id,
-                                address: { first_name: first_name_valid,
-                                           last_name: last_name,
-                                           address: address,
-                                           city: city,
-                                           country: country,
-                                           phone: phone,
-                                           zip: zip,
-                                           type: type } }
-      end
+      before { post :create, params: params_good }
 
-      it 'redirect_to root_path' do
-        expect(response).to redirect_to(root_path)
+      it 'redirect_to edit_address' do
+        expect(response).to redirect_to(edit_address_path)
       end
     end
 
     context 'when bad create' do
-      before do
-        post :create, params: { id: user.id,
-                                address: { first_name: first_name_invalid,
-                                           last_name: last_name,
-                                           address: address,
-                                           city: city,
-                                           country: country,
-                                           phone: phone,
-                                           zip: zip,
-                                           type: type } }
-      end
+      before { post :create, params: params_bad }
 
       it 'render edit page' do
         expect(response).to render_template(:edit)

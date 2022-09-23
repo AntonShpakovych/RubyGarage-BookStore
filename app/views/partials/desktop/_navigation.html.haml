@@ -14,7 +14,7 @@
         %li
           = link_to t('.navigation_orders'), '#'
         %li
-          = link_to t('.navigation_settings'), edit_address_path(current_user.id)
+          = link_to t('.navigation_settings'), edit_address_path
         %li.divider{role: "separator"}
         %li
           = link_to t('devise.default.log_out'), destroy_user_session_path, method: :delete
