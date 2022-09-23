@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2022_09_01_142157) do
     t.string "last_name", null: false
     t.string "address", null: false
     t.string "city", null: false
-    t.integer "zip", null: false
+    t.string "zip", null: false
     t.string "country", null: false
     t.string "phone", null: false
     t.string "type", null: false

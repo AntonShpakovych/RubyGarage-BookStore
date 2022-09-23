@@ -10,7 +10,7 @@ RSpec.describe AddressForm, type: :model do
         address: 'Some address',
         city: 'Rivne',
         country: 'UA',
-        zip: 330_27,
+        zip: '33027',
         phone: '+380982018658',
         type: BillingAddress.name
       }
