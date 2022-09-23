@@ -6,7 +6,7 @@ FactoryBot.define do
     last_name { FFaker::Name.last_name }
     address { FFaker::Address.street_name }
     city { FFaker::Address.city }
-    zip { FFaker::AddressUA.zip_code.to_i }
+    zip { FFaker::Address.zip_code }
     country { ISO3166::Country.all.sample.alpha2 }
     phone { "+#{ISO3166::Country[country].country_code}#{Faker::Number.number(digits: 9)}" }
     user
