@@ -20,7 +20,7 @@ RSpec.describe 'Address page', type: :feature do
       let(:valid_country_before_save) { 'Ukraine' }
       let(:valid_country_after_save) { 'UA' }
       let(:valid_city) { 'City' }
-      let(:valid_zip) { 330_27 }
+      let(:valid_zip) { '33027' }
       let(:valid_phone) { '+380982020202' }
 
       context 'when BillingAddress' do
@@ -166,13 +166,11 @@ RSpec.describe 'Address page', type: :feature do
 
     context 'when all data valid' do
       let(:for_update_valid_first_name) { 'First' }
-
       let(:expected_result_update_flash) { t('address.update', address_type: BillingAddress.name) }
 
       context 'when BillingAddress' do
         before do
           visit edit_address_path
-
           within('#billing_address') do
             fill_in t('address.label.first_name'), with: for_update_valid_first_name
             click_button(t('address.label.button_submit'))

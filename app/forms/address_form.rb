@@ -25,10 +25,10 @@ class AddressForm
   PHONE_MAX_LENGTH = 15
 
   FIRST_NAME = /\A[a-zA-z]+\Z/.freeze
-  LAST_NAME = /\A[a-zA-z]+\Z/.freeze
-  ADDRESS = /\A[a-zA-Z0-9\-,\s]+\Z/.freeze
+  LAST_NAME = /\A[a-zA-z']+\Z/.freeze
+  ADDRESS = /\A[a-zA-Z0-9',\-\s]+\Z/.freeze
   COUNTRY = /\A[a-zA-z]+\Z/.freeze
-  CITY = /\A[a-zA-z\s]+\Z/.freeze
+  CITY = /\A[a-zA-z'\s]+\Z/.freeze
   ZIP = /\A[0-9-]+\Z/.freeze
   PHONE = /\A\+[0-9]+\Z/.freeze
 
