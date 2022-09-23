@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class PasswordsController < ApplicationController
+class UpdatePasswordsController < ApplicationController
   def update
-    @password_form = PasswordForm.new(current_user, permitted_params)
+    @password_form = UpdatePasswordForm.new(current_user, permitted_params)
     @password_form.save ? good_update : bad_update
   end
 

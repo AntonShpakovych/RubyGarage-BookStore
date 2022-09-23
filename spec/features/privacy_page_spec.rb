@@ -3,7 +3,7 @@
 RSpec.describe 'Privacy page', type: :feature do
   let(:user) { create(:user) }
   let(:result) { page }
-  let(:privacy_path) { "users/#{user.id}" }
+  let(:privacy_path) { user_path }
 
   before do
     visit new_user_session_path

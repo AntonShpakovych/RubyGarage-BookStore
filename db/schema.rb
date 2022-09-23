@@ -16,14 +16,14 @@ ActiveRecord::Schema.define(version: 2022_09_01_142157) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "address"
-    t.string "city"
-    t.integer "zip"
-    t.string "country"
-    t.string "phone"
-    t.string "type"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "address", null: false
+    t.string "city", null: false
+    t.integer "zip", null: false
+    t.string "country", null: false
+    t.string "phone", null: false
+    t.string "type", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

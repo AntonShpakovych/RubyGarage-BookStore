@@ -9,3 +9,5 @@ ActiveStorage::VariantRecord:
   enabled: false
 User:
   enabled: false
+Address:
+  enabled: false

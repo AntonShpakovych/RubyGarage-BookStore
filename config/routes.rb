@@ -10,11 +10,11 @@ Rails.application.routes.draw do
     resources :books, only: :index
   end
 
-  resource :email, only: %i[update]
-  resource :password, only: %i[update]
+  resource :update_email, only: %i[update]
+  resource :update_password, only: %i[update]
 
   get 'address', to: redirect('/address/edit')
-  get 'email', to: redirect('/user/edit')
-  get 'password', to: redirect('/user/edit')
+  get 'update_email', to: redirect('/user/edit')
+  get 'update_password', to: redirect('/user/edit')
   get 'user', to: redirect('/user/edit')
 end

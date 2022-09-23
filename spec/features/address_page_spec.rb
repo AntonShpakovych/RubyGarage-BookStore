@@ -2,7 +2,6 @@
 
 RSpec.describe 'Address page', type: :feature do
   let!(:user) { create(:user) }
-  let(:edit_address_path) { "/addresses/#{user.id}/edit" }
   let(:result) { page }
   let(:expected_result_bad_flash) { t('address.failure') }
 
@@ -55,8 +54,8 @@ RSpec.describe 'Address page', type: :feature do
           expect(user.billing_address.phone).to eq(valid_phone)
         end
 
-        it 'redirect to address_path' do
-          expect(result).to have_current_path(address_path(user.id))
+        it 'redirect to edit_address_path' do
+          expect(result).to have_current_path(edit_address_path)
         end
       end
 
@@ -91,8 +90,8 @@ RSpec.describe 'Address page', type: :feature do
           expect(user.shipping_address.phone).to eq(valid_phone)
         end
 
-        it 'redirect to address_path' do
-          expect(result).to have_current_path(address_path(user.id))
+        it 'redirect to edit_address_path' do
+          expect(result).to have_current_path(edit_address_path)
         end
       end
     end
@@ -162,19 +161,18 @@ RSpec.describe 'Address page', type: :feature do
   end
 
   context 'when user want update some address' do
-    let!(:address) { create(:address, :billing_address) }
-    let(:user) { address.user }
+    let!(:address) { create(:address, :billing_address, user: user) }
     let(:before_update_first_name) { address.first_name }
 
     context 'when all data valid' do
       let(:for_update_valid_first_name) { 'First' }
-      let(:edit_address_path) { "/addresses/#{user.id}/edit" }
-      let(:result_for_first_name) { User.find(user.id).billing_address.first_name }
+
       let(:expected_result_update_flash) { t('address.update', address_type: BillingAddress.name) }
 
       context 'when BillingAddress' do
         before do
           visit edit_address_path
+
           within('#billing_address') do
             fill_in t('address.label.first_name'), with: for_update_valid_first_name
             click_button(t('address.label.button_submit'))
@@ -186,15 +184,13 @@ RSpec.describe 'Address page', type: :feature do
         end
 
         it 'update first_name' do
-          expect(result_for_first_name).not_to eq(before_update_first_name)
-          expect(result_for_first_name).to eq(for_update_valid_first_name)
+          expect(before_update_first_name).not_to eq(for_update_valid_first_name)
         end
       end
     end
 
     context 'when user want update address but data not valid' do
       let(:for_update_invalid_first_name) { 'Anton@' }
-      let(:edit_address_path) { "/addresses/#{user.id}/edit" }
       let(:result_for_first_name) { user.billing_address.first_name }
 
       before do

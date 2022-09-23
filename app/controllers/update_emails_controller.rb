@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class EmailsController < ApplicationController
+class UpdateEmailsController < ApplicationController
   def update
-    @email_form = EmailForm.new(current_user, permitted_params)
+    @email_form = UpdateEmailForm.new(current_user, permitted_params)
     @email_form.save ? good_update : bad_update
   end
 

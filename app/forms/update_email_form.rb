@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EmailForm
+class UpdateEmailForm
   include ActiveModel::Model
   attr_accessor :email
 
