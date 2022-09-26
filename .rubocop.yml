@@ -22,6 +22,9 @@ Style/Documentation:
 Style/HashSyntax:
   Enabled: false
 
+Metrics/AbcSize:
+  Exclude:
+    - 'app/models/user.rb'
 
 Metrics/BlockLength:
   Exclude:

@@ -1,0 +1,17 @@
+%h3= t('.write_a_review_title')
+%p.general-info-text= t('.review_score')
+= simple_form_for Review.new, as: :review, url: review_path , method: :post, html: { class: 'row' } do |f|
+  =f.hidden_field :rating
+  =f.hidden_field :book_id, value: book.id
+  =f.hidden_field :user_id, value: current_user.id
+  .col-md-8
+    .mb-15
+    #raiting
+      -rating_range.each do |index|
+        %i.fa.fa-star.rate-empty{ data: { value: index } }
+    .mb-40
+      .form-group
+        =f.input :title, label: t('.review_form_title'), label_html: { class: 'control-label input-label grey-600' }, input_html: { id: 'title', class: 'form-control' }, type: 'text'
+        =f.input :text, as: :text, label: t('.review_form_review'), label_html: { class: 'control-label input-label grey-600' }, input_html: { id: 'text', class: 'form-control' }, type: 'text'
+    .text-right
+      =f.button :submit, t('.review_post'), class: 'btn mb-20'

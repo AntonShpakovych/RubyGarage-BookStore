@@ -11,6 +11,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id]).decorate
+    @reviews = @book.reviews.includes(:user).approved.order('created_at DESC')
   end
 
   private

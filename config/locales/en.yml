@@ -65,6 +65,18 @@ en:
         button_view_more: View More
       books:
         unit_for_number_currency: €
+      reviews:
+        verified_reviewer: Verified Reviewer
+        count_reviews_title: Reviews (%{count_reviews})
+      write_review:
+        text_invalid: Should not be not empty, consist of a-z, A-Z, 0-9, or one of !#$%&'*+-/=?^_`{|}~. Must be less than 500 characters.
+        title_invalid: Should not be not empty, consist of a-z, A-Z, 0-9, or one of !#$%&'*+-/=?^_`{|}~. Must be less than 80 characters.
+        write_a_review_title: Write a Review
+        review_score: Score
+        review_form_title: Title
+        review_form_review: Text
+        review_post: Post
+        good_create: Thanks for Review. It will be published as soon as Admin will approve it.
     index:
       title: Catalog
     show:
@@ -77,11 +89,7 @@ en:
       description_title: Description
       read_more: Read More
       add_to_card: Add to Cart
-      write_a_review_title: Write a Review
-      review_score: Score
-      review_form_title: Title
-      review_form_review: Review
-      review_post: Post
+      message_review_for_not_authorized: If you want to write your review, you need to be authorized
   users:
     update_good: You have successfully updated your account information
     update_failure: Something went wrong, we didn't receive the data to update, or the data you submitted is incorrect

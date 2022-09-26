@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resource :update_email, only: %i[update]
   resource :update_password, only: %i[update]
+  resource :review, only: %i[create]
 
   get 'address', to: redirect('/address/edit')
   get 'update_email', to: redirect('/user/edit')

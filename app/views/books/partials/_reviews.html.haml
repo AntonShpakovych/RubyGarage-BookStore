@@ -1,0 +1,19 @@
+%h3.in-gold-500.mb-25= t('.count_reviews_title', count_reviews: reviews.count)
+-reviews.each do |review|
+  .general-message-wrap.divider-lg
+    .clearfix
+      %img.img-circle.logo-size.inlide-block.pull-left{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
+      .ml-70
+        %div
+          .general-message-date.hidden-xs=review.created_at.strftime('%m/%d/%Y')
+          .max-240
+            .general-message-verified= t('.verified_reviewer')
+            .general-message-name=review.user.full_name
+        .mb-15
+          -review.rating.times do
+            %i.fa.fa-star.rate-star
+          -if review.rating < max_rating
+            - (max_rating - review.rating).times do
+              %i.fa.fa-star.rate-empty
+        %h3=review.title
+        %p=review.text
