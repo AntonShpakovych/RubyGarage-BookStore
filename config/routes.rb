@@ -7,14 +7,16 @@ Rails.application.routes.draw do
   root 'home#index'
   resource :user, only: %i[edit destroy]
   resource :address, only: %i[edit update create]
-  resources :books, only: %i[index show]
+  resources :books, only: %i[index show] do
+    resource :review, only: %i[create]
+  end
+
   resources :categories, only: :index do
     resources :books, only: :index
   end
 
   resource :update_email, only: %i[update]
   resource :update_password, only: %i[update]
-  resource :review, only: %i[create]
 
   get 'address', to: redirect('/address/edit')
   get 'update_email', to: redirect('/user/edit')

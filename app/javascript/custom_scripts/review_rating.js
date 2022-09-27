@@ -1,6 +1,6 @@
 function calculationRating(){
   let defolt_rating = document.getElementById('review_rating');
-  let stars_icons = document.querySelectorAll('#raiting i')
+  let stars_icons = document.querySelectorAll('#rating i')
   const EMPTY_STAR = 'rate-empty'
   const FILLED_STAR = 'rate-star'
 
