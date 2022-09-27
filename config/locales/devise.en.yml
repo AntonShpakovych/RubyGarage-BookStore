@@ -1,13 +1,6 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
 en:
-  active_admin:
-    notice:
-      approved: You approved this review
-      rejected: You rejected this review
-    links:
-      approve: Approve
-      reject: Reject
   devise:
     default:
       log_in: Log in
