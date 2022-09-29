@@ -5,7 +5,7 @@ class ReviewForm < ApplicationForm
   MAX_RATING = 5
   RATING_RANGE = (MIN_RATING..MAX_RATING).freeze
 
-  REGEX_FOR_TITLE_AND_TEXT = /\A[a-zA-Z0-9\s.]+\Z/.freeze
+  REGEX_FOR_TITLE_AND_TEXT = /\A[a-zA-Z0-9\W]+\Z/.freeze
 
   MAX_LENGTH_TITLE = 80
   MAX_LENGTH_TEXT = 500
