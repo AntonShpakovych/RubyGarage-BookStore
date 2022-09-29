@@ -8,7 +8,7 @@ FactoryBot.define do
     city { FFaker::Address.city }
     zip { FFaker::Address.zip_code }
     country { 'UA' }
-    phone { "+#{ISO3166::Country[country].country_code}#{Faker::Number.number(digits: AddressForm::PHONE_MIN_LENGTH)}" }
+    phone { "+#{ISO3166::Country['UA'].country_code}#{Faker::Number.number(digits: AddressForm::PHONE_MIN_LENGTH)}" }
     user
 
     trait :shipping_address do
