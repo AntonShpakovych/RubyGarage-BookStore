@@ -6,7 +6,7 @@ ActiveAdmin.register Book do
 
   permit_params :name, :description, :quantity, :year_of_publication, :price,
                 :height, :width, :length, :materials, :category_id,
-                author_ids: []
+                author_ids: [], images: []
 
   index do
     selectable_column
@@ -17,6 +17,9 @@ ActiveAdmin.register Book do
     column :full_description, :short_description
     column :price
     column :authors, :all_authors
+    column :images do |book|
+      image_tag(book.book_logo_image, class: 'admin-book_logo')
+    end
     actions
   end
 
@@ -34,6 +37,11 @@ ActiveAdmin.register Book do
       row :price
       row :created_at
       row :updated_at
+      book.images.each do |image|
+        row image do
+          image_tag(image.url(:admin_show))
+        end
+      end
     end
   end
 
@@ -50,6 +58,7 @@ ActiveAdmin.register Book do
       f.input :materials
       f.input :price, :min => Book::MIN_PRICE_VALUE
       f.input :quantity
+      f.input :images, as: :file, input_html: { multiple: true }
     end
     actions
   end
