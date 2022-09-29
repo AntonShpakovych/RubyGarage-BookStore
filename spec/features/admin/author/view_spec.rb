@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe 'View page', type: :feature do
-  let!(:admin_user) { create(:admin_user)  }
+RSpec.describe 'View', type: :feature do
+  let!(:admin_user) { create(:admin_user) }
   let!(:author) { create(:author) }
 
   let(:result) { page }

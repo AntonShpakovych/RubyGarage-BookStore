@@ -15,6 +15,8 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
+    let(:params) { { id: user.id, user: { check: true } } }
+
     before do
       delete :destroy,
              params: params

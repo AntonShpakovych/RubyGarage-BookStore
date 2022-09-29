@@ -12,8 +12,8 @@ RSpec.describe UpdatePasswordsController, type: :controller do
       let(:password_confirmation) { new_password_good }
 
       let(:params) do
-        { password: { current_password: old_password, password: new_password_good,
-                      password_confirmation: password_confirmation } }
+        { user: { current_password: old_password, password: new_password_good,
+                  password_confirmation: password_confirmation } }
       end
 
       before { put :update, params: params }
@@ -25,7 +25,7 @@ RSpec.describe UpdatePasswordsController, type: :controller do
 
     context 'when bad update password' do
       let(:params) do
-        { password: { current_password: 'not current_password' } }
+        { user: { current_password: 'not current_password' } }
       end
 
       before { put :update, params: params }

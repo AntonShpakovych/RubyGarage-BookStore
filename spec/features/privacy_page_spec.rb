@@ -193,7 +193,7 @@ RSpec.describe 'Privacy page', type: :feature do
     context 'when checkbox not checked' do
       let(:result_link) do
         within('#delete_account_form') do
-          page.find_link(t('privacy.global_names.button_submit_remove_account'))[:class]
+          page.find_button(t('privacy.global_names.button_submit_remove_account'), disabled: true)[:class]
         end
       end
       let(:expected_result) { 'disabled' }
@@ -211,11 +211,13 @@ RSpec.describe 'Privacy page', type: :feature do
 
       before do
         visit privacy_path
-        page.find('.checkbox-input', :visible => false).set(true)
-        page.find_link(t('privacy.global_names.button_submit_remove_account')).click
+        within('#delete_account_form') do
+          page.find('#remove-account', visible: false).click
+          page.find_button(t('privacy.global_names.button_submit_remove_account'), disabled: true).click
+        end
       end
 
-      it 'link for delete_account not disable' do
+      it 'account deleted' do
         expect(result).not_to include(expected_result)
       end
     end

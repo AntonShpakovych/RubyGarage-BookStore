@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'New page', type: :feature do
+RSpec.describe 'Create', type: :feature do
   let!(:admin_user) { create(:admin_user) }
   let!(:category) { create(:category) }
   let!(:author) { create(:author) }

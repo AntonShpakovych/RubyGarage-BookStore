@@ -73,9 +73,9 @@ RSpec.describe 'Home page', type: :feature do
     before do
       visit new_user_registration_path
       click_link t('devise.default.sign_up'), match: :first
-      fill_in 'Email', with: test_email
-      fill_in 'Password', with: password
-      fill_in 'Password confirmation', with: confirmation_password
+      fill_in t('devise.placeholder.email'), with: test_email
+      fill_in t('devise.placeholder.password'), with: password
+      fill_in t('devise.placeholder.confirm_password'), with: confirmation_password
       click_button t('devise.default.sign_up')
     end
 

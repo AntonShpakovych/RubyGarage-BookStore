@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class UpdateEmailForm
-  include ActiveModel::Model
+class UpdateEmailForm < ApplicationForm
   attr_accessor :email
 
   EMAIL_MINIMUM_LENGTH = 3
@@ -13,17 +12,4 @@ class UpdateEmailForm
 
   validates :email, length: { minimum: EMAIL_MINIMUM_LENGTH, maximum: EMAIL_MAXIMUM_LENGTH },
                     format: { with: EMAIL, message: I18n.t('privacy.validation.email') }
-
-  def initialize(model, params = {})
-    self.attributes = params
-    @params = params
-    @model = model
-  end
-
-  def save
-    return unless valid?
-
-    @model.update(email: @params[:email])
-    @model
-  end
 end
