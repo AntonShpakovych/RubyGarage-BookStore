@@ -1,34 +1,44 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Index page', type: :feature do
+RSpec.describe 'Index', type: :feature do
   let!(:admin_user) { create(:admin_user) }
-  let!(:author) { create(:author) }
+  let!(:book) { create(:book, authors: [create(:author)]) }
 
   let(:link_view) { find_link(class: 'view_link member_link') }
   let(:link_edit) { find_link(class: 'edit_link member_link') }
   let(:link_delete) { find_link(class: 'delete_link member_link') }
-  let(:link_create) { find_link(href: '/admin/authors/new') }
+  let(:link_create) { find_link(href: '/admin/books/new') }
 
   let(:links) { [link_view, link_edit, link_delete, link_create] }
 
-  let(:expected_result_name) { author.name }
-  let(:expected_result_id) { author.id }
+  let(:expected_result_name) { book.name }
+  let(:expected_result_id) { book.id }
+  let(:expected_result_category) { book.category.name }
+  let(:expected_result_author) { book.authors.pluck(:name).join(', ') }
   let(:result) { page }
 
   before do
     login_admin(admin_user)
-    visit admin_authors_path
+    visit admin_books_path
   end
 
-  it 'each author item has name' do
+  it 'each book item has authors' do
+    expect(result).to have_text(expected_result_author)
+  end
+
+  it 'each book item has category' do
+    expect(result).to have_text(expected_result_category)
+  end
+
+  it 'each book item has name' do
     expect(result).to have_text(expected_result_name)
   end
 
-  it 'each author item has id' do
+  it 'each book item has id' do
     expect(result).to have_text(expected_result_id)
   end
 
-  it 'each author item has Edit, View, Delete' do
+  it 'each book item has Edit, View, Delete' do
     links.each do |link|
       expect(result.body).to have_link(link.text)
     end
@@ -38,7 +48,7 @@ RSpec.describe 'Index page', type: :feature do
     let(:result_current_path) { result.current_path }
 
     context 'when click view' do
-      let(:expected_result_current_path) { admin_author_path(author.id) }
+      let(:expected_result_current_path) { admin_book_path(book.id) }
 
       before { link_view.click }
 
@@ -48,7 +58,7 @@ RSpec.describe 'Index page', type: :feature do
     end
 
     context 'when click edit' do
-      let(:expected_result_current_path) { edit_admin_author_path(author.id) }
+      let(:expected_result_current_path) { edit_admin_book_path(book.id) }
 
       before { link_edit.click }
 
@@ -69,7 +79,7 @@ RSpec.describe 'Index page', type: :feature do
 
     context 'when click create' do
       let(:result_current_path) { result.current_path }
-      let(:expected_result_current_path) { new_admin_author_path }
+      let(:expected_result_current_path) { new_admin_book_path }
 
       before { link_create.click }
 

@@ -6,14 +6,14 @@ RSpec.describe Address, type: :model do
   end
 
   describe 'Table columns' do
-    it { is_expected.to have_db_column(:first_name).of_type(:string) }
-    it { is_expected.to have_db_column(:last_name).of_type(:string) }
-    it { is_expected.to have_db_column(:address).of_type(:string) }
-    it { is_expected.to have_db_column(:city).of_type(:string) }
-    it { is_expected.to have_db_column(:zip).of_type(:string) }
-    it { is_expected.to have_db_column(:country).of_type(:string) }
-    it { is_expected.to have_db_column(:phone).of_type(:string) }
-    it { is_expected.to have_db_column(:type).of_type(:string) }
+    it { is_expected.to have_db_column(:first_name).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:last_name).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:address).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:city).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:zip).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:country).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:phone).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:type).of_type(:string).with_options(null: false) }
   end
 
   describe 'Table index' do

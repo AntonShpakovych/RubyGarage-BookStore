@@ -8,7 +8,7 @@ RSpec.describe UpdateEmailsController, type: :controller do
   describe 'PUT #update' do
     context 'when good update email' do
       let(:good_email) { FFaker::Internet.email }
-      let(:params) { { email: { email: good_email } } }
+      let(:params) { { user: { email: good_email } } }
 
       before { put :update, params: params }
 
@@ -19,7 +19,7 @@ RSpec.describe UpdateEmailsController, type: :controller do
 
     context 'when bad update email' do
       let(:bad_email) { '--email@gmail.com' }
-      let(:params) { { email: { email: bad_email } } }
+      let(:params) { { user: { email: bad_email } } }
 
       before { put :update, params: params }
 

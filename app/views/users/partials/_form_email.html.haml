@@ -1,7 +1,7 @@
 .col-sm-5
   %p.in-gold-500.font-18.mb-25= t('privacy.global_names.title_email')
   .general-form-md
-    = simple_form_for email, as: :email, url: update_email_path, method: :put do |f|
+    = simple_form_for email, as: :user, url: update_email_path, method: :put do |f|
       .form-group.mb-35
         = f.input :email, label: t('privacy.label.email'), input_html: { id: 'email', class: 'form-control' } , label_html: { class: 'control-label input-label' }, placeholder: t('privacy.placeholder.email'), type: 'email'
       .general-text-align

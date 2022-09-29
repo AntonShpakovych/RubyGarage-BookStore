@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Edit page', type: :feature do
-  let!(:admin_user) { create(:admin_user)  }
+RSpec.describe 'Edit', type: :feature do
+  let!(:admin_user) { create(:admin_user) }
   let!(:category) { create(:category) }
 
   let(:new_name) { 'New category name' }

@@ -1,24 +1,25 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Edit page', type: :feature do
-  let!(:admin_user) { create(:admin_user)  }
-  let!(:author) { create(:author) }
+RSpec.describe 'Edit', type: :feature do
+  let!(:admin_user) { create(:admin_user) }
+  let!(:book) { create(:book) }
 
-  let(:new_name) { 'New author name' }
-  let(:expected_result_button) { find('#author_submit_action input').value }
+  let(:new_name) { 'New category name' }
+
+  let(:expected_result_button) { find('#book_submit_action input').value }
   let(:expected_result_link) { find('.cancel a').text }
   let(:result) { page }
 
   before do
     login_admin(admin_user)
-    visit edit_admin_author_path(author)
+    visit edit_admin_book_path(book)
   end
 
-  it 'edit page show author name' do
-    expect(result).to have_text(author.name)
+  it 'edit page show book name' do
+    expect(result).to have_text(book.name)
   end
 
-  it 'page has button Update Author' do
+  it 'page has button Update Book' do
     expect(result).to have_button(expected_result_button)
   end
 
@@ -26,10 +27,10 @@ RSpec.describe 'Edit page', type: :feature do
     expect(result).to have_link(expected_result_link)
   end
 
-  context 'when admin want update author and click Update Author' do
+  context 'when admin want update book and click Update Book' do
     before do
-      within('#edit_author') do
-        fill_in 'author[name]', with: new_name
+      within('#edit_book') do
+        fill_in 'book[name]', with: new_name
         click_button(expected_result_button)
       end
     end
@@ -41,8 +42,8 @@ RSpec.describe 'Edit page', type: :feature do
 
   context 'when admin want update but click Cancel' do
     before do
-      within('#edit_author') do
-        fill_in 'author[name]', with: new_name
+      within('#edit_book') do
+        fill_in 'book[name]', with: new_name
         click_link(expected_result_link)
       end
     end
