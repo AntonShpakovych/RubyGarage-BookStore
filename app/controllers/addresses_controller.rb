@@ -5,7 +5,7 @@ class AddressesController < ApplicationController
 
   def create
     if address_form_with_choosed_type.save
-      determine_redirecting('create')
+      determine_redirecting(:create)
     else
       flash[:alert] = t('address.failure')
       render :edit
@@ -14,7 +14,7 @@ class AddressesController < ApplicationController
 
   def update
     if address_form_with_choosed_type.save
-      determine_redirecting('update')
+      determine_redirecting(:update)
     else
       flash[:alert] = t('address.failure')
       render :edit
@@ -45,7 +45,7 @@ class AddressesController < ApplicationController
   end
 
   def address
-    @address ||= Address.find_or_initialize_by(user_id: current_user.id, type: addresses_params[:type])
+    @address ||= Address.find_or_initialize_by(user: current_user, type: addresses_params[:type])
   end
 
   def addresses_params

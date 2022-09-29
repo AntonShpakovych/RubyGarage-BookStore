@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class AddressForm
-  include ActiveModel::Model
-
+class AddressForm < ApplicationForm
   FIRST_NAME_MIN_LENGTH = 3
   FIRST_NAME_MAX_LENGTH = 50
 
@@ -52,19 +50,6 @@ class AddressForm
                     format: { with: PHONE, message: I18n.t('address.validation.phone') }
 
   validate :validate_phone
-
-  def initialize(model, params = {})
-    self.attributes = params
-    @params = params
-    @model = model
-  end
-
-  def save
-    return unless valid?
-
-    @model ? @model.update(@params) : @model.save
-    @model
-  end
 
   private
 

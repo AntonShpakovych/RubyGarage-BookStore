@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class UpdatePasswordForm
-  include ActiveModel::Model
+class UpdatePasswordForm < ApplicationForm
   attr_accessor :current_password, :password, :password_confirmation
 
   PASSWORD_MINIMUM_LENGTH = 8
@@ -16,12 +15,6 @@ class UpdatePasswordForm
                        if: :password_attributes_not_blank
 
   validate :password_validation,  if: :password_attributes_not_blank
-
-  def initialize(model, params = {})
-    self.attributes = params
-    @params = params
-    @model = model
-  end
 
   def save
     return unless valid?

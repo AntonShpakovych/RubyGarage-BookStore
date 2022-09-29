@@ -2,19 +2,18 @@
 
 RSpec.describe AddressesController, type: :controller do
   let!(:user) { create(:user) }
-  let(:first_name_valid) { 'First' }
+  let(:first_name_valid) { attributes_for(:address)[:first_name] }
   let(:first_name_invalid) { 'First1' }
-  let(:last_name) { 'Last' }
-  let(:address) { 'Address 2' }
-  let(:city) { 'Citynew' }
-  let(:country) { 'UA' }
-  let(:phone) { '+380982020202' }
-  let(:zip) { '33027' }
+  let(:last_name) { attributes_for(:address)[:last_name] }
+  let(:address) { attributes_for(:address)[:address] }
+  let(:city) { attributes_for(:address)[:city] }
+  let(:country) { attributes_for(:address)[:country] }
+  let(:phone) { attributes_for(:address)[:phone] }
+  let(:zip) { attributes_for(:address)[:zip] }
   let(:type) { BillingAddress.name }
 
   let(:params_good) do
-    { id: user.id,
-      address: { first_name: first_name_valid,
+    { address: { first_name: first_name_valid,
                  last_name: last_name,
                  address: address,
                  city: city,
@@ -25,8 +24,7 @@ RSpec.describe AddressesController, type: :controller do
   end
 
   let(:params_bad) do
-    { id: user.id,
-      address: { first_name: first_name_invalid,
+    { address: { first_name: first_name_invalid,
                  last_name: last_name,
                  address: address,
                  city: city,
