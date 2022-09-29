@@ -18,6 +18,6 @@ class UpdateEmailsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:email).permit(:email)
+    params.require(:user).permit(:email)
   end
 end

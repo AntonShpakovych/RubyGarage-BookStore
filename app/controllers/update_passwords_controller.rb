@@ -18,6 +18,6 @@ class UpdatePasswordsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:password).permit(:current_password, :password, :password_confirmation)
+    params.require(:user).permit(:current_password, :password, :password_confirmation)
   end
 end

@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
-class ReviewForm
-  include ActiveModel::Model
-
+class ReviewForm < ApplicationForm
   MIN_RATING = 1
   MAX_RATING = 5
   RATING_RANGE = (MIN_RATING..MAX_RATING).freeze
 
-  REGEX_FOR_TITLE_AND_TEXT = /\A[a-zA-Z0-9\s.]+\Z/.freeze
+  REGEX_FOR_TITLE_AND_TEXT = /\A[a-zA-Z0-9\W]+\Z/.freeze
 
   MAX_LENGTH_TITLE = 80
   MAX_LENGTH_TEXT = 500
@@ -22,12 +20,6 @@ class ReviewForm
   validates :text, length: { maximum: MAX_LENGTH_TEXT },
                    format: { with: REGEX_FOR_TITLE_AND_TEXT,
                              message: I18n.t('books.partials.write_review.text_invalid') }
-
-  def initialize(model, params = {})
-    self.attributes = params
-    @params = params
-    @model = model
-  end
 
   def save
     return unless valid?
