@@ -1,0 +1,13 @@
+.general-main-wrap
+  .text-center
+    %h3.general-login-title= t('devise.default.devise_forgot_password_title')
+    .general-form
+      = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .form-group.mb-30
+          = f.input :email, autofocus: true, type: 'email', autocomplete: "email", placeholder:t('devise.placeholder.email'), input_html: { class: 'form-control' }, lavbel_html: { class: 'control-label input-label' }
+        .text-center
+          = f.button :submit, t('devise.default.send_email_instructions_submit'), class: 'btn btn-default mb-20'
+  %p.general-sign-text.text-center
+    = link_to :back, class: 'in-gold-500' do
+      =t('.default.cansel')  

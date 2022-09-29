@@ -10,4 +10,17 @@
         %li
           = link_to category.name, books_path(category_id: category), class: 'collapse-link'
   %li
-    %a{href: "#"}= t('.navigation_account')
+    %a{type: "button", 'data-toggle': "collapse", href: "#account", 'aria-expanded': "false", 'aria-controls': "account"}= t('.navigation_account')
+    %ul#account.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
+      -if user_signed_in?
+        %li
+          = link_to t('.navigation_orders'), '#', class: 'collapse-link'
+        %li
+          = link_to t('.navigation_settings'), '#', class: 'collapse-link'
+        %li
+          = link_to t('devise.default.log_out'), destroy_user_session_path, method: :delete, class: 'collapse-link'
+      -else
+        %li
+          = link_to t('devise.default.log_in'), new_user_session_path, class: 'collapse-link'
+        %li
+          = link_to t('devise.default.sign_up'), new_user_registration_path, class: 'collapse-link'

@@ -12,6 +12,8 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render 'partials/header'
-    = yield
+    = render 'partials/flashes'
+    %main.container
+      = yield
     = render 'partials/footer'
     %script{src: "https://use.fontawesome.com/67602d7308.js"}

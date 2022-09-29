@@ -7,3 +7,5 @@ ActiveStorage::Blob:
   enabled: false
 ActiveStorage::VariantRecord:
   enabled: false
+User:
+  enabled: false

@@ -47,4 +47,48 @@ RSpec.describe 'Home page', type: :feature do
       end
     end
   end
+
+  context 'when user is not sign in' do
+    let(:expected_result_sign_up) { t('devise.default.sign_up') }
+    let(:expected_result_log_in) { t('devise.default.log_in') }
+
+    it 'in navigation user see Sign up' do
+      expect(result).to have_link(expected_result_sign_up)
+    end
+
+    it 'in navigation user see Log in' do
+      expect(result).to have_link(expected_result_log_in)
+    end
+  end
+
+  context 'when user is sign in' do
+    let(:test_email) { 'test@email.email' }
+    let(:password) { 'somepassword123' }
+    let(:confirmation_password) { password }
+
+    let(:expected_result_log_out) { t('devise.default.log_out') }
+    let(:expected_result_settings) { t('partials.desktop.navigation.navigation_settings') }
+    let(:expected_result_orders) { t('partials.desktop.navigation.navigation_orders') }
+
+    before do
+      visit new_user_registration_path
+      click_link t('devise.default.sign_up'), match: :first
+      fill_in t('devise.placeholder.email'), with: test_email
+      fill_in t('devise.placeholder.password'), with: password
+      fill_in t('devise.placeholder.confirm_password'), with: confirmation_password
+      click_button t('devise.default.sign_up')
+    end
+
+    it 'in navigation user see Log out' do
+      expect(result).to have_link(expected_result_log_out)
+    end
+
+    it 'in navigation user see Settings' do
+      expect(result).to have_link(expected_result_settings)
+    end
+
+    it 'in navigation user see Orders' do
+      expect(result).to have_link(expected_result_orders)
+    end
+  end
 end
