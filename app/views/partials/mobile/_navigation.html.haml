@@ -16,7 +16,7 @@
         %li
           = link_to t('.navigation_orders'), '#', class: 'collapse-link'
         %li
-          = link_to t('.navigation_settings'), '#', class: 'collapse-link'
+          = link_to t('.navigation_settings'), edit_address_path, class: 'collapse-link'
         %li
           = link_to t('devise.default.log_out'), destroy_user_session_path, method: :delete, class: 'collapse-link'
       -else
