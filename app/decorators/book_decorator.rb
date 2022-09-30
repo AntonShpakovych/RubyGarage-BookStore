@@ -2,7 +2,6 @@
 
 class BookDecorator < Draper::Decorator
   SHORT_DESCRIPTION_LENGTH = 250
-  DEFAULT_IMAGE_URL = 'default-book.png'
 
   delegate_all
 
@@ -16,9 +15,5 @@ class BookDecorator < Draper::Decorator
 
   def dimensions
     I18n.t('books.show.dimensions', height: height, width: width, length: length)
-  end
-
-  def book_logo_image
-    images? ? images.first.url : DEFAULT_IMAGE_URL
   end
 end
