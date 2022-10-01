@@ -11,6 +11,14 @@ FactoryBot.define do
     quantity { FFaker::Number.number }
     year_of_publication { FFaker::Vehicle.year }
     materials { FFaker::BaconIpsum.word }
+    main_image do
+      path = Rails.root.join('spec/fixtures/images/main_image.jpg')
+      Rack::Test::UploadedFile.new(path, 'image/jpg')
+    end
+    images do
+      path = Rails.root.join('spec/fixtures/images/images.jpg')
+      [Rack::Test::UploadedFile.new(path, 'image/jpg')]
+    end
     category
   end
 end

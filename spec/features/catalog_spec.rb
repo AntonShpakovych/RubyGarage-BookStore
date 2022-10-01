@@ -99,4 +99,36 @@ RSpec.describe 'Catalog page', type: :feature do
       end
     end
   end
+
+  describe 'main_image' do
+    let(:result) do
+      within('.general-thumb-wrap') do
+        page.find('img', class: 'img-shadow general-thumbnail-img book-logo_img')['src']
+      end
+    end
+
+    context 'when book has main_image' do
+      let!(:book) { create(:book) }
+      let(:expected_result) { /#{book.main_image}/ }
+
+      before { visit books_path }
+
+      it 'user can see main_image on page' do
+        expect(result).to match(expected_result)
+      end
+    end
+
+    context 'when book without main_image' do
+      let(:expected_result) { /#{BookImageUploader.new.default_url[0...-3]}/ }
+
+      before do
+        create(:book, main_image: nil)
+        visit books_path
+      end
+
+      it 'user can see default image on page' do
+        expect(result).to match(expected_result)
+      end
+    end
+  end
 end

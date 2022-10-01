@@ -163,4 +163,34 @@ RSpec.describe 'Book page', type: :feature do
       end
     end
   end
+
+  describe 'Photo' do
+    let!(:book) { create(:book) }
+    let(:result_for_main_image) do
+      page.find('img', class: 'img-responsive')['src']
+    end
+    let(:result_for_images) do
+      page.all('img', class: 'catelog-book_image_show').map do |image|
+        image['src']
+      end
+    end
+    let(:expected_result_main_image) do
+      /#{book.main_image}/
+    end
+    let(:expect_result_images) do
+      book.images
+    end
+
+    before { visit book_path(book.id) }
+
+    it 'user can see main_image choosed book' do
+      expect(result_for_main_image).to match(expected_result_main_image)
+    end
+
+    it 'user can see other images choosed book' do
+      result_for_images.each_with_index do |result_image, index|
+        expect(result_image).to match(/#{expect_result_images[index]}/)
+      end
+    end
+  end
 end
