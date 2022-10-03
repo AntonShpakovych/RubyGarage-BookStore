@@ -24,7 +24,7 @@ class ReviewForm < ApplicationForm
   def save
     return unless valid?
 
-    @model&.save
+    @model.save
     @model
   end
 end

@@ -1,17 +1,14 @@
 # frozen_string_literal: true
 
-class BookImageUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
-
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+class BookImageUploader < ApplicationUploader
+  DEFAULT_IMAGE_URL = 'default-book.png'
+  DEFAULT_EXTENSION_ALLOW_LIST = %w[jpg jpeg gif png].freeze
 
   def default_url(*)
-    'default-book.png'
+    DEFAULT_IMAGE_URL
   end
 
   def extension_allowlist
-    %w[jpg jpeg gif png]
+    DEFAULT_EXTENSION_ALLOW_LIST
   end
 end

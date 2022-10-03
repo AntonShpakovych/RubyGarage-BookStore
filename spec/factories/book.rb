@@ -17,7 +17,7 @@ FactoryBot.define do
     end
     images do
       path = Rails.root.join('spec/fixtures/images/images.jpg')
-      [Rack::Test::UploadedFile.new(path, 'image/jpg')]
+      [Rack::Test::UploadedFile.new(path, 'image/jpg')] * rand(1..3)
     end
     category
   end

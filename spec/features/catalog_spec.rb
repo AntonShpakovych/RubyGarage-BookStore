@@ -119,7 +119,7 @@ RSpec.describe 'Catalog page', type: :feature do
     end
 
     context 'when book without main_image' do
-      let(:expected_result) { /#{BookImageUploader.new.default_url[0...-3]}/ }
+      let(:expected_result) { /#{book_image_default}/ }
 
       before do
         create(:book, main_image: nil)

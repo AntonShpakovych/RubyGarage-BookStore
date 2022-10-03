@@ -116,6 +116,7 @@ RSpec.describe 'Book page', type: :feature do
         context 'when user create valid review' do
           let(:expect_notice) { t('books.partials.write_review.good_create') }
           let(:expect_status) { 'unprocessed' }
+          let(:result_create) { Review.last.status }
 
           before do
             within('#new_review') do
@@ -131,7 +132,7 @@ RSpec.describe 'Book page', type: :feature do
           end
 
           it 'also create review with status unprocessed' do
-            expect(Review.last.status).to eq(expect_status)
+            expect(result_create).to eq(expect_status)
           end
         end
 
@@ -188,9 +189,7 @@ RSpec.describe 'Book page', type: :feature do
     end
 
     it 'user can see other images choosed book' do
-      result_for_images.each_with_index do |result_image, index|
-        expect(result_image).to match(/#{expect_result_images[index]}/)
-      end
+      expect(result_for_images).to all(include(expect_result_images))
     end
   end
 end
