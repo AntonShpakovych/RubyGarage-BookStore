@@ -8,12 +8,16 @@ RSpec.describe ReviewForm, type: :model do
   let(:create_form) { described_class.new(initialize_review, params) }
 
   let(:params) do
-    { title: attributes_for(:review)[:title],
-      text: attributes_for(:review)[:text],
-      rating: attributes_for(:review)[:rating],
+    { title: title,
+      text: text,
+      rating: rating,
       user_id: current_user.id,
       book_id: book.id }
   end
+
+  let(:title) { attributes_for(:review)[:title] }
+  let(:text) { attributes_for(:review)[:text] }
+  let(:rating) { attributes_for(:review)[:rating] }
 
   context 'when valid review' do
     let(:result_for_create_new_review) { create_form.save }
@@ -32,13 +36,10 @@ RSpec.describe ReviewForm, type: :model do
   context 'when invalid review' do
     let(:result_error) { create_form.errors }
 
+    before { create_form.save }
+
     context 'when bad rating' do
       let(:rating) { 7 }
-
-      before do
-        params[:rating] = rating
-        create_form.save
-      end
 
       it 'add errors rating' do
         expect(result_error).to be_key(:rating)
@@ -48,11 +49,6 @@ RSpec.describe ReviewForm, type: :model do
     context 'when bad title' do
       let(:title) { 'T' * described_class::MAX_LENGTH_TITLE.next }
 
-      before do
-        params[:title] = title
-        create_form.save
-      end
-
       it 'add errors title' do
         expect(result_error).to be_key(:title)
       end
@@ -60,11 +56,6 @@ RSpec.describe ReviewForm, type: :model do
 
     context 'when bad text' do
       let(:text) { 'T' * described_class::MAX_LENGTH_TEXT.next }
-
-      before do
-        params[:text] = text
-        create_form.save
-      end
 
       it 'add errors text' do
         expect(result_error).to be_key(:text)
