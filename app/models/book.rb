@@ -7,6 +7,7 @@ class Book < ApplicationRecord
 
   has_many :author_books, dependent: :destroy
   has_many :authors, through: :author_books
+  has_many :reviews, dependent: :destroy
 
   validates :name, :price, :description, :quantity, :height, :width,
             :length, :year_of_publication, :materials, presence: true

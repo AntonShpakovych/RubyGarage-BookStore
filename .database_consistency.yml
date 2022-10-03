@@ -3,6 +3,16 @@ AdminUser:
   password:
     ColumnPresenceChecker:
       enabled: false
+Review:
+  title:
+    NullConstraintChecker:
+      enabled: false
+  text:
+    NullConstraintChecker:
+      enabled: false
+  rating:
+    NullConstraintChecker:
+      enabled: false
 ActionText::RichText:
   enabled: false
 ActiveStorage::Attachment:

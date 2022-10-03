@@ -3,12 +3,12 @@
 FactoryBot.define do
   factory :book do
     name { FFaker::Book.title }
-    price { rand(0..100.0).round(2) }
+    price { rand(0..100.0).ceil(2) }
     description { FFaker::CheesyLingo.paragraph + FFaker::CheesyLingo.paragraph }
-    height { rand(0..100.0).round(2) }
-    width { rand(0..100.0).round(2) }
-    length { rand(0..100.0).round(2) }
-    quantity { rand(1..100) }
+    height { FFaker::Number.decimal }
+    width { FFaker::Number.decimal }
+    length { FFaker::Number.decimal }
+    quantity { FFaker::Number.number }
     year_of_publication { FFaker::Vehicle.year }
     materials { FFaker::BaconIpsum.word }
     category
