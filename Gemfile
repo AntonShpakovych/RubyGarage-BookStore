@@ -6,6 +6,7 @@ ruby(File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip)
 
 gem 'activeadmin', '~> 2.13.1'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'carrierwave', '~> 2.0'
 gem 'coderay', '~> 1.1.3'
 gem 'country_select', '~> 8.0.0'
 gem 'devise', '~> 4.8.1'
@@ -13,6 +14,7 @@ gem 'draper', '~> 4.0.0'
 gem 'factory_bot_rails', '~>6.2.0'
 gem 'ffaker', '~> 2.21.0'
 gem 'figaro', '~> 1.2.0'
+gem 'fog-aws', '~> 3.15.0'
 gem 'haml-rails', '~> 2.0'
 gem 'html2haml', '~> 2.2.0'
 gem 'omniauth', '~> 2.1.0'

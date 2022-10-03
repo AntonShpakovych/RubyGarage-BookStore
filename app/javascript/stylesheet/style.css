@@ -9043,3 +9043,7 @@ img {
 .hide_description {
   display: none;
 }
+.catalog-book_image_show {
+  width: 200px;
+  height: 200px;
+}

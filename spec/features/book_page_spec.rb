@@ -116,6 +116,7 @@ RSpec.describe 'Book page', type: :feature do
         context 'when user create valid review' do
           let(:expect_notice) { t('books.partials.write_review.good_create') }
           let(:expect_status) { 'unprocessed' }
+          let(:result_create) { Review.last.status }
 
           before do
             within('#new_review') do
@@ -131,7 +132,7 @@ RSpec.describe 'Book page', type: :feature do
           end
 
           it 'also create review with status unprocessed' do
-            expect(Review.last.status).to eq(expect_status)
+            expect(result_create).to eq(expect_status)
           end
         end
 
@@ -161,6 +162,34 @@ RSpec.describe 'Book page', type: :feature do
           expect(result).to have_text(expect_message_need_sign_in)
         end
       end
+    end
+  end
+
+  describe 'Photo' do
+    let!(:book) { create(:book) }
+    let(:result_for_main_image) do
+      page.find('img', class: 'img-responsive')['src']
+    end
+    let(:result_for_images) do
+      page.all('img', class: 'catelog-book_image_show').map do |image|
+        image['src']
+      end
+    end
+    let(:expected_result_main_image) do
+      /#{book.main_image}/
+    end
+    let(:expect_result_images) do
+      book.images
+    end
+
+    before { visit book_path(book.id) }
+
+    it 'user can see main_image choosed book' do
+      expect(result_for_main_image).to match(expected_result_main_image)
+    end
+
+    it 'user can see other images choosed book' do
+      expect(result_for_images).to all(include(expect_result_images))
     end
   end
 end

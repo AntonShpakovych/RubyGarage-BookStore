@@ -3,6 +3,9 @@
 class Book < ApplicationRecord
   MIN_PRICE_VALUE = 0
 
+  mount_uploaders :images, BookImageUploader
+  mount_uploader :main_image, BookImageUploader
+
   belongs_to :category
 
   has_many :author_books, dependent: :destroy

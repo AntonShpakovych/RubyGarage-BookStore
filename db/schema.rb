@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 2022_10_03_131753) do
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.json "images"
+    t.json "main_image"
     t.index ["category_id"], name: "index_books_on_category_id"
   end
 
