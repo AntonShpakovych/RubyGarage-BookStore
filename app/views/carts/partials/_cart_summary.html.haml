@@ -1,0 +1,20 @@
+.col-sm-8
+  .res-mr-200.text-center.general-text-right
+    %p.in-gold-500.font-18= t('.order_summary_title')
+    %table.general-summary-table.general-summary-table-right.general-text-right
+      %tr
+        %td
+          %p.font-16= t('.subtotal_title')
+        %td
+          %p.font-16= number_to_currency(cart.subtotal, unit: t('carts.unit_for_currency'))
+      %tr
+        %td
+          %p.font-16= t('.coupon_title')
+        %td
+          %p.font-16 €0.00
+      %tr
+        %td
+          %strong.font-18= t('.order_total')
+        %td
+          %strong.font-18 €117.69
+    %button.btn.btn-default.mb-20.visible-xs-inline-block= t('.checkout_submit')

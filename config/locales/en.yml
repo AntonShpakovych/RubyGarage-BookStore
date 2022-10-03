@@ -1,4 +1,33 @@
 en:
+  carts:
+    show:
+      title_cart: Cart
+      submit_checkout: Checkout
+    unit_for_currency: €
+    partials:
+      cart_without_order:
+        message_empty: You dont have order
+        link_add_to_cart: U can add some book, to display here
+      cart_summary:
+        order_summary_title: Order Summary
+        subtotal_title: "Subtotal:"
+        coupon_title: "Coupon:"
+        order_total: "Order Total:"
+        checkout_submit: Checkout
+      coupon:
+        enter_your_coupon: Enter Your Coupon Code
+        submit_apply_coupon: Apply Coupon
+      desktop:
+        order_item:
+          product_title: Product
+          product_price_title: Price
+          product_quantity_title: Quantity
+          product_subtotal_title: SubTotal
+      mobile:
+        order_item:
+          product_price_title: Price
+          product_quantity_title: Quantity
+          product_subtotal_title: SubTotal
   active_admin:
     notice:
       approved: You approved this review

@@ -1,0 +1,28 @@
+-order_items.each do |item|
+  .general-cart-item.divider-lg-bottom
+    %button.close.general-cart-close{type: "button", 'aria-label': "Close"}
+      %span{'aria-hidden': "true"} &times;
+    .general-img-wrap-table
+      %img= image_tag(item.book.main_image.url, class: 'cart-img-shadow')
+    %p.title= item.book.name
+    %table.table
+      %tr
+        %td
+          %span.in-grey-600= t('.product_price_title')
+        %td
+          %span.font-16.in-gold-500= number_to_currency(item.book.price, unit: t('carts.unit_for_currency'))
+      %tr
+        %td.vertical-middle
+          %span.in-grey-600= t('.product_quantity_title')
+        %td
+          .input-group
+            %a.input-link{href: "#"}
+              %i.fa.fa-minus.line-heaght-40
+            %input.form-control.quantity-input{type: "text", value: item.quantity}
+            %a.input-link{href: "#"}
+              %i.fa.fa-plus.line-heaght-40
+      %tr
+        %td
+          %span.in-grey-600= t('.product_subtotal_title')
+        %td
+          %span.font-16.in-gold-500= number_to_currency(item.subtotal_price, unit: t('carts.unit_for_currency')) 
