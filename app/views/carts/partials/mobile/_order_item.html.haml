@@ -1,10 +1,11 @@
 -order_items.each do |item|
   .general-cart-item.divider-lg-bottom
-    %button.close.general-cart-close{type: "button", 'aria-label': "Close"}
-      %span{'aria-hidden': "true"} &times;
+    = render partial: 'carts/partials/delete_order_item', locals: { item: item }
     .general-img-wrap-table
-      %img= image_tag(item.book.main_image.url, class: 'cart-img-shadow')
-    %p.title= item.book.name
+      = link_to book_path(item.book) do
+        = image_tag(item.book.main_image.url, class: 'cart-img-shadow')
+    = link_to book_path(item.book) do
+      %p.title= item.book.name
     %table.table
       %tr
         %td
@@ -16,11 +17,7 @@
           %span.in-grey-600= t('.product_quantity_title')
         %td
           .input-group
-            %a.input-link{href: "#"}
-              %i.fa.fa-minus.line-heaght-40
-            %input.form-control.quantity-input{type: "text", value: item.quantity}
-            %a.input-link{href: "#"}
-              %i.fa.fa-plus.line-heaght-40
+            = render partial: 'carts/partials/quantity', locals: { item: item, summary_quantity: item.quantity, book_id: item.book.id }
       %tr
         %td
           %span.in-grey-600= t('.product_subtotal_title')

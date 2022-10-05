@@ -5,7 +5,7 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Book Store"
-  config.register_stylesheet 'custom.css'
+  config.register_stylesheet 'custom_admin.css'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.

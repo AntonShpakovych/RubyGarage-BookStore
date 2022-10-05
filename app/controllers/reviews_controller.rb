@@ -12,7 +12,11 @@ class ReviewsController < ApplicationController
   private
 
   def review_form
-    @review_form ||= ReviewForm.new(Review.new(permitted_params), permitted_params)
+    @review_form ||= ReviewForm.new(review_new, permitted_params)
+  end
+
+  def review_new
+    @review_new ||= Review.new(permitted_params)
   end
 
   def redirect_to_book(type:, message:)
@@ -21,6 +25,6 @@ class ReviewsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:review).permit(:title, :text, :rating, :book_id, :user_id)
+    params.require(:review).permit(:title, :text, :rating, :book_id).merge(user_id: current_user.id)
   end
 end

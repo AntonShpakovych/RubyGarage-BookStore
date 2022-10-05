@@ -19,11 +19,20 @@ class OrderItemsService
   end
 
   def update_order_item
-    order_item.quantity += params[:quantity].to_i
-    order_item.save
+    return if user_want_more_book_when_we_have
+
+    order_item.quantity < DEFAULT_QUANTITY_INCREMENT ? order_item.delete : order_item.save
   end
 
   def create_order_item
     order.order_items.create(params)
+  end
+
+  def order_item_quantity_increase
+    order_item.quantity += params[:quantity].to_i
+  end
+
+  def user_want_more_book_when_we_have
+    order_item_quantity_increase > order_item.book.quantity
   end
 end

@@ -7,8 +7,7 @@
           .general-thumb-link-wrap
             = link_to book_path(book.id), class: 'thumb-hover-link' do
               %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-            = link_to order_items_path(order_item: { quantity: OrderItemsService::DEFAULT_QUANTITY_INCREMENT, book_id: book.id }), method: :post, class: 'thumb-hover-link' do
-              %i.fa.fa-shopping-cart.thumb-icon
+            = render partial: 'carts/partials/add_to_cart', locals: { icon: true , book: book}
     .general-thumb-info
       %p.title= book.name
       %p.font-16.in-gold-500= number_to_currency(book.price, unit: t('.unit_for_number_currency'))

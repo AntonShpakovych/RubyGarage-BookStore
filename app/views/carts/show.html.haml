@@ -1,13 +1,13 @@
 .general-main-wrap
   %h1.general-title-margin= t('.title_cart')
-  -if @cart
+  -if @cart.order_items.present?
     .visible-xs
       = render partial: 'carts/partials/mobile/order_item', locals: { order_items: @cart.order_items.includes([:book]) }
     .hidden-xs
       = render partial: 'carts/partials/desktop/order_item', locals: { order_items: @cart.order_items.includes([:book]) }
     .general-order-wrap
       .row
-        = render partial: 'carts/partials/coupon'
+        = render partial: 'carts/partials/coupon', locals: { cart: @cart }
         = render partial: 'carts/partials/cart_summary', locals: { cart: @cart }
     %button.btn.btn-default.mb-20.hidden-xs.center-block= t('.submit_checkout')
   -else

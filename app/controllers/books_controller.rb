@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
+  REVIEW_DEFAULT_SORTING = 'created_at DESC'
+
   def index
     @book_count = Book.count
     @pagy, books = pagy(books_prepared)
@@ -11,7 +13,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id]).decorate
-    @reviews = @book.reviews.includes(:user).approved.order('created_at DESC')
+    @reviews = @book.reviews.includes(:user).approved.order(REVIEW_DEFAULT_SORTING)
   end
 
   private

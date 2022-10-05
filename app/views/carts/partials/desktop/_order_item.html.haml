@@ -13,21 +13,17 @@
   -order_items.each do |item|
     %tr
       %td
-        .general-img-wrap-table
-          %img= image_tag(item.book.main_image.url, class: 'cart-img-shadow pull-left')
+        = link_to book_path(item.book), class: 'general-img-wrap-table' do
+          = image_tag(item.book.main_image.url, class: 'cart-img-shadow pull-left')
       %td
-        %p.title= item.book.name
+        = link_to book_path(item.book) do
+          %p.title= item.book.name 
       %td
         %span.font-16.in-gold-500= number_to_currency(item.book.price, unit: t('carts.unit_for_currency'))
       %td
         .input-group
-          %a.input-link{href: "#"}
-            %i.fa.fa-minus.line-heaght-40
-          %input.form-control.quantity-input{type: "text", value: item.quantity}
-          %a.input-link{href: "#"}
-            %i.fa.fa-plus.line-heaght-40
+          = render partial: 'carts/partials/quantity', locals: { item: item, summary_quantity: item.quantity, book_id: item.book.id }
       %td
         %span.font-16.in-gold-500= number_to_currency(item.subtotal_price, unit: t('carts.unit_for_currency'))
       %td
-        %button.close.general-cart-close{type: "button", 'aria-label': "Close"}
-          %span{'aria-hidden': "true"} &times;
+        = render partial: 'carts/partials/delete_order_item', locals: { item: item }

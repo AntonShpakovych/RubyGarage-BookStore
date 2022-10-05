@@ -18,11 +18,11 @@ ActiveAdmin.register Review do
     actions
   end
 
-  action_item :approve, only: :show do
+  action_item :approve, only: :show, if: proc { resource.unprocessed? } do
     link_to t('active_admin.links.approve'), approve_admin_review_path(review), method: :put
   end
 
-  action_item :reject, only: :show do
+  action_item :reject, only: :show, if: proc { resource.unprocessed? } do
     link_to t('active_admin.links.reject'), reject_admin_review_path(review), method: :put
   end
 

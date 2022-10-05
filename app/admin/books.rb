@@ -18,7 +18,7 @@ ActiveAdmin.register Book do
     column :price
     column :authors, :all_authors
     column :main_image do |book|
-      image_tag(book.main_image.url, class: 'admin-book_logo')
+      image_tag(book.main_image.url, class: 'max-w-h-100')
     end
     actions
   end
@@ -35,11 +35,12 @@ ActiveAdmin.register Book do
       row :length
       row :materials
       row :price
+      row :quantity
       row :created_at
       row :updated_at
       book.images.each do |image|
         row image do
-          image_tag(image.url, class: 'admin-book_show')
+          image_tag(image.url, class: 'max-w-h-100')
         end
       end
     end

@@ -1,9 +1,17 @@
 en:
   carts:
+    message:
+      invalid_coupon: Coupon invalid or coupon already used for other user
+      valid_coupon: Nice you added coupon discount for this order
+      book_quanity_less: We dont have this quantity of book
+      delete: You successfully delete book
+      create_good: You successfully add book to cart
+      create_bad: You already have this book, if you want update quantity, just open your cart and do it here!
+      update: You successfully update book quantity
+    unit_for_currency: €
     show:
       title_cart: Cart
       submit_checkout: Checkout
-    unit_for_currency: €
     partials:
       cart_without_order:
         message_empty: You dont have order
@@ -15,6 +23,7 @@ en:
         order_total: "Order Total:"
         checkout_submit: Checkout
       coupon:
+        user_already_pass_coupon: You already pass coupon
         enter_your_coupon: Enter Your Coupon Code
         submit_apply_coupon: Apply Coupon
       desktop:
@@ -124,7 +133,7 @@ en:
       materials_title: Materials
       description_title: Description
       read_more: Read More
-      add_to_card: Add to Cart
+      add_to_cart: Add to Cart
       message_review_for_not_authorized: If you want to write your review, you need to be authorized
   users:
     update_good: You have successfully updated your account information

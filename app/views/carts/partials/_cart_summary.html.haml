@@ -11,10 +11,10 @@
         %td
           %p.font-16= t('.coupon_title')
         %td
-          %p.font-16 €0.00
+          %p.font-16= number_to_currency(cart.discount, unit: t('carts.unit_for_currency'))
       %tr
         %td
           %strong.font-18= t('.order_total')
         %td
-          %strong.font-18 €117.69
+          %strong.font-18= number_to_currency(cart.order_total, unit: t('carts.unit_for_currency'))
     %button.btn.btn-default.mb-20.visible-xs-inline-block= t('.checkout_submit')

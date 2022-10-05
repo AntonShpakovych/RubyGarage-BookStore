@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Review < ApplicationRecord
-  enum status: { unprocessed: 'Unprocessed', approved: 'Approved', rejected: 'Rejected' }
+  enum status: { unprocessed: 0, approved: 1, rejected: 2 }
 
   belongs_to :book
   belongs_to :user

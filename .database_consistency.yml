@@ -1,4 +1,6 @@
 # Ignore false positive from Rails' ActionText and ActiveStorage
+Coupon:
+  enabled: false
 AdminUser:
   password:
     ColumnPresenceChecker:

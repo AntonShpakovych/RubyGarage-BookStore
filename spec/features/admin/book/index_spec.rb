@@ -19,12 +19,12 @@ RSpec.describe 'Index', type: :feature do
     /#{book.main_image}/
   end
   let(:expected_result_main_image_default) do
-    /#{BookImageUploader.new.default_url[0...-3]}/
+    /#{book_image_default}/
   end
 
   let(:result) { page }
   let(:result_main_image) do
-    page.find('img', class: 'admin-book_logo')['src']
+    page.find('img', class: 'max-w-h-100')['src']
   end
 
   before do

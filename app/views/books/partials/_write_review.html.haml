@@ -3,7 +3,6 @@
 = simple_form_for Review.new, as: :review, url: book_review_path(book.id) , method: :post, html: { class: 'row' } do |f|
   =f.hidden_field :rating, value: 0
   =f.hidden_field :book_id, value: book.id
-  =f.hidden_field :user_id, value: current_user.id
   .col-md-8
     .mb-15
     #rating

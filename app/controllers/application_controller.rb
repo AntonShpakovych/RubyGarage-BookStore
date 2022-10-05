@@ -6,9 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :all_category, :current_order, :cart_count
 
   def current_order
-    return Order.find_by(id: cookies[:order_id]) unless user_signed_in?
-
-    current_user.orders.find_by(status: :unprocessed)
+    @current_order ||= OrderService.new(current_user, cookies).call
   end
 
   def cart_count
