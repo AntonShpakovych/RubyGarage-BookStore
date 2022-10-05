@@ -1,7 +1,8 @@
 en:
   carts:
     message:
-      invalid_coupon: Coupon invalid or coupon already used for other user
+      coupon_undefined: Coupon invalid
+      invalid_coupon: Coupon already used for other user
       valid_coupon: Nice you added coupon discount for this order
       book_quanity_less: We dont have this quantity of book
       delete: You successfully delete book

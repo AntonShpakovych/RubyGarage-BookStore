@@ -2,7 +2,7 @@
 
 class CouponsController < ApplicationController
   def update
-    return redirect_with_flash(alert: 'Bad code') if find_coupon.nil?
+    return redirect_with_flash(alert: 'carts.message.coupon_undefined') if find_coupon.nil?
 
     if coupon_form.save
       redirect_with_flash(notice: t('carts.message.valid_coupon'))

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class OrderDecorator < Draper::Decorator
-  MAX_DISCOUNT = 100
-  DEFAULT_DISCOUNT = 0
-
   delegate_all
   decorates_association :order_items
 
@@ -12,7 +9,7 @@ class OrderDecorator < Draper::Decorator
   end
 
   def discount
-    coupon ? subtotal * coupon.discount / MAX_DISCOUNT : DEFAULT_DISCOUNT
+    coupon ? subtotal * coupon.discount / Coupon::MAX_DISCOUNT : Coupon::MIN_DISCOUNT
   end
 
   def order_total

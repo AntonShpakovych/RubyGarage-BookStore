@@ -13,7 +13,7 @@ RSpec.describe OrderDecorator do
   end
 
   describe 'functionality with coupon' do
-    let(:max_discount) { described_class::MAX_DISCOUNT }
+    let(:max_discount) { Coupon::MAX_DISCOUNT }
     let(:subtotal) { order.order_items.sum { |item| item.quantity * item.book.price } }
     let(:discount) { subtotal * order.coupon.discount / max_discount }
 
@@ -28,7 +28,7 @@ RSpec.describe OrderDecorator do
       end
 
       context 'when order without coupon' do
-        let(:default_discount) { described_class::DEFAULT_DISCOUNT }
+        let(:default_discount) { Coupon::MIN_DISCOUNT }
 
         before { order.coupon = nil }
 
