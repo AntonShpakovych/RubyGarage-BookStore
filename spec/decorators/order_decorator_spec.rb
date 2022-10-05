@@ -1,50 +1,54 @@
 # frozen_string_literal: true
 
 RSpec.describe OrderDecorator do
-  let!(:order) { create(:order, :order_items).decorate }
+  let!(:coupon) { create(:coupon, discount: 50) }
+  let!(:book1) { create(:book, price: 10) }
+  let!(:book2) { create(:book, price: 5) }
 
-  describe '#subtotal' do
-    let(:result) { order.subtotal }
-    let(:expected_result) { order.order_items.sum { |item| item.quantity * item.book.price } }
+  let!(:order_item1) { create(:order_item, book: book1, quantity: 2) }
+  let!(:order_item2) { create(:order_item, book: book2, quantity: 2) }
+
+  let!(:order_items) { [order_item1, order_item2] }
+  let!(:order) { create(:order, coupon: coupon, order_items: order_items).decorate }
+
+  let(:expected_result_subtotal_price) { 30 }
+  let(:expected_result_discount) { discount }
+  let(:expected_result_total_price) { 15 }
+
+  describe '#subtotal_price' do
+    let(:result) { order.subtotal_price }
 
     it 'give subtotal money for order_items' do
-      expect(result).to eq(expected_result)
+      expect(result).to eq(expected_result_subtotal_price)
     end
   end
 
-  describe 'functionality with coupon' do
-    let(:max_discount) { Coupon::MAX_DISCOUNT }
-    let(:subtotal) { order.order_items.sum { |item| item.quantity * item.book.price } }
-    let(:discount) { subtotal * order.coupon.discount / max_discount }
+  describe '#discount' do
+    let(:result) { order.discount }
 
-    before { create(:coupon, order_id: order.id) }
-
-    describe '#discount' do
-      let(:result) { order.discount }
-      let(:expected_result) { discount }
+    context 'when coupon present' do
+      let(:discount) { 15 }
 
       it 'shows how much money you have saved' do
-        expect(result).to eq(expected_result)
-      end
-
-      context 'when order without coupon' do
-        let(:default_discount) { Coupon::MIN_DISCOUNT }
-
-        before { order.coupon = nil }
-
-        it 'give default discount' do
-          expect(result).to eq(default_discount)
-        end
+        expect(result).to eq(expected_result_discount)
       end
     end
 
-    describe '#order_total' do
-      let(:result) { order.order_total }
-      let(:expected_result) { subtotal - discount }
+    context 'when coupon not present' do
+      let(:order) { create(:order).decorate }
+      let(:discount) { Constants::Shared::CART_EMPTY }
 
-      it 'give total money for order' do
-        expect(result).to eq(expected_result)
+      it 'shows how much money you have saved' do
+        expect(result).to eq(expected_result_discount)
       end
+    end
+  end
+
+  describe '#total_price' do
+    let(:result) { order.total_price }
+
+    it 'give total money for order' do
+      expect(result).to eq(expected_result_total_price)
     end
   end
 end

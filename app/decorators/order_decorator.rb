@@ -4,15 +4,15 @@ class OrderDecorator < Draper::Decorator
   delegate_all
   decorates_association :order_items
 
-  def subtotal
-    order_items.sum { |item| item.quantity * item.book.price }
+  def subtotal_price
+    order_items.sum { |item| item.quantity * item.book_price }
   end
 
   def discount
-    coupon ? subtotal * coupon.discount / Coupon::MAX_DISCOUNT : Coupon::MIN_DISCOUNT
+    coupon ? subtotal_price * coupon.discount / Constants::Coupon::MAX_DISCOUNT : Constants::Coupon::MIN_DISCOUNT
   end
 
-  def order_total
-    subtotal - discount
+  def total_price
+    subtotal_price - discount
   end
 end

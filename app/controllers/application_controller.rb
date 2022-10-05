@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def cart_count
-    @cart_count ||= current_order ? current_order.order_items.sum(&:quantity) : 0
+    @cart_count ||= current_order ? current_order.order_items.sum(:quantity) : Constants::Shared::CART_EMPTY
   end
 
   def all_category

@@ -1,20 +1,13 @@
 # frozen_string_literal: true
 
 class CouponForm < ApplicationForm
-  attr_accessor :order_id, :code
+  attr_accessor :order_id
 
   validate :unique_order
-
-  def save
-    return unless valid?
-
-    @model.update(order_id: @params[:order_id])
-    @model
-  end
 
   private
 
   def unique_order
-    errors.add(:order_id) if @model.order
+    errors.add(:order_id, message: I18n.t('carts.message.invalid_coupon')) if @model.order
   end
 end

@@ -12,7 +12,7 @@ FactoryBot.define do
       user
     end
 
-    trait :with_coupon do
+    trait :coupon do
       coupon
     end
   end

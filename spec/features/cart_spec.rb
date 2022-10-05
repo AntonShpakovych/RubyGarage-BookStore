@@ -11,7 +11,7 @@ RSpec.describe 'Cart page', type: :feature do
     let(:find_order) { Order.find_by(status: :unprocessed) }
     let(:decorate_order) { find_order.decorate }
     let(:expect_result_for_discount) { decorate_order.discount }
-    let(:expect_result_for_order_total) { decorate_order.order_total }
+    let(:expect_result_for_total_price) { decorate_order.total_price }
 
     before do
       visit root_path
@@ -33,7 +33,7 @@ RSpec.describe 'Cart page', type: :feature do
       end
 
       it 'user can see order_total' do
-        expect(result).to have_text(expect_result_for_order_total)
+        expect(result).to have_text(expect_result_for_total_price)
       end
     end
 
@@ -43,6 +43,19 @@ RSpec.describe 'Cart page', type: :feature do
 
       it 'delete order_item' do
         expect { result_delete.click }.to change(expected_result, :count)
+      end
+    end
+
+    context 'when user want update quantity order_item but book.quantity less' do
+      let!(:book) { create(:book, quantity: 0) }
+      let(:create_order_item) { create(:order_item, order_id: find_order.id, book: book) }
+      let(:find_order) { Order.find_by(status: :unprocessed) }
+      let(:find_button) { result.all('a', class: 'input-link').last }
+
+      before { find_button.click }
+
+      it 'show message book dont have quantity wich u want' do
+        expect(result).to have_text(t('carts.message.book_quantity_less'))
       end
     end
   end

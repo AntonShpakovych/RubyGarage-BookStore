@@ -3,7 +3,7 @@
 RSpec.describe CouponForm, type: :model do
   let!(:current_order) { create(:order) }
   let(:params) { { code: code, order_id: current_order.id } }
-  let(:coupon_form) { described_class.new(coupon, params) }
+  let(:coupon_form) { described_class.new(coupon, { order_id: params[:order_id] }) }
   let(:coupon_create) { coupon }
 
   before { coupon_form.save }

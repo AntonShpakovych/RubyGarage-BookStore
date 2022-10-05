@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :order_item do
     book
     order
-    quantity { 1 }
+    quantity { FFaker::Random.rand(1..3) }
   end
 end

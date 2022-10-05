@@ -1,5 +1,5 @@
 .col-sm-4
-  - if cart.coupon
+  - if current_order.coupon
     %h3= t('.user_already_pass_coupon')
   - else
     = simple_form_for :coupon, url: coupon_path, method: :put do |f|

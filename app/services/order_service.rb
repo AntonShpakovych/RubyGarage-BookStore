@@ -10,22 +10,24 @@ class OrderService
   end
 
   def call
-    return Order.find_by(id: cookies[:order_id].to_i) if !user && cookies[:order_id].present?
-
-    return order_find_by_status if user && order_find_by_status.present?
-
-    create_order_with_or_without_user(user&.id)
+    if user.blank? && cookies[:order_id].present?
+      Order.find_by(id: cookies[:order_id])
+    elsif user && order_find_by_status.present?
+      order_find_by_status
+    else
+      create_order_with_or_without_user(user&.id)
+    end
   end
 
   private
 
-  def create_order_with_or_without_user(id)
-    order = Order.create(user_id: id)
-    cookies[:order_id] = order.id unless id
+  def create_order_with_or_without_user(user_id)
+    order = Order.create(user_id: user_id)
+    cookies[:order_id] = order.id unless user_id
     order
   end
 
   def order_find_by_status
-    user.orders.find_by(status: :unprocessed)
+    user.orders.find_by(status: Order.statuses.fetch(:unprocessed))
   end
 end
