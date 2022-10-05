@@ -1,16 +1,9 @@
 # frozen_string_literal: true
 
-class CouponForm
-  include ActiveModel::Model
+class CouponForm < ApplicationForm
   attr_accessor :order_id, :code
 
   validate :unique_order
-
-  def initialize(model, params = {})
-    self.attributes = params
-    @params = params
-    @model = model
-  end
 
   def save
     return unless valid?

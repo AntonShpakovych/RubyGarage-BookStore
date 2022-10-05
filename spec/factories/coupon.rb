@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :coupon do
     code { FFaker::Code.ean }
-    discount { rand(Coupon::MIN_DISCOUNT..Coupon::MAX_DISCOUNT) }
+    discount { rand(1..Coupon::MAX_DISCOUNT) }
 
     trait :order do
       :order
