@@ -1,0 +1,8 @@
+= simple_form_for(:user, url: user_registration_path, method: :post, html: { class: 'general-form' }) do |f|
+  .mb-40
+    %p.mb-5= t('devise.quick_registration.title')
+    %p.general-info-text.font-12.mb-20= t('devise.quick_registration.info_about_password')
+    .form-group.mb-30
+      = f.hidden_field :quick, value: true
+      = f.input :email, label: t('devise.quick_registration.label'), label_html: { class: 'control-label input-label' }, input_html: { id: 'email', class: 'form-control' }, type: 'email', placeholder: t('devise.quick_registration.placeholder')
+      = f.button :submit, t('devise.quick_registration.submit'), class: 'button btn mb-20'

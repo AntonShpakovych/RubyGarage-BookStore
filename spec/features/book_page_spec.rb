@@ -195,7 +195,7 @@ RSpec.describe 'Book page', type: :feature do
 
   describe 'Cart' do
     let(:result) { page }
-    let!(:book) { create(:book) }
+    let!(:book) { create(:book, quantity: 3) }
     let(:link) { t('books.show.add_to_cart') }
 
     context 'when chossed book not in cart' do
@@ -227,7 +227,7 @@ RSpec.describe 'Book page', type: :feature do
 
       before do
         visit books_path
-        create(:order_item, order: current_order, book: book)
+        create(:order_item, order: current_order, book: book, quantity: 1)
         visit book_path(book.id)
       end
 
