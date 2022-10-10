@@ -1,8 +1,14 @@
 en:
   checkouts:
+    show:
+      checkout_title: Checkout
     partials:
       address:
+        use_billing_address: Use Billing Adress
+        button_submit: Save and Continue
         title: Address
+      shipping:
+        title: Shipping
   carts:
     message:
       coupon_undefined: Coupon invalid

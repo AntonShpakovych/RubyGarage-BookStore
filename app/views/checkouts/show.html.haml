@@ -1,1 +1,2 @@
-= render "checkouts/partials/#{@state}"
+%h1.general-title-margin= t('.checkout_title')
+= render partial: "checkouts/partials/#{@state}", locals: { current_order: @current_order, form: @form }
