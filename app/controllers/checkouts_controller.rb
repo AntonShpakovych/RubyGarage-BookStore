@@ -20,7 +20,7 @@ class CheckoutsController < ApplicationController
   end
 
   def checkout_service
-    @checkout_service ||= CheckoutService.new(current_user, current_order, params.pertmit!).call
+    @checkout_service ||= CheckoutService.new(current_user, current_order, params).call
   end
 
   def state

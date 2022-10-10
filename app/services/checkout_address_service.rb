@@ -14,29 +14,31 @@ class CheckoutAddressService < CheckoutApplicationService
   private
 
   def address_form_billing
-    @address_form_billing ||= AddressForm.new(address(BILLING), addres_params(BILLING))
+    @address_form_billing ||= AddressForm.new(address(BILLING), addres_params[BILLING])
   end
 
   def address_form_shipping
     return @address_form_shipping ||= AddressForm.new(address(SHIPPING), params_when_use_billing) if use_billing?
 
-    @address_form_shipping ||= AddressForm.new(address(SHIPPING), addres_params(SHIPPING))
+    @address_form_shipping ||= AddressForm.new(address(SHIPPING), addres_params[SHIPPING])
   end
 
   def address(type)
-    Address.find_or_initialize_by(user: user, type: addres_params(type)[:type])
+    Address.find_or_initialize_by(user: user, type: addres_params[type][:type])
   end
 
   def use_billing?
     params[:address][:use_billing] == 'true'
   end
 
-  def addres_params(type)
-    params[:address][type]
+  def addres_params
+    params.require(:address).permit(:use_billing,
+                                    BILLING => %i[first_name last_name address city country zip phone type],
+                                    SHIPPING => %i[first_name last_name address city country zip phone type])
   end
 
   def params_when_use_billing
-    params_for_shipping = addres_params(BILLING)
+    params_for_shipping = addres_params[BILLING]
     params_for_shipping[:type] = ShippingAddress.name
     params_for_shipping
   end
