@@ -43,7 +43,7 @@ RSpec.describe CheckoutService do
       before { result }
 
       let(:order_state) { order.state }
-      let(:expected_result_state) { 'shipping' }
+      let(:expected_result_state) { 'delivery' }
 
       it 'also change order.state if addresses be valid' do
         expect(order_state).to eq(expected_result_state)

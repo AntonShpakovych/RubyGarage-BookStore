@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   include AASM
 
   enum status: { unprocessed: 0, delivered: 1, canceled: 2 }
-  enum state: { address: 0, shipping: 1 }
+  enum state: { address: 0, delivery: 1 }
 
   belongs_to :user, optional: true
   has_many :order_items, dependent: :destroy
@@ -12,10 +12,10 @@ class Order < ApplicationRecord
 
   aasm column: :state, enum: true do
     state :address, initial: true
-    state :shipping
+    state :delivery
 
-    event :to_shipping do
-      transitions from: :address, to: :shipping
+    event :to_delivery do
+      transitions from: :address, to: :delivery
     end
   end
 end

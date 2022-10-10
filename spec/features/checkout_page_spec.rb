@@ -51,8 +51,8 @@ RSpec.describe 'Checkout page', type: :feature do
         let(:result_billing) { user.billing_address.first_name }
         let(:result_shipping) { user.shipping_address.first_name }
 
-        it 'render next state shipping' do
-          expect(result).to have_text(t('checkouts.partials.shipping.title'))
+        it 'render next state delivery' do
+          expect(result).to have_text(t('checkouts.partials.delivery.title'))
         end
 
         it 'also save addresses to use' do

@@ -7,7 +7,7 @@ class CheckoutAddressService < CheckoutApplicationService
   SHIPPING = :shipping
 
   def call
-    order.to_shipping! if address_form_billing.save && address_form_shipping.save
+    order.to_delivery! if address_form_billing.save && address_form_shipping.save
     send_forms
   end
 

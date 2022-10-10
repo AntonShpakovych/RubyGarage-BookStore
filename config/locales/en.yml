@@ -7,7 +7,7 @@ en:
         use_billing_address: Use Billing Adress
         button_submit: Save and Continue
         title: Address
-      shipping:
+      delivery:
         title: Shipping
   carts:
     message:

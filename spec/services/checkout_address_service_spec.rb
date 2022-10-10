@@ -55,6 +55,9 @@ RSpec.describe CheckoutAddressService do
     let(:result_shipping_first_name) { result_shipping.first_name }
     let(:expected_shipping) { params[:address][:shipping][:first_name] }
 
+    let(:expected_result_state) { 'delivery' }
+    let(:result_state) { order.state }
+
     it 'create addresses for user' do
       expect(result_billing).to be_present
       expect(result_shipping).to be_present
@@ -65,8 +68,8 @@ RSpec.describe CheckoutAddressService do
       expect(result_shipping_first_name).to eq(expected_shipping)
     end
 
-    it 'change order.state to shipping' do
-      expect(order.state).to eq('shipping')
+    it 'change order.state to delivery' do
+      expect(result_state).to eq(expected_result_state)
     end
   end
 
