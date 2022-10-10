@@ -10,6 +10,11 @@
     %p.font-16= number_to_currency(current_order.discount, unit: t('carts.unit_for_currency'))
 %tr
   %td
+    %p.font-16= t('carts.partials.cart_summary.shipping_title')
+  %td
+    %p.font-16= number_to_currency(current_order.delivery_price, unit: t('carts.unit_for_currency'))
+%tr
+  %td
     %strong.font-18= t('carts.partials.cart_summary.order_total')
   %td
     %strong.font-18= number_to_currency(current_order.total_price, unit: t('carts.unit_for_currency'))

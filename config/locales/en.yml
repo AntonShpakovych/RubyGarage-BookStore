@@ -3,12 +3,29 @@ en:
     show:
       checkout_title: Checkout
     partials:
+      cart_summary:
+        title: Order Summary Title
       address:
         use_billing_address: Use Billing Adress
         button_submit: Save and Continue
         title: Address
       delivery:
-        title: Shipping
+        button_submit: Save and Continue
+        shipping_method_title: Shipping Method
+        desktop:
+          days: '%{from_date} to %{to_date} days'
+          radion_button_name: delivery_id
+          method_title: Method
+          days_title: Days
+          price_title: Price
+          title: Shipping
+        mobile:
+          days: '%{from_date} to %{to_date} days'
+          radion_button_name: delivery_id
+          method_title: Method
+          days_title: Days
+          price_title: Price
+          title: Shipping
   carts:
     message:
       coupon_undefined: Coupon invalid
@@ -32,6 +49,7 @@ en:
         subtotal_title: "Subtotal:"
         coupon_title: "Coupon:"
         order_total: "Order Total:"
+        shipping_title: 'Shipping:'
         checkout_submit: Checkout
       coupon:
         user_already_pass_coupon: You already pass coupon

@@ -39,4 +39,32 @@ RSpec.describe CheckoutsController, type: :controller do
       end
     end
   end
+
+  describe 'Delivery' do
+    describe 'GET #show' do
+      before { get :show }
+
+      it 'render show' do
+        expect(response).to render_template(:show)
+      end
+    end
+
+    describe 'PUT #update' do
+      let!(:user) { create(:user) }
+      let(:order) { create(:order, user: user) }
+      let(:set_delivery) { order.to_delivery! }
+      let!(:delivery) { create(:delivery) }
+      let(:params) { { delivery_id: delivery.id } }
+
+      before do
+        controller.stub(:current_user) { user }
+        set_delivery
+        put :update, params: params
+      end
+
+      it 'render show' do
+        expect(response).to render_template(:show)
+      end
+    end
+  end
 end

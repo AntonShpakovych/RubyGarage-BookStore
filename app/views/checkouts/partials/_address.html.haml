@@ -1,5 +1,5 @@
 = render partial: 'checkouts/partials/state_info'
-= simple_form_for(current_order, as: :address, url: checkout_path, method: :put, validate: true, html: { class: 'res-mb-100' }) do |f|
+= simple_form_for(current_order, as: :address, url: checkout_path, method: :put, html: { class: 'res-mb-100' }) do |f|
   .hidden-xs.hidden-sm
     .row
       .col-md-5
@@ -10,11 +10,11 @@
     = f.hidden_field :use_billing, value: false
     .col-md-5.mb-40
       #billing
-        = f.simple_fields_for(CheckoutAddressService::BILLING, form.present? ? form[:billing] : current_user.billing_address) do |s_f|
+        = f.simple_fields_for(CheckoutAddressService::BILLING, service.present? ? service[:billing] : current_user.billing_address) do |s_f|
           = render partial: 'addresses/partials/addresses_field', locals: { f: s_f, type: BillingAddress.name }
     .col-md-5.col-md-offset-1.mb-60
       #shipping
-        = f.simple_fields_for(CheckoutAddressService::SHIPPING, form.present? ? form[:shipping] : current_user.shipping_address) do |s_f|
+        = f.simple_fields_for(CheckoutAddressService::SHIPPING, service.present? ? service[:shipping] : current_user.shipping_address) do |s_f|
           = render partial: 'addresses/partials/addresses_field', locals: { f: s_f, type: ShippingAddress.name }
         .form-group.checkbox
           %label.checkbox-label

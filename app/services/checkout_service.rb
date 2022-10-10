@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class CheckoutService < CheckoutApplicationService
-  attr_reader :user, :order, :params, :errors
+  attr_reader :user, :order, :params
 
-  CHECKOUT_STATE_SERVICES = { address: CheckoutAddressService }.freeze
+  CHECKOUT_STATE_SERVICES = { address: CheckoutAddressService, delivery: CheckoutDeliveryService }.freeze
 
   def call
     call_service_for_current_state

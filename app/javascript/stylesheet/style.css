@@ -8357,14 +8357,17 @@ button.close {
   transform: translate(-50%, -50%);
   opacity: 0;
 }
-
-.radio-input:checked + .radio-icon {
+input[name="delivery_id"]:checked + .radio-icon {
   background-color: transparent;
   border-color: #1e1e1c;
 }
 
-.radio-input:checked + .radio-icon:after {
+input[name="delivery_id"]:checked + .radio-icon:after{
   opacity: 1;
+}
+
+input[name="delivery_id"] {
+  visibility: hidden;
 }
 
 .tab-item {
@@ -9046,4 +9049,8 @@ img {
 .catalog-book_image_show {
   width: 200px;
   height: 200px;
+}
+
+input[name="one"] {
+  visibility: hidden;
 }

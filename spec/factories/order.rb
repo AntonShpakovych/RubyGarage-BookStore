@@ -15,5 +15,9 @@ FactoryBot.define do
     trait :coupon do
       coupon
     end
+
+    trait :delivery do
+      delivery
+    end
   end
 end

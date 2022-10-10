@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Checkout page', type: :feature do
-  let!(:order_item) { create(:order_item) }
   let!(:order) { create(:order, order_items: [order_item]) }
+  let!(:order_item) { create(:order_item) }
   let!(:user) { create(:user, orders: [order]) }
   let(:result) { page }
 
@@ -52,7 +52,7 @@ RSpec.describe 'Checkout page', type: :feature do
         let(:result_shipping) { user.shipping_address.first_name }
 
         it 'render next state delivery' do
-          expect(result).to have_text(t('checkouts.partials.delivery.title'))
+          expect(result).to have_text(t('checkouts.partials.delivery.shipping_method_title'))
         end
 
         it 'also save addresses to use' do
@@ -119,6 +119,38 @@ RSpec.describe 'Checkout page', type: :feature do
 
       it 'create shipping address from billing' do
         expect(result_shipping).to eq(expected_result)
+      end
+    end
+  end
+
+  describe 'Delivery' do
+    let!(:delivery) { create(:delivery) }
+    let(:billing_address) { create(:address, :billing_address, user: user) }
+    let(:shipping_address) { create(:address, :shipping_address, user: user) }
+
+    let(:expected_result_delyvery_show) { delivery.name }
+
+    before do
+      delivery
+      order.to_delivery!
+      visit checkout_path
+    end
+
+    it 'user can see all available delivery' do
+      expect(result).to have_text(expected_result_delyvery_show)
+    end
+
+    context 'when user want choose delivery' do
+      let(:result_delivery) { Order.last.delivery }
+      let(:expected_result) { delivery }
+
+      before do
+        result.all('input[name="delivery_id"]').first.click
+        click_button(t('checkouts.partials.delivery.button_submit'))
+      end
+
+      it 'set delivery choosed to order.delivery' do
+        expect(result_delivery).to eq(expected_result)
       end
     end
   end

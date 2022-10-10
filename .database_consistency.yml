@@ -1,4 +1,6 @@
 # Ignore false positive from Rails' ActionText and ActiveStorage
+Delivery:
+  enabled: false
 Coupon:
   enabled: false
 AdminUser:

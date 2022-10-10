@@ -7,7 +7,7 @@ class CheckoutsController < ApplicationController
   end
 
   def update
-    @form = checkout_service
+    @service = checkout_service
     @current_order = decorate_current_order
     @state = state
     render :show

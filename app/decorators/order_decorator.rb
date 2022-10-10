@@ -4,6 +4,10 @@ class OrderDecorator < Draper::Decorator
   delegate_all
   decorates_association :order_items
 
+  def delivery_price
+    delivery ? delivery.price : Constants::Shared::ZERO
+  end
+
   def subtotal_price
     order_items.sum { |item| item.quantity * item.book_price }
   end
@@ -13,6 +17,6 @@ class OrderDecorator < Draper::Decorator
   end
 
   def total_price
-    subtotal_price - discount
+    subtotal_price + delivery_price - discount
   end
 end
