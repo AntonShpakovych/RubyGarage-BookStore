@@ -3,7 +3,10 @@
 class CheckoutService < CheckoutApplicationService
   attr_reader :user, :order, :params
 
-  CHECKOUT_STATE_SERVICES = { address: CheckoutAddressService, delivery: CheckoutDeliveryService }.freeze
+  CHECKOUT_STATE_SERVICES = { address: CheckoutAddressService,
+                              delivery: CheckoutDeliveryService,
+                              payment: CheckoutPaymentService,
+                              confirm: CheckoutConfirmService }.freeze
 
   def call
     call_service_for_current_state

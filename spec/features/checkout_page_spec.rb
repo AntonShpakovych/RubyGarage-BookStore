@@ -154,4 +154,55 @@ RSpec.describe 'Checkout page', type: :feature do
       end
     end
   end
+
+  describe 'Payment' do
+    let(:card_name) { card_name }
+    let(:card_number) { card_number }
+    let(:card_date) { card_date }
+    let(:card_cvv) { card_cvv }
+    let(:set_payment) do
+      order.to_delivery!
+      order.to_payment!
+    end
+
+    before do
+      set_payment
+      visit checkout_path
+      fill_in 'payment[number]', with: card_number
+      fill_in 'payment[name]', with: card_name
+      fill_in 'payment[date]', with: card_date
+      fill_in 'payment[cvv]', with: card_cvv
+      click_button(t('checkouts.partials.payment.button_submit'))
+    end
+
+    context 'when valid' do
+      let(:card_name) { attributes_for(:credit_card)[:name] }
+      let(:card_number) { attributes_for(:credit_card)[:number] }
+      let(:card_date) { attributes_for(:credit_card)[:date] }
+      let(:card_cvv) { attributes_for(:credit_card)[:cvv] }
+      let(:result_state) { Order.last.state }
+      let(:expected_result) { 'confirm' }
+
+      it 'change order.state to confirm' do
+        expect(result_state).to eq(expected_result)
+      end
+    end
+
+    context 'when invalid' do
+      let(:card_name) { 'bad1133!' }
+      let(:card_number) { attributes_for(:credit_card)[:number] }
+      let(:card_date) { attributes_for(:credit_card)[:date] }
+      let(:card_cvv) { attributes_for(:credit_card)[:cvv] }
+      let(:result_state) { Order.last.state }
+      let(:expected_result) { 'payment' }
+
+      it 'not change order.state to confirm' do
+        expect(result_state).to eq(expected_result)
+      end
+
+      it 'show errors about bad input' do
+        expect(result).to have_text(t('checkouts.partials.payment.errors.card_name'))
+      end
+    end
+  end
 end

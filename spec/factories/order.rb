@@ -19,5 +19,9 @@ FactoryBot.define do
     trait :delivery do
       delivery
     end
+
+    trait :credit_card do
+      credit_card
+    end
   end
 end

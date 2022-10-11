@@ -3,8 +3,25 @@ en:
     show:
       checkout_title: Checkout
     partials:
+      payment:
+        button_submit: Save and Continue
+        title: Credit Card
+        number_placeholder: Card Number
+        number_label: Card Number
+        name_label: Name on Card
+        name_placeholder: Name on Card
+        date_label: MM / YY
+        date_placeholder: MM / YY
+        cvv_label: CVV
+        cvv_placeholder: CVV
+        hint: 3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front.
+        errors:
+          card_date: Has a month on the left of a slash /, the year on the right. Month value can be from 01 to 12.
+          card_cvv: Min Length is %{default_length} digits, or min Length is %{american_length} digits.
+          card_name: 'Should not be not empty, consist of a-z, A-Z, no special symbols, can contain spaces, must be less than 50 characters.' 
+          card_number: Should not be empty, can start with, consist of 0-9 only
       cart_summary:
-        title: Order Summary Title
+        title: Order Summary
       address:
         use_billing_address: Use Billing Adress
         button_submit: Save and Continue
