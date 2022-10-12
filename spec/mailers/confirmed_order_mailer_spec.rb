@@ -4,7 +4,7 @@ RSpec.describe ConfirmedOrderMailer, type: :mailer do
   describe '#confirm_order_email' do
     let(:mail) { described_class.confirm_order_email(email) }
     let(:email) { 'test@gmail.com' }
-    let(:expected_result_from) { ENV.fetch('MAIL_HOST') }
+    let(:expected_result_from) { 'fast-temple-25283.herokuapp.com' }
 
     let(:reusult_to) { mail.to }
     let(:expected_result_to) { email }
