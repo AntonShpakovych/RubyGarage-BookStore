@@ -9068,3 +9068,6 @@ input[name="one"] {
 #hint-icon:hover #hint_text {
   visibility: visible;
 }
+.right_cart_summary{
+  float: right;
+}

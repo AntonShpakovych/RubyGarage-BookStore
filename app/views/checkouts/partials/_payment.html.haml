@@ -1,5 +1,5 @@
 .mb-res-50
-  = render partial: 'checkouts/partials/state_info'
+  = render partial: 'checkouts/partials/state_info', locals: { current_order: current_order }
   %h3.general-subtitle= t('.title')
   = simple_form_for(current_order, url: checkout_path, method: :put, html: { class: 'max-600 mb-80' }) do |f|
     = simple_fields_for(:payment, service.is_a?(CreditCardForm) ? service : current_order.credit_card) do |s_f|

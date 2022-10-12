@@ -1,7 +1,25 @@
 # frozen_string_literal: true
 
 RSpec.describe CheckoutsController, type: :controller do
+  let!(:user) { create(:user, orders: [order]) }
+
+  before do
+    controller.stub(:current_user) { user }
+  end
+
+  describe 'Empty order' do
+    before { get :show }
+
+    let(:order) { create(:order) }
+
+    it 'redirect_to books_path' do
+      expect(response).to redirect_to(books_path)
+    end
+  end
+
   describe 'Address' do
+    let(:order) { create(:order, :order_items) }
+
     describe 'GET #show' do
       before { get :show }
 
@@ -32,7 +50,9 @@ RSpec.describe CheckoutsController, type: :controller do
                      } } }
       end
 
-      before { put :update, params: params }
+      before do
+        put :update, params: params
+      end
 
       it 'render show' do
         expect(response).to render_template(:show)
@@ -41,6 +61,8 @@ RSpec.describe CheckoutsController, type: :controller do
   end
 
   describe 'Delivery' do
+    let(:order) { create(:order, :order_items) }
+
     describe 'GET #show' do
       before { get :show }
 
@@ -50,14 +72,11 @@ RSpec.describe CheckoutsController, type: :controller do
     end
 
     describe 'PUT #update' do
-      let!(:user) { create(:user) }
-      let(:order) { create(:order, user: user) }
       let(:set_delivery) { order.to_delivery! }
       let!(:delivery) { create(:delivery) }
       let(:params) { { delivery_id: delivery.id } }
 
       before do
-        controller.stub(:current_user) { user }
         set_delivery
         put :update, params: params
       end
@@ -69,6 +88,8 @@ RSpec.describe CheckoutsController, type: :controller do
   end
 
   describe 'Payment' do
+    let(:order) { create(:order, :order_items) }
+
     describe 'GET #show' do
       before { get :show }
 
@@ -78,8 +99,6 @@ RSpec.describe CheckoutsController, type: :controller do
     end
 
     describe 'PUT #update' do
-      let!(:user) { create(:user) }
-      let!(:order) { create(:order, user: user) }
       let(:set_paymant) do
         order.to_delivery!
         order.to_payment!
@@ -91,7 +110,6 @@ RSpec.describe CheckoutsController, type: :controller do
       let(:params) { { payment: { number: number, name: name, cvv: cvv, date: date } } }
 
       before do
-        controller.stub(:current_user) { user }
         set_paymant
         put :update, params: params
       end

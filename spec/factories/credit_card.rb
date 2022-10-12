@@ -6,5 +6,9 @@ FactoryBot.define do
     number { FFaker::Bank.card_number.delete(' ') }
     date { FFaker::Bank.card_expiry_date }
     cvv { Faker::Stripe.ccv }
+
+    trait :order do
+      order
+    end
   end
 end

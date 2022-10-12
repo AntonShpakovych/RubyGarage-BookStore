@@ -1,8 +1,43 @@
 en:
   checkouts:
+    confirm_order_email:
+      email: 'Thank you for your order!'
     show:
       checkout_title: Checkout
     partials:
+      confirm:
+        button_submit: Place Order
+        shipping_address:
+          edit: edit
+          shipping_title: Shipping Address
+          full_name: '%{first_name} %{last_name}'
+        billing_address:
+          billing_title: Billing Address
+          full_name: '%{first_name} %{last_name}'
+          edit: edit
+        shippment:
+          title: Shipments
+          edit: edit
+        payment_info:
+          title: Payment Information
+          masked_card: '**** **** **** %{last_number}'
+          card_date_expire: 'MM/YY: %{date}'
+      complete:
+        order_number: Order %{number}
+        button_submit: Back to Store
+        desktop:
+          book_item:
+            title_book: Book
+            title_price: Price
+            title_quantity: Quantity
+            title_subtotal: Sub Total
+        mobile:
+          book_item:
+            title_price: Price
+            title_quantity: Quantity
+            title_subtotal: Sub Total
+        title: Thank You for your Order!
+        email_notife: An order confirmation has been has been sent to %{email}
       payment:
         button_submit: Save and Continue
         title: Credit Card

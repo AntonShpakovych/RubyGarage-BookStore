@@ -3,8 +3,8 @@
 class Order < ApplicationRecord
   include AASM
 
-  enum status: { unprocessed: 0, delivered: 1, canceled: 2 }
-  enum state: { address: 0, delivery: 1, payment: 2, confirm: 3 }
+  enum status: { unprocessed: 0, in_queue: 1, in_delivery: 2, delivered: 3, canceled: 4 }
+  enum state: { address: 0, delivery: 1, payment: 2, confirm: 3, complete: 4 }
 
   belongs_to :user, optional: true
   belongs_to :delivery, optional: true
@@ -17,6 +17,7 @@ class Order < ApplicationRecord
     state :delivery
     state :payment
     state :confirm
+    state :complete
 
     event :to_delivery do
       transitions from: :address, to: :delivery
@@ -28,6 +29,10 @@ class Order < ApplicationRecord
 
     event :to_confirm do
       transitions from: :payment, to: :confirm
+    end
+
+    event :to_complete do
+      transitions from: :confirm, to: :complete
     end
   end
 

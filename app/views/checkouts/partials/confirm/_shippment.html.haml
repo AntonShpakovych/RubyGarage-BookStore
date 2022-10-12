@@ -1,0 +1,7 @@
+.col-sm-3
+  %h3.general-subtitle= t('.title')
+  %p.general-address
+    = shippment.name
+    = link_to t('.edit'), checkout_path(state: :delivery), class: 'general-edit', method: :put
+    %br
+    = number_to_currency(shippment.price, unit: t('carts.unit_for_currency'))

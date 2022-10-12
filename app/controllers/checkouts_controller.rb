@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CheckoutsController < ApplicationController
+  before_action :back_link, unless: :empty_order
+
   def show
     @state = current_user ? state : need_authorization
     @current_order = decorate_current_order
@@ -29,5 +31,13 @@ class CheckoutsController < ApplicationController
 
   def need_authorization
     Constants::Checkout::STATE_FOR_NOT_AUTHORIZATION_USER
+  end
+
+  def empty_order
+    current_order.order_items.present?
+  end
+
+  def back_link
+    redirect_to books_path
   end
 end

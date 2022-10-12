@@ -1,4 +1,4 @@
-= render partial: 'checkouts/partials/state_info'
+= render partial: 'checkouts/partials/state_info', locals: { current_order: current_order }
 = simple_form_for(current_order, as: :address, url: checkout_path, method: :put, html: { class: 'res-mb-100' }) do |f|
   .hidden-xs.hidden-sm
     .row

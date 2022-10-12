@@ -1,0 +1,7 @@
+.col-sm-3
+  %h3.general-subtitle= t('.title')
+  %p.general-address
+    = t('.masked_card', last_number: credit_card.number[-4..-1])
+    = link_to t('.edit'), checkout_path(state: :payment), class: 'general-edit', method: :put
+    %br
+    = t('.card_date_expire', date: credit_card.date)

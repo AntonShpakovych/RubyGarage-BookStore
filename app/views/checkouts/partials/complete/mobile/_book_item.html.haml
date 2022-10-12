@@ -1,0 +1,23 @@
+.visible-xs
+  - order_items.each do |item|
+    .general-cart-item.divider-lg
+      .general-img-wrap-table
+        = image_tag(item.book.main_image.url, class: 'cart-img-shadow')
+      %p.title= item.book.name
+      %P.in-grey-600.fw-300= item.book.decorate.short_description
+      %table.table
+        %tr
+          %td
+            %span.in-grey-600= t('.title_price')
+          %td
+            %span.font-16.in-gold-500= number_to_currency(item.book.price, unit: t('carts.unit_for_currency'))
+        %tr
+          %td.vertical-middle
+            %span.in-grey-600= t('.quantity')
+          %td
+            %span= item.quantity
+        %tr
+          %td
+            %span.in-grey-600= t('.title_subtotal')
+          %td
+            %span.font-16.in-gold-500= number_to_currency(item.subtotal_price, unit: t('carts.unit_for_currency'))

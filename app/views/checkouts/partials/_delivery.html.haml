@@ -1,4 +1,4 @@
-= render partial: 'checkouts/partials/state_info'
+= render partial: 'checkouts/partials/state_info', locals: { current_order: current_order }
 %h3.general-subtitle= t('.shipping_method_title')
 = simple_form_for(current_order, as: :delivery, url: checkout_path, method: :put) do |f|
   = render partial: 'checkouts/partials/delivery/mobile', locals: { current_order: current_order }

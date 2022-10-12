@@ -9,7 +9,7 @@ class OrderDecorator < Draper::Decorator
   end
 
   def subtotal_price
-    order_items.sum { |item| item.quantity * item.book_price }
+    order_items.includes([:book]).sum { |item| item.quantity * item.book_price }
   end
 
   def discount

@@ -9,6 +9,8 @@ class CheckoutService < CheckoutApplicationService
                               confirm: CheckoutConfirmService }.freeze
 
   def call
+    return if order.aasm.current_state == :complete
+
     call_service_for_current_state
   end
 

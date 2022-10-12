@@ -6,5 +6,9 @@ FactoryBot.define do
     price { rand(0..100.0).ceil(2) }
     from_date { Faker::Number.between(from: 2, to: 10) }
     to_date { Faker::Number.between(from: 2, to: 10) }
+
+    trait :orders do
+      [order]
+    end
   end
 end
