@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class OrderService
-  attr_accessor :cookies
-  attr_reader :user
-
   def initialize(user, cookies)
     @user = user
     @cookies = cookies
@@ -11,7 +8,7 @@ class OrderService
 
   def call
     if user.blank? && cookies[:order_id].present?
-      guess_order
+      guest_order
     elsif merged_order_service_call.present?
       merged_order_service_call
     elsif user_order.present?
@@ -23,9 +20,11 @@ class OrderService
 
   private
 
+  attr_reader :user, :cookies
+
   def merged_order_service_call
     @merged_order_service_call ||= OrderMergeService.new(user: user,
-                                                         guess_order: guess_order,
+                                                         guest_order: guest_order,
                                                          cookies: cookies, user_order: user_order).call
   end
 
@@ -35,11 +34,11 @@ class OrderService
     order
   end
 
-  def guess_order
-    Order.find_by(id: cookies[:order_id])
+  def guest_order
+    @guest_order ||= Order.find_by(id: cookies[:order_id])
   end
 
   def user_order
-    user&.orders&.find_by(status: Order.statuses.fetch(:unprocessed))
+    @user_order ||= user&.orders&.find_by(status: Order.statuses.fetch(:unprocessed))
   end
 end

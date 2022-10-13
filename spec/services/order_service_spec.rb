@@ -30,9 +30,9 @@ RSpec.describe OrderService do
   context 'when current_user not present' do
     let(:current_user) { nil }
 
-    context 'when our guess not use cart early' do
+    context 'when our guest not use cart early' do
       let(:cookies) { {} }
-      let(:result) { order_service.cookies[:order_id] }
+      let(:result) { order_service.instance_variable_get(:@cookies)[:order_id] }
       let(:expected_result) { Order.first }
 
       it 'create order and write order_id to cookies' do
@@ -40,7 +40,7 @@ RSpec.describe OrderService do
       end
     end
 
-    context 'when our guess use cart early' do
+    context 'when our guest use cart early' do
       let(:order) { create(:order) }
       let(:cookies) { { order_id: order.id } }
 

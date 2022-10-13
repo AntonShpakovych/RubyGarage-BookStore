@@ -9,7 +9,7 @@ FactoryBot.define do
     image { FFaker::Image.url }
     full_name { FFaker::Name.name }
 
-    trait :orders do
+    trait :with_orders do
       [order]
     end
   end

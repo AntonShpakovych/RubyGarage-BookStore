@@ -25,7 +25,7 @@ module Users
     end
 
     def quick_registration?
-      params[:user][:quick]
+      params[:user][:quick].present?
     end
 
     def redirect_back_and_show_errors

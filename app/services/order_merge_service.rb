@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
 class OrderMergeService
-  attr_reader :user
-  attr_accessor :user_order, :guess_order, :cookies
-
-  def initialize(user:, guess_order:, cookies:, user_order:)
+  def initialize(user:, guest_order:, cookies:, user_order:)
     @user = user
     @user_order = user_order
-    @guess_order = guess_order
+    @guest_order = guest_order
     @cookies = cookies
   end
 
@@ -20,34 +17,38 @@ class OrderMergeService
 
   private
 
+  attr_reader :user, :cookies, :guest_order, :user_order
+
   def merge
-    user_order ? merge_exist_user_order : guess_order_set_user
+    user_order ? drop_user_order : set_user_for_guest_order
   end
 
-  def merge_exist_user_order
-    return delete_empty_guess_order if empty_guess_order
+  def drop_user_order
+    return delete_empty_guest_order if empty_guest_order?
 
     user_order_preparation
-    guess_order_set_user
+    set_user_for_guest_order
   end
 
-  def guess_order_set_user
-    guess_order.update(user_id: user.id)
-    guess_order
+  def set_user_for_guest_order
+    guest_order.update(user_id: user.id)
+    guest_order
   end
 
-  def empty_guess_order
-    guess_order.order_items.empty?
+  def empty_guest_order?
+    guest_order.order_items.empty?
   end
 
-  def delete_empty_guess_order
-    guess_order.delete
+  def delete_empty_guest_order
+    guest_order.destroy
     nil
   end
 
   def user_order_preparation
-    user_order.order_items.delete_all
-    user_order.coupon&.delete
-    user_order.delete
+    ActiveRecord::Base.transaction do
+      user_order.order_items.destroy_all
+      user_order.coupon&.destroy
+      user_order.destroy
+    end
   end
 end
