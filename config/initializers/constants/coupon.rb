@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Constants
   module Coupon
     MIN_DISCOUNT = 0

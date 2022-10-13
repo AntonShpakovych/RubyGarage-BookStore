@@ -2,6 +2,8 @@
 
 FactoryBot.define do
   factory :order do
+    number { FFaker::Identification.drivers_license }
+
     trait :order_items do
       order_items do
         [FactoryBot.create(:order_item)]

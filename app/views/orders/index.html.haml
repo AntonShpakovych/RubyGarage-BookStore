@@ -1,0 +1,5 @@
+.general-main-wrap
+  %h1.mt-0.mb-25= t('.title')
+  = render partial: 'orders/partials/navigation', locals: { orders: @orders, current_status: @current_status }
+  = render partial: 'orders/partials/mobile/orders', locals: { orders: @orders }
+  = render partial: 'orders/partials/desktop/orders', locals: { orders: @orders }

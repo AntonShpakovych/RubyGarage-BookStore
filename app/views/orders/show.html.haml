@@ -1,0 +1,11 @@
+.general-main-wrap
+  %h1.general-title-margin= t('.order_number', order_number: @order.number)
+  .row.mb-20
+    = render partial: 'checkouts/partials/confirm/shipping_address', locals: { shipping_address: current_user.shipping_address, link: false }
+    = render partial: 'checkouts/partials/confirm/billing_address', locals: { billing_address: current_user.billing_address, link: false }
+    = render partial: 'checkouts/partials/confirm/shippment', locals: { shippment: @order.delivery, link: false }
+    = render partial: 'checkouts/partials/confirm/payment_info', locals: { credit_card: @order.credit_card, link: false }
+  = render partial: 'checkouts/partials/complete/mobile/book_item', locals: { order_items: @order.order_items.includes([:book]) }
+  = render partial: 'checkouts/partials/complete/desktop/book_item', locals: { order_items: @order.order_items.includes([:book]) }
+  .right_cart_summary
+    = render partial: 'checkouts/partials/cart_summary', locals: { current_order: @order }

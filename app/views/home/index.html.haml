@@ -1,4 +1,4 @@
-= render 'home/partials/carousel'
+= render partial: 'home/partials/carousel', locals: { latest_books: @latest_books }
 .container
   = render 'home/partials/welcome'
-  = render 'home/partials/best_sellers'
+  = render partial: 'home/partials/best_sellers', locals: { best_sellers: @best_sellers }

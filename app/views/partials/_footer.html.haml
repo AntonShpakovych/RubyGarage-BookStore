@@ -4,14 +4,14 @@
       .col-sm-9
         %ul.list-inline.general-align.mb-25
           %li
-            %a.nav-link{href: "#"}= t('.navigation_home')
+            = link_to t('.navigation_home'), root_path, class: 'nav-link'
           %li
-            %a.nav-link{href: "#"}= t('.navigation_shop')
+            = link_to t('.navigation_shop'), books_path, class: 'nav-link'
           -if user_signed_in?
             %li
-              %a.nav-link{href: "#"}= t('.navigation_orders')
+              = link_to t('.navigation_orders'), orders_path, class: 'nav-link'
             %li
-              %a.nav-link{href: "#"}= t('.navigation_settings')
+              = link_to t('.navigation_settings'), edit_address_path, class: 'nav-link'
       .col-sm-3
         %p.general-nav-mail= t('.email_addres')
         %p.general-nav-number= t('.mobile_number')
