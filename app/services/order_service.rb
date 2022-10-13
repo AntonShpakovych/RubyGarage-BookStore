@@ -28,6 +28,6 @@ class OrderService
   end
 
   def order_find_by_status
-    user.orders.find_by(status: Order.statuses.fetch(:unprocessed))
+    @order_find_by_status ||= user.orders.find_by(status: Order.statuses.fetch(:unprocessed))
   end
 end
