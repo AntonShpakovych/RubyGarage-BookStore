@@ -1,0 +1,7 @@
+- if current_order.order_items.find_by(book_id: book.id)&.quantity.to_i >= OrderItemsService::DEFAULT_QUANTITY_INCREMENT
+  .col-xs-5.col-md-3
+    .input-group.general-position
+      = render partial: 'carts/partials/quantity', locals: { item: current_order, summary_quantity: current_order.order_items.find_by(book_id: book.id).quantity, book_id: book.id  }
+- else   
+  .col-xs-7.col-md-5
+    = render partial: 'carts/partials/add_to_cart', locals: { icon: false , book: book}

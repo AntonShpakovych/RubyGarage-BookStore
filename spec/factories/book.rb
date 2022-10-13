@@ -8,7 +8,7 @@ FactoryBot.define do
     height { FFaker::Number.decimal }
     width { FFaker::Number.decimal }
     length { FFaker::Number.decimal }
-    quantity { FFaker::Number.number }
+    quantity { Faker::Number.between(from: 2, to: 10) }
     year_of_publication { FFaker::Vehicle.year }
     materials { FFaker::BaconIpsum.word }
     main_image do

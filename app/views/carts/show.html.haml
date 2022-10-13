@@ -1,0 +1,14 @@
+.general-main-wrap
+  %h1.general-title-margin= t('.title_cart')
+  -if @current_order.order_items.present?
+    .visible-xs
+      = render partial: 'carts/partials/mobile/order_item', locals: { order_items: @current_order.order_items.includes([:book]) }
+    .hidden-xs
+      = render partial: 'carts/partials/desktop/order_item', locals: { order_items: @current_order.order_items.includes([:book]) }
+    .general-order-wrap
+      .row
+        = render partial: 'carts/partials/coupon', locals: { current_order: @current_order }
+        = render partial: 'carts/partials/cart_summary', locals: { current_order: @current_order }
+    %button.btn.btn-default.mb-20.hidden-xs.center-block= t('.submit_checkout')
+  -else
+    = render partial: 'carts/partials/cart_without_order'

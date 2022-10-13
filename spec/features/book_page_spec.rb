@@ -192,4 +192,68 @@ RSpec.describe 'Book page', type: :feature do
       expect(result_for_images).to all(include(expect_result_images))
     end
   end
+
+  describe 'Cart' do
+    let(:result) { page }
+    let!(:book) { create(:book) }
+    let(:link) { t('books.show.add_to_cart') }
+
+    context 'when chossed book not in cart' do
+      before { visit book_path(book.id) }
+
+      it 'have link Add To Card' do
+        expect(result).to have_link(link)
+      end
+
+      context 'when user click on link, book add to cart' do
+        let(:expected_result_message) { t('carts.message.create_good') }
+
+        before { page.find_link(link).click }
+
+        it 'show message u added this book to cart' do
+          expect(result).to have_text(expected_result_message)
+        end
+
+        it 'also redirect to cart_path' do
+          expect(result.current_path).to eq(cart_path)
+        end
+      end
+    end
+
+    context 'when choosed book in cart' do
+      let(:current_order) { Order.find_by(status: :unprocessed) }
+      let(:link_decrease) { result.all('a', class: 'input-link').first }
+      let(:link_increase) { result.all('a', class: 'input-link').last }
+
+      before do
+        visit books_path
+        create(:order_item, order: current_order, book: book)
+        visit book_path(book.id)
+      end
+
+      context 'when click deacrease' do
+        before { link_decrease.click }
+
+        it 'show message about good update' do
+          expect(result).to have_text(t('carts.message.update'))
+        end
+
+        it 'redirect_to cart_path' do
+          expect(result.current_path).to eq(cart_path)
+        end
+      end
+
+      context 'when click increase' do
+        before { link_increase.click }
+
+        it 'show message about good update' do
+          expect(result).to have_text(t('carts.message.update'))
+        end
+
+        it 'redirect_to cart_path' do
+          expect(result.current_path).to eq(cart_path)
+        end
+      end
+    end
+  end
 end

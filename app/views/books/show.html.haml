@@ -17,15 +17,7 @@
       .row
         .col-xs-12.col-md-4
           %p.h1.in-gold-500.mt-10= t('.book_price', price: @book.price)
-        .col-xs-5.col-md-3
-          .input-group.general-position
-            %a.input-link{href: "#"}
-              %i.fa.fa-minus.line-height-40
-            %input.form-control.quantity-input{type: "text", placeholder: @book.quantity}
-            %a.input-link{href: "#"}
-              %i.fa.fa-plus.line-height-40
-        .col-xs-7.col-md-5
-          %button.btn.btn-default.pull-right.general-position= t('.add_to_card')
+        = render partial: 'books/partials/cart', locals: { current_order: @current_order, book: @book }
       .general-info-wrap.divider-lg
         %p= t('.description_title')
         %p.lead.small.line-height-2

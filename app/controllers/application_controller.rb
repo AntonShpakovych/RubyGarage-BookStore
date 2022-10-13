@@ -3,7 +3,15 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
 
-  before_action :all_category
+  before_action :all_category, :current_order, :cart_count
+
+  def current_order
+    @current_order ||= OrderService.new(current_user, cookies).call
+  end
+
+  def cart_count
+    @cart_count ||= current_order ? current_order.order_items.sum(:quantity) : Constants::Shared::CART_EMPTY
+  end
 
   def all_category
     @all_category ||= Category.all

@@ -35,6 +35,7 @@ ActiveAdmin.register Book do
       row :length
       row :materials
       row :price
+      row :quantity
       row :created_at
       row :updated_at
       book.images.each do |image|

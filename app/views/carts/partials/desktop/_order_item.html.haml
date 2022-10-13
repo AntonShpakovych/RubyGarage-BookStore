@@ -1,0 +1,29 @@
+%table.table.table-hover
+  %tr.no-hover
+    %th.col-pic.pl-0
+      %span.in-grey-600= t('.product_title')
+    %th.col-title
+    %th.col-price
+      %span.in-grey-600= t('.product_price_title')
+    %th.col-quantity
+      %span.in-grey-600= t('.product_quantity_title')
+    %th.col-total
+      %span.in-grey-600= t('.product_subtotal_title')
+    %th.col-close
+  -order_items.each do |item|
+    %tr
+      %td
+        = link_to book_path(item.book), class: 'general-img-wrap-table' do
+          = image_tag(item.book.main_image.url, class: 'cart-img-shadow pull-left')
+      %td
+        = link_to book_path(item.book) do
+          %p.title= item.book.name 
+      %td
+        %span.font-16.in-gold-500= number_to_currency(item.book.price, unit: t('carts.unit_for_currency'))
+      %td
+        .input-group
+          = render partial: 'carts/partials/quantity', locals: { item: item, summary_quantity: item.quantity, book_id: item.book.id }
+      %td
+        %span.font-16.in-gold-500= number_to_currency(item.subtotal_price, unit: t('carts.unit_for_currency'))
+      %td
+        = render partial: 'carts/partials/delete_order_item', locals: { item: item }

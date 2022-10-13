@@ -1,0 +1,5 @@
+- if icon
+  = link_to order_items_path(order_item: { quantity: OrderItemsService::DEFAULT_QUANTITY_INCREMENT, book_id: book.id }), method: :post, class: 'thumb-hover-link' do
+    %i.fa.fa-shopping-cart.thumb-icon
+- else
+  = link_to t('books.show.add_to_cart'), order_items_path(order_item: { quantity: OrderItemsService::DEFAULT_QUANTITY_INCREMENT, book_id: book.id }), method: :post, class: 'btn btn-default pull-right general-position'

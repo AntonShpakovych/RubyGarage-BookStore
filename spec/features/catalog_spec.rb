@@ -131,4 +131,45 @@ RSpec.describe 'Catalog page', type: :feature do
       end
     end
   end
+
+  describe 'Cart' do
+    let(:result) { page }
+    let!(:book) { create(:book) }
+    let(:add_to_card_link) do
+      within('.thumb-hover') do
+        page.all('a', class: 'thumb-hover-link').last
+      end
+    end
+
+    context 'when cart not have choosed book' do
+      let(:expected_result_message) { t('carts.message.create_good') }
+
+      before do
+        visit books_path
+        add_to_card_link.click
+      end
+
+      it 'show notice with information create was all good' do
+        expect(result).to have_text(expected_result_message)
+      end
+    end
+
+    context 'when cart already have choosed book' do
+      let(:current_order) { Order.find_by(status: :unprocessed) }
+      let(:set_order_items_with_choosed_book) do
+        create(:order_item, book: book, order: current_order)
+      end
+      let(:expected_result_message) { t('carts.message.create_bad') }
+
+      before do
+        visit books_path
+        set_order_items_with_choosed_book
+        add_to_card_link.click
+      end
+
+      it 'show alert with failure' do
+        expect(result).to have_text(expected_result_message)
+      end
+    end
+  end
 end

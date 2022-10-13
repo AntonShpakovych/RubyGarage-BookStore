@@ -1,0 +1,5 @@
+= link_to order_item_path(item, order_item: { quantity: -OrderItemsService::DEFAULT_QUANTITY_INCREMENT, book_id: book_id }), method: :put, class: 'input-link' do
+  %i.fa.fa-minus.line-heaght-40
+%input.form-control.quantity-input{type: "text", value: summary_quantity, readonly: "readonly"}
+= link_to order_item_path(item, order_item: { quantity: OrderItemsService::DEFAULT_QUANTITY_INCREMENT, book_id: book_id }), method: :put, class: 'input-link' do
+  %i.fa.fa-plus.line-heaght-40
