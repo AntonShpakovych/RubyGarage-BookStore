@@ -2,6 +2,24 @@
 
 en:
   devise:
+    checkout_customer:
+      global_title: Returning Customer
+      label_email: Enter Email
+      placeholder_email: Enter Email
+      label_password: Password
+      placeholder_password: Password
+      forgot_password: Forgot password?
+      title: Log In with Password
+      submit: Log In with Password
+    quick_registration:
+      global_title: New Customer
+      title: Quik Register
+      info_about_password: You'll be able to create password later
+      label: Enter Email
+      placeholder: Enter Email
+      submit: Continue to Checkout
+      message:
+        password_instructions: We send to you, instructions how to create password for your account
     default:
       log_in: Log in
       log_out: Log out

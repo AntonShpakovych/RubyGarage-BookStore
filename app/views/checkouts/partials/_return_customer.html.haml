@@ -1,0 +1,9 @@
+= simple_form_for(:user, url: user_session_path, html: { class: 'general-form' }) do |f|
+  .mb-40
+    %p.mb-15= t('devise.checkout_customer.log_in_with_password')
+    .form-group.mb-30
+      = f.input :email, label: t('devise.checkout_customer.label_email'), label_html: { class: 'control-label input-label' }, input_html: { id: 'email', class: 'form-control' }, type: 'email', placeholder: t('devise.checkout_customer.placeholder_email')
+    .form-group.mb-30
+      = f.input :password, label: t('devise.checkout_customer.label_password'), label_html: { class: 'control-label input-label' }, input_html: { id: 'password', class: 'form-control' }, type: 'password', placeholder: t('devise.checkout_customer.placeholder_password')
+      = link_to t('devise.default.devise_forgot_password_title'), new_user_password_path, class: 'help-block in-gold-500'
+  = f.button :submit, t('devise.checkout_customer.submit'), class: 'btn mb-20'

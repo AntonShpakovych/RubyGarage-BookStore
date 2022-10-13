@@ -3,7 +3,8 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
+                                    registrations: 'users/registrations' }
   root 'home#index'
 
   resource :user, only: %i[edit destroy]
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
 
   resource :update_email, only: %i[update]
   resource :update_password, only: %i[update]
+
+  resource :checkout, only: %i[show update]
 
   get 'address', to: redirect('/address/edit')
   get 'update_email', to: redirect('/user/edit')

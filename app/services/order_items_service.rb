@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class OrderItemsService
-  attr_reader :order, :params
-
   DEFAULT_QUANTITY_INCREMENT = 1
 
   def initialize(order:, params:)
@@ -13,6 +11,10 @@ class OrderItemsService
   def call
     order_item ? update_order_item : create_order_item
   end
+
+  private
+
+  attr_reader :order, :params
 
   def order_item
     @order_item ||= order.order_items.find_by(book: params[:book_id])

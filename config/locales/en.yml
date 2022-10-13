@@ -1,4 +1,8 @@
 en:
+  checkouts:
+    partials:
+      address:
+        title: Address
   carts:
     message:
       coupon_undefined: Coupon invalid

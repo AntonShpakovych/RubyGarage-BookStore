@@ -8,5 +8,9 @@ FactoryBot.define do
     password { FFaker::Internet.password(9, 16) }
     image { FFaker::Image.url }
     full_name { FFaker::Name.name }
+
+    trait :with_orders do
+      [order]
+    end
   end
 end

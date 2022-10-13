@@ -1,0 +1,11 @@
+.row
+  .col-md-5.mb-40
+    .text-center
+      %h3.general-subtitle= t('devise.checkout_customer.global_title')
+      = render partial: 'devise/partials/oauth2_google'
+    = render partial: 'checkouts/partials/return_customer'
+  .col-md-5.col-md-offset-1.mb-60
+    .text-center
+      %h3.general-subtitle= t('devise.quick_registration.global_title')
+      = render partial: 'devise/partials/oauth2_google'
+    = render partial: 'checkouts/partials/quick_registation'

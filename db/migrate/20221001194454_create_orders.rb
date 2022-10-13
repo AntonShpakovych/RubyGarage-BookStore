@@ -3,6 +3,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
     create_table :orders do |t|
       t.belongs_to :user, foreign_key: true
       t.integer :status, default: 0
+      t.integer :state, default: 0
       t.timestamps
     end
   end

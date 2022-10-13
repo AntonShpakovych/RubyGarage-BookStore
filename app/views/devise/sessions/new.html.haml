@@ -1,9 +1,7 @@
 %main.container.general-main-wrap
   .text-center
     %h3.general-login-title= t('devise.default.log_in')
-    = link_to user_google_oauth2_omniauth_authorize_path, class: 'general-login-icon', method: :post do
-      %i.fa.fa-google
-    %p.general-login-text= t('devise.default.or_for_auth')
+    = render partial: 'devise/partials/oauth2_google'
     .general-form
       = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
         .form-group.mb-30
