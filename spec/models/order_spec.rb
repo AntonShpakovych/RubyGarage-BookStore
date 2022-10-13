@@ -9,6 +9,7 @@ RSpec.describe Order, type: :model do
 
   describe 'Table columns' do
     it { is_expected.to have_db_column(:status).of_type(:integer).with_options(default: :unprocessed) }
+    it { is_expected.to have_db_column(:number).of_type(:string).with_options(null: true) }
   end
 
   describe 'Table index' do

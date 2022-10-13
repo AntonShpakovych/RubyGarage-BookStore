@@ -1,2 +1,5 @@
 = simple_form_for address, as: :address, url: address_path , method: address.persisted? ? :put : :post do |f|
-  =render partial: 'addresses/partials/addresses_field', locals: { f: f, type: type }
+  .col-md-5.mb-40
+    =render partial: 'addresses/partials/addresses_field', locals: { f: f, type: type }
+    .text-center.general-text-align
+      =f.button :submit, t('address.label.button_submit'), class: 'btn'

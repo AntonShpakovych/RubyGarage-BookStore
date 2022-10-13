@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (5.4.0)
+      concurrent-ruby (~> 1.0)
     actioncable (6.1.7)
       actionpack (= 6.1.7)
       activesupport (= 6.1.7)
@@ -75,6 +77,9 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    after_commit_everywhere (1.2.2)
+      activerecord (>= 4.2)
+      activesupport
     arbre (1.5.0)
       activesupport (>= 3.0.0, < 7.1)
       ruby2_keywords (>= 0.0.2, < 1.0)
@@ -463,7 +468,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm (~> 5.4.0)
   activeadmin (~> 2.13.1)
+  after_commit_everywhere (~> 1.2.2)
   bootsnap (>= 1.4.4)
   brakeman (~> 5.3.1)
   bullet (~> 7.0.3)

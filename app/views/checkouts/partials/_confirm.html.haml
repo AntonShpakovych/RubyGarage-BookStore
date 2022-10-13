@@ -1,0 +1,13 @@
+.general-main-wrap
+  = render partial: 'checkouts/partials/state_info', locals: { current_order: current_order }
+  .row.mb-20
+    = render partial: 'checkouts/partials/confirm/billing_address', locals: { billing_address: current_user.billing_address, link: true }
+    = render partial: 'checkouts/partials/confirm/shipping_address', locals: { shipping_address: current_user.shipping_address, link: true }
+    = render partial: 'checkouts/partials/confirm/shippment', locals: { shippment: current_order.delivery }
+    = render partial: 'checkouts/partials/confirm/payment_info', locals: { credit_card: current_order.credit_card }
+  = render partial: 'checkouts/partials/confirm/mobile/book_items', locals: { order_items: current_order.order_items.includes([:book]) }
+  = render partial: 'checkouts/partials/confirm/desktop/book_items', locals: { order_items: current_order.order_items.includes([:book]) }
+  .right_cart_summary
+    = render partial: 'checkouts/partials/cart_summary', locals: { current_order: current_order }
+.text-center
+  = link_to t('.button_submit'), checkout_path(confirm: true), class: 'btn btn-default mb-20', method: :put

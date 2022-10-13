@@ -1,8 +1,83 @@
 en:
   checkouts:
+    confirm_order_email:
+      email: 'Thank you for your order!'
+    show:
+      checkout_title: Checkout
     partials:
+      confirm:
+        button_submit: Place Order
+        shipping_address:
+          edit: edit
+          shipping_title: Shipping Address
+          full_name: '%{first_name} %{last_name}'
+        billing_address:
+          billing_title: Billing Address
+          full_name: '%{first_name} %{last_name}'
+          edit: edit
+        shippment:
+          title: Shipments
+          edit: edit
+        payment_info:
+          title: Payment Information
+          masked_card: '**** **** **** %{last_number}'
+          card_date_expire: 'MM/YY: %{date}'
+      complete:
+        order_number: Order %{number}
+        button_submit: Back to Store
+        desktop:
+          book_item:
+            title_book: Book
+            title_price: Price
+            title_quantity: Quantity
+            title_subtotal: Sub Total
+        mobile:
+          book_item:
+            title_price: Price
+            title_quantity: Quantity
+            title_subtotal: Sub Total
+        title: Thank You for your Order!
+        email_notife: An order confirmation has been has been sent to %{email}
+      payment:
+        button_submit: Save and Continue
+        title: Credit Card
+        number_placeholder: Card Number
+        number_label: Card Number
+        name_label: Name on Card
+        name_placeholder: Name on Card
+        date_label: MM / YY
+        date_placeholder: MM / YY
+        cvv_label: CVV
+        cvv_placeholder: CVV
+        hint: 3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front.
+        errors:
+          card_date: Has a month on the left of a slash /, the year on the right. Month value can be from 01 to 12.
+          card_cvv: Min Length is %{default_length} digits, or min Length is %{american_length} digits.
+          card_name: 'Should not be not empty, consist of a-z, A-Z, no special symbols, can contain spaces, must be less than 50 characters.' 
+          card_number: Should not be empty, can start with, consist of 0-9 only
+      cart_summary:
+        title: Order Summary
       address:
+        use_billing_address: Use Billing Adress
+        button_submit: Save and Continue
         title: Address
+      delivery:
+        button_submit: Save and Continue
+        shipping_method_title: Shipping Method
+        desktop:
+          days: '%{from_date} to %{to_date} days'
+          radion_button_name: delivery_id
+          method_title: Method
+          days_title: Days
+          price_title: Price
+          title: Shipping
+        mobile:
+          days: '%{from_date} to %{to_date} days'
+          radion_button_name: delivery_id
+          method_title: Method
+          days_title: Days
+          price_title: Price
+          title: Shipping
   carts:
     message:
       coupon_undefined: Coupon invalid
@@ -26,6 +101,7 @@ en:
         subtotal_title: "Subtotal:"
         coupon_title: "Coupon:"
         order_total: "Order Total:"
+        shipping_title: 'Shipping:'
         checkout_submit: Checkout
       coupon:
         user_already_pass_coupon: You already pass coupon

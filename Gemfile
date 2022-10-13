@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby(File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip)
 
+gem 'aasm', '~> 5.4.0'
 gem 'activeadmin', '~> 2.13.1'
+gem 'after_commit_everywhere', '~> 1.2.2'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave', '~> 2.0'
 gem 'coderay', '~> 1.1.3'

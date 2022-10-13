@@ -1,0 +1,8 @@
+= render partial: 'checkouts/partials/state_info', locals: { current_order: current_order }
+%h3.general-subtitle= t('.shipping_method_title')
+= simple_form_for(current_order, as: :delivery, url: checkout_path, method: :put) do |f|
+  = render partial: 'checkouts/partials/delivery/mobile', locals: { current_order: current_order }
+  = render partial: 'checkouts/partials/delivery/desktop', locals: { current_order: current_order }
+  .text-center
+    = f.button :submit, t('.button_submit')
+= render partial: 'checkouts/partials/cart_summary', locals: { current_order: current_order }

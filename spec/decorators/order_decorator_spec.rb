@@ -47,8 +47,20 @@ RSpec.describe OrderDecorator do
   describe '#total_price' do
     let(:result) { order.total_price }
 
-    it 'give total money for order' do
-      expect(result).to eq(expected_result_total_price)
+    context 'when order with default delivery' do
+      it 'give total money for order' do
+        expect(result).to eq(expected_result_total_price)
+      end
+    end
+
+    context 'when user choose delivery' do
+      let(:delivery) { create(:delivery, price: 10) }
+      let(:order) { create(:order, delivery: delivery, coupon: coupon, order_items: order_items).decorate }
+      let(:expected_result) { 15 + delivery.price }
+
+      it 'give total money for order include delivery.price' do
+        expect(result).to eq(expected_result)
+      end
     end
   end
 end

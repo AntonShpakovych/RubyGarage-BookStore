@@ -1,0 +1,6 @@
+%ul.steps.list-inline
+  - Order.states.each do |key, value|
+    %li.step{ class: ('active' if key == current_order.state) }
+      %span.step-number= value + 1
+      %span.step-text.hidden-xs= key.capitalize
+    %li.step-divider

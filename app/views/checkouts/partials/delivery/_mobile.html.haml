@@ -1,0 +1,23 @@
+.visible-xs
+  - current_order.available_delivery.each do |delivery|
+    .general-cart-item.divider-lg-bottom.mb-30
+      %table.table
+        %tr
+          %td.col-half
+            %span.in-grey-600= t('.method_title')
+          %td.col-half
+            .form-group.radio.mt-0.mb-0
+              %label.radio-label
+                = radio_button_tag t('.radion_button_name'), delivery.id, type: 'radio'
+                %span.radio-icon
+                %span.radio-text= delivery.name
+        %tr
+          %td
+            %span.in-grey-600= t('.days_title')
+          %td
+            %span.font-16.fw-300= t('.days', from_date: delivery.from_date, to_date: delivery.to_date)
+        %tr
+          %td
+            %span.in-grey-600= t('.price_title')
+          %td
+            %span.font-16.in-gold-500= number_to_currency(delivery.price, unit: t('carts.unit_for_currency'))

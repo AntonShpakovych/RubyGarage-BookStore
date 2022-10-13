@@ -1,1 +1,26 @@
-%h1= t('.title')
+= render partial: 'checkouts/partials/state_info', locals: { current_order: current_order }
+= simple_form_for(current_order, as: :address, url: checkout_path, method: :put, html: { class: 'res-mb-100' }) do |f|
+  .hidden-xs.hidden-sm
+    .row
+      .col-md-5
+        %h3.general-subtitle= BillingAddress.name
+      .col-md-5.col-md-offset-1
+        %h3#shipping-title.general-subtitle= ShippingAddress.name
+  .row
+    = f.hidden_field :use_billing, value: false
+    .col-md-5.mb-40
+      #billing
+        = f.simple_fields_for(CheckoutAddressService::BILLING, service.present? ? service[:billing] : current_user.billing_address) do |s_f|
+          = render partial: 'addresses/partials/addresses_field', locals: { f: s_f, type: BillingAddress.name }
+    .col-md-5.col-md-offset-1.mb-60
+      #shipping
+        = f.simple_fields_for(CheckoutAddressService::SHIPPING, service.present? ? service[:shipping] : current_user.shipping_address) do |s_f|
+          = render partial: 'addresses/partials/addresses_field', locals: { f: s_f, type: ShippingAddress.name }
+        .form-group.checkbox
+          %label.checkbox-label
+            %input.checkbox-input#use-billing{type: "checkbox", hidden: "true"}
+            %span.checkbox-icon
+              %i.fa.fa-check
+            %span.checkbox-text= t('.use_billing_address')
+  = render partial: 'checkouts/partials/cart_summary', locals: { current_order: current_order }
+  = f.button :submit, t('.button_submit'), class: 'btn center-block mb-20'
