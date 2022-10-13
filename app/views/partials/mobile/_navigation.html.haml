@@ -14,7 +14,7 @@
     %ul#account.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
       -if user_signed_in?
         %li
-          = link_to t('.navigation_orders'), '#', class: 'collapse-link'
+          = link_to t('.navigation_orders'), orders_path, class: 'collapse-link'
         %li
           = link_to t('.navigation_settings'), edit_address_path, class: 'collapse-link'
         %li

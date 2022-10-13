@@ -1,4 +1,41 @@
 en:
+  orders:
+    partials:
+      navigation:
+        sort_by: Sort by
+        all_orders: All orders
+        in_queue: Waiting for processing
+        in_delivery: In delivery
+        delivered: Delivered
+        canceled: Canceled
+        title_queue: Waiting for processing
+        title_in_delivery: In delivery
+        title_delivered: Delivered
+        title_canceled: Canceled
+      desktop:
+        orders:
+          in_queue: Waiting for processing
+          in_delivery: In delivery
+          delivered: Delivered
+          canceled: Canceled
+          title_number: Number
+          title_completed_at: Completed at
+          title_status: Status
+          title_total: Total
+      mobile:
+        orders:
+          in_queue: Waiting for processing
+          in_delivery: In delivery
+          delivered: Delivered
+          canceled: Canceled
+          title_number: Number
+          title_completed_at: Completed at
+          title_status: Status
+          title_total: Total
+    index:
+      title: My Orders
+    show:
+      order_number: Order %{order_number}
   checkouts:
     confirm_order_email:
       email: 'Thank you for your order!'
@@ -119,6 +156,15 @@ en:
           product_quantity_title: Quantity
           product_subtotal_title: SubTotal
   active_admin:
+    orders:
+      links:
+        in_delivery: In delivery
+        delivered: Delivered
+        canceled: Canceled
+      notice:
+        in_delivery: Status change to In delivery
+        delivered: Status change to Delivered
+        canceled: Status change to Canceled
     notice:
       approved: You approved this review
       rejected: You rejected this review

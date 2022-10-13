@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Home page', type: :feature do
+  let(:order) { create(:order, :order_items) }
   let(:result) { page }
   let(:expected_result1) { t('home.partials.welcome.welcome_title') }
   let(:expected_result2) { t('home.partials.welcome.welcome_description') }
@@ -8,13 +9,16 @@ RSpec.describe 'Home page', type: :feature do
   let(:expected_result4) { t('home.partials.carousel.button_buy_now') }
   let(:expected_result5) { t('home.partials.welcome.button_get_started') }
 
-  before { visit root_path }
+  before do
+    order
+    visit root_path
+  end
 
   it 'User open site and see home page' do
     expect(result).to have_text(expected_result1)
     expect(result).to have_text(expected_result2)
     expect(result).to have_text(expected_result3)
-    expect(result).to have_button(expected_result4)
+    expect(result).to have_link(expected_result4)
     expect(result).to have_link(expected_result5)
   end
 
@@ -22,10 +26,18 @@ RSpec.describe 'Home page', type: :feature do
     let(:catalog_path) { books_path }
     let(:expected_result) { catalog_path }
 
-    before { find_link(:href => catalog_path).click }
+    before { find_link(:href => catalog_path, match: :first).click }
 
     it 'render catalog' do
       expect(result).to have_current_path(expected_result, ignore_query: true)
+    end
+  end
+
+  context 'when user click on buy now' do
+    before { find_link(expected_result4).click }
+
+    it 'add book to order' do
+      expect(result).to have_current_path(cart_path)
     end
   end
 

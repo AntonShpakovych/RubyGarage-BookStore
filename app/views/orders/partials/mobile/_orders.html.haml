@@ -1,0 +1,24 @@
+.visible-xs
+  - orders.includes([:delivery, :coupon]).each do |order|
+    .general-cart-item.divider-lg-bottom.pt-0
+      %table.table
+        %tr
+          %td.col-half
+            %span.in-grey-600= t('.title_number')
+          %td.col-half
+            = link_to order.number, order_path(order.id), class: 'general-order-number'
+        %tr
+          %td
+            %span.in-grey-600= t('.title_completed_at')
+          %td
+            %span.in-grey-900.font-16.fw-300= order.created_at
+        %tr
+          %td
+            %span.in-grey-600= t('.title_status')
+          %td
+            %span.font-16.in-grey-900.fw-300= t(".#{order.status}")
+        %tr
+          %td
+            %span.in-grey-600= t('.title_total')
+          %td
+            %strong.font-16= order.total_price

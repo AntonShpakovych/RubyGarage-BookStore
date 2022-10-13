@@ -1,35 +1,24 @@
 #slider.carousel.slide{'data-ride': "carousel"}
   %ol.carousel-indicators
-    %li.active{'data-target': "#slider", 'data-slide-to': "0"}
-    %li{'data-target': "#slider", 'data-slide-to': "1"}
+    - latest_books.length.times do |number|
+      %li{class: "#{'active' if number == 0}", 'data-target': "#slider", 'data-slide-to': "#{number}"}
   .carousel-inner{role: "listbox"}
-    .item.active
-      .row
-        .col-sm-5
-          .general-img-wrap
-            %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-        .col-sm-7
-          .mb-60
-            %h1 Real-Life Responsive Web Design
-            %p.lead Smart front-end techniques and design patterns derived from real-life responsive projects
-            %p.lead.small Vitaly Friedman, Daniel Mall,Vitaly Friedman
-            .general-align
-              %button.disabled.btn= t('.button_buy_now')
-    .item
-      .row
-        .col-sm-5
-          .general-img-wrap
-            %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-        .col-sm-7
-          .mb-60
-            %h1 Real-Life Responsive Web Design
-            %p.lead Smart front-end techniques and design patterns derived from real-life responsive projects
-            %p.lead.small Vitaly Friedman, Daniel Mall,Vitaly Friedman
-            .general-align
-              %button.btn.btn-primary= t('.button_buy_now')
+    - latest_books.each_with_index do |book, index|
+      .item{ class: "#{'active' if index == 0}" }
+        .row
+          .col-sm-5
+            .general-img-wrap
+              = image_tag(book.main_image.url, class: 'img-shadow general-thumbnail-img')
+          .col-sm-7
+            .mb-60
+              %h1= book.name
+              %p.lead= book.short_description
+              %p.lead.small= book.all_authors
+              .general-align
+                = link_to t('.button_buy_now'), order_items_path(order_item: { quantity: OrderItemsService::DEFAULT_QUANTITY_INCREMENT, book_id: book.id }), method: :post, class: 'button btn btn-default'
   %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
     %span.icon-prev{'aria-hidden': "true"}
-    %span.sr-only Previous
+    %span.sr-only
   %a.right.carousel-control{href: "#slider", role: "button", 'data-slide': "next"}
     %span.icon-next{'aria-hidden': "true"}
-    %span.sr-only Next
+    %span.sr-only
