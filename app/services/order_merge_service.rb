@@ -9,7 +9,7 @@ class OrderMergeService
   end
 
   def call
-    return unless user && cookies[:order_id]
+    return if user.blank? || cookies[:order_id].blank?
 
     cookies.delete(:order_id)
     merge
